@@ -52,7 +52,7 @@ export default function FeaturedContent() {
     ]
 
     return (
-        <section className="py-20">
+        <section className="py-12">
             <div className="sm:px-6 lg:px-8">
                 <div className="text-center mb-16">
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">

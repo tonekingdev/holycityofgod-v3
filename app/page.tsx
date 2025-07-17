@@ -53,9 +53,11 @@ export default function Home() {
         <VerseofTheDay />
       </section>
 
-      <section className="container">
-        {/* Feature Content */}
-        <FeaturedContent />
+      <section className="bg-gradient-to-r from-gray-50 to-gray-200">
+        <div className="container">
+          {/* Feature Content */}
+          <FeaturedContent />
+        </div>
       </section>
     </div>
   )

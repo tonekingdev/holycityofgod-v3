@@ -1,7 +1,9 @@
-import { CHURCH_INFO, SOCIAL_LINKS } from "@/constants"
+import { CHURCH_INFO, MAIN_NAV, SOCIAL_LINKS } from "@/constants"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faFacebookF, faTwitter, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons"
 import Image from "next/image"
+import Link from "next/link"
+import { Mail, MapPin, Phone } from "lucide-react"
 
 
 // Icon mapping
@@ -48,6 +50,83 @@ export function Footer() {
                             ))}
                         </div>
                     </div>
+
+                    {/* Quick Links */}
+                    <div>
+                        <h3 className="font-semibold text-lg mb-4">
+                            Quick Links
+                        </h3>
+                        <ul className="space-y-2">
+                            {MAIN_NAV.map((nav) => (
+                                <li key={nav.name}>
+                                    <Link href={nav.href} className="text-gray-400 hover:text-gold-400">
+                                        {nav.name}
+                                    </Link>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    {/* Resources */}
+                    <div>
+                        <h3 className="font-semibold text-lg mb-4">
+                            Resources
+                        </h3>
+                        <ul className="space-y-2">
+                            <li>
+                                <Link href="/bible" className="text-gray-400 hover:text-gold-300">
+                                    Bible Study
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/prayer" className="text-gray-400 hover:text-gold-300">
+                                    Prayer Requests
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/give" className="text-gray-400 hover:text-gold-300">
+                                    Online Giving
+                                </Link>
+                            </li>
+                            <li>
+                                <Link href="/outreach" className="text-gray-400 hover:text-gold-300">
+                                    Outreach
+                                </Link>
+                            </li>
+                        </ul>
+                    </div>
+
+                    {/* Contact */}
+                    <div>
+                        <h3 className="font-semibold text-lg mb-4">
+                            Contact Us
+                        </h3>
+                        <div className="space-y-3">
+                            <div className="flex items-center space-x-2">
+                                <MapPin className="h-4 w-4 text-gray-400" />
+                                <span className="text-gray-400 text-sm">
+                                    {CHURCH_INFO.contact.address.full}
+                                </span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Phone className="h-4 w-4 text-gray-400" />
+                                <span className="text-gray-400 text-sm">
+                                    {CHURCH_INFO.contact.phone}
+                                </span>
+                            </div>
+                            <div className="flex items-center space-x-2">
+                                <Mail className="h-4 w-4 text-gray-400" />
+                                <span className="text-gray-400 text-sm">
+                                    {CHURCH_INFO.contact.email}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="mx-aut text-center mt-8">
+                    <p className="text-xs font-light text-gray-400">
+                        &copy; Copyright {new Date().getFullYear()} Holy City of God Christian Fellowship Inc. All Rights Reserved.
+                    </p>
                 </div>
             </div>
         </footer>
