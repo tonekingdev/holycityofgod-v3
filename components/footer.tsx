@@ -79,6 +79,11 @@ export function Footer() {
                                 </Link>
                             </li>
                             <li>
+                                <Link href="our-network" className="text-gray-400 hover:text-gold-300">
+                                    Our Network
+                                </Link>
+                            </li>
+                            <li>
                                 <Link href="/prayer" className="text-gray-400 hover:text-gold-300">
                                     Prayer Requests
                                 </Link>

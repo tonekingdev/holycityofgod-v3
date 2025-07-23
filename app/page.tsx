@@ -26,6 +26,9 @@ export default function Home() {
           </div>
           <h1 className="text-4xl md:text-6xl font-bold mb-6">Holy City of God</h1>
           <p className="text-xl md:text-2xl mb-4 opacity-90">Christian Fellowship Inc.</p>
+          <p className="text-sm md:text-xl mb-8 opacity-90">
+            {CHURCH_INFO.contact.address.full}
+          </p>
           <p className="text-sm md:text-xl italic font-light mb-8 opacity-80">
             {CHURCH_INFO.subtitle}
           </p>

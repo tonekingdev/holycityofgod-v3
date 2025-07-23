@@ -255,7 +255,7 @@ export const MAIN_NAV = [
   { name: "Services", href: "/services" },
   { name: "Ministries", href: "/ministries" },
   { name: "Events", href: "/events" },
-  { name: "Sermons", href: "/sermons" },
+  { name: "Word", href: "/word" },
   { name: "News", href: "/news" },
   { name: "Give", href: "/give" },
   { name: "Contact", href: "/contact" },

@@ -58,7 +58,7 @@ export default function RemoteServiceNotification () {
                         <Globe className="h-3 w-3" />
                         <span className="font-medium">Online Meeting:</span>
                         <a 
-                        href="https://join.freeconferencecall.com/796680"
+                        href="https://join.freeconferencecall.com/100-009-769"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="underline hover:text-yellow-900">
@@ -70,7 +70,7 @@ export default function RemoteServiceNotification () {
                 <div className="mt-2 pt-2 border-t border-yellow-300">
                     <p className="text-xs">
                         <a 
-                            href="https://fccdl.in/i/796680"
+                            href="https://fccdl.in/i/100-009-769"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="underline hover:text-yellow-900"

@@ -6,9 +6,8 @@ import {
     faHeart,
     faPray,
     faUsers
-} from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
-
+} from "@fortawesome/free-solid-svg-icons"
+import Link from "next/link"
 
 interface FeatureItem {
     icon: IconDefinition;
@@ -54,10 +53,20 @@ export default function FeaturedContent() {
     return (
         <section className="py-12">
             <div className="sm:px-6 lg:px-8">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">
                         Welcome to Our Church Family
                     </h2>
+                </div>
+
+                {/* Who We Are Section */}
+                <div className="card border border-purple-200 shadow-lg p-6 mb-8 text-center">
+                    <p className="text-gray-600 mb-4 opacity-80">
+                        Holy City of God Christian Fellowship is a part of the Body of Christ that is centered on Christ Himself, and His mission of reconciliation. We understand that true reconciliation to God is the process of having an intimate and loving relationship with our Creator. During this process a nurturing relationship is formed, and we find our hope, peace, love, fulfillment, and joy in Him. We believe this is our foundational relationship that hinges the success of all other relationships.
+                    </p>
+                    <p className="text-gray-600 mb-4 opacity-80">
+                        We agree with Peter when he said, “Silver and gold have I none; but such as I have give I thee: in the name of Jesus Christ of Nazareth,” having Jesus is better than having silver or gold. Maintaining this relationship revolutionizes our entire lives. Holy City is dedicated to the personal success of every member. We are committed to reach beyond carnal limitations and inherit the promise of eternal life; therefore, all of our efforts are focused and directed towards this purpose.
+                    </p>
                 </div>
 
                 {/* Features */}
