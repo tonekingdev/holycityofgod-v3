@@ -341,3 +341,341 @@ export interface SearchFilters {
   category?: string[]
   author?: string
 }
+
+// Posts types
+export interface Post {
+  id: string
+  title: string
+  slug: string
+  excerpt: string
+  content: string
+  featuredImage?: string
+  category: PostCategory
+  author: PostAuthor
+  publishedAt: Date
+  updatedAt: Date
+  status: "draft" | "published" | "archived"
+  tags?: string[]
+  readingTime?: number
+  views?: number
+  featured?: boolean
+  seoTitle?: string
+  seoDescription?: string
+  canonicalUrl?: string
+}
+
+export interface PostAuthor {
+  id?: string
+  name: string
+  role?: string
+  avatar?: string
+  bio?: string
+  email?: string
+  socialLinks?: {
+    twitter?: string
+    facebook?: string
+    linkedin?: string
+    website?: string
+  }
+}
+
+export interface PostCategory {
+  id: string
+  name: string
+  slug: string
+  color: string
+  description?: string
+  parentId?: string
+  postCount?: number
+  isActive?: boolean
+  createdAt?: Date
+  updatedAt?: Date
+}
+
+export interface PostTag {
+  id: string
+  name: string
+  slug: string
+  description?: string
+  postCount?: number
+  color?: string
+}
+
+export interface PostComment {
+  id: string
+  postId: string
+  author: {
+    name: string
+    email: string
+    avatar?: string
+  }
+  content: string
+  status: "pending" | "approved" | "rejected"
+  createdAt: Date
+  updatedAt: Date
+  parentId?: string // For nested comments
+  replies?: PostComment[]
+}
+
+export interface PostMeta {
+  key: string
+  value: string
+}
+
+export interface PostRevision {
+  id: string
+  postId: string
+  title: string
+  content: string
+  excerpt: string
+  authorId: string
+  createdAt: Date
+  changeNote?: string
+}
+
+// Predefined post categories for the church
+export const POST_CATEGORIES: PostCategory[] = [
+  {
+    id: "1",
+    name: "Faith",
+    slug: "faith",
+    color: "bg-yellow-500 text-white",
+    description: "Posts about faith and spiritual growth",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "2",
+    name: "Prayer",
+    slug: "prayer",
+    color: "bg-yellow-500 text-white",
+    description: "Prayer insights and guidance",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "3",
+    name: "Service",
+    slug: "service",
+    color: "bg-yellow-500 text-white",
+    description: "Community service and outreach",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "4",
+    name: "Worship",
+    slug: "worship",
+    color: "bg-purple-600 text-white",
+    description: "Worship and praise",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "5",
+    name: "Community",
+    slug: "community",
+    color: "bg-green-600 text-white",
+    description: "Church community and fellowship",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "6",
+    name: "Youth",
+    slug: "youth",
+    color: "bg-blue-600 text-white",
+    description: "Youth ministry and activities",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "7",
+    name: "Events",
+    slug: "events",
+    color: "bg-indigo-600 text-white",
+    description: "Church events and announcements",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "8",
+    name: "Testimonies",
+    slug: "testimonies",
+    color: "bg-pink-600 text-white",
+    description: "Personal testimonies and stories",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "9",
+    name: "Bible Study",
+    slug: "bible-study",
+    color: "bg-teal-600 text-white",
+    description: "Bible study materials and insights",
+    isActive: true,
+    postCount: 0,
+  },
+  {
+    id: "10",
+    name: "Announcements",
+    slug: "announcements",
+    color: "bg-orange-600 text-white",
+    description: "Important church announcements",
+    isActive: true,
+    postCount: 0,
+  },
+]
+
+// Common post tags
+export const POST_TAGS: PostTag[] = [
+  { id: "1", name: "Faith", slug: "faith", color: "bg-blue-100 text-blue-800", postCount: 0 },
+  { id: "2", name: "Prayer", slug: "prayer", color: "bg-green-100 text-green-800", postCount: 0 },
+  { id: "3", name: "Community", slug: "community", color: "bg-purple-100 text-purple-800", postCount: 0 },
+  { id: "4", name: "Worship", slug: "worship", color: "bg-yellow-100 text-yellow-800", postCount: 0 },
+  { id: "5", name: "Service", slug: "service", color: "bg-red-100 text-red-800", postCount: 0 },
+  { id: "6", name: "Youth", slug: "youth", color: "bg-indigo-100 text-indigo-800", postCount: 0 },
+  { id: "7", name: "Family", slug: "family", color: "bg-pink-100 text-pink-800", postCount: 0 },
+  { id: "8", name: "Ministry", slug: "ministry", color: "bg-teal-100 text-teal-800", postCount: 0 },
+  { id: "9", name: "Outreach", slug: "outreach", color: "bg-orange-100 text-orange-800", postCount: 0 },
+  { id: "10", name: "Discipleship", slug: "discipleship", color: "bg-gray-100 text-gray-800", postCount: 0 },
+]
+
+// Post status options
+export const POST_STATUSES = [
+  { value: "draft", label: "Draft", color: "bg-gray-100 text-gray-800" },
+  { value: "published", label: "Published", color: "bg-green-100 text-green-800" },
+  { value: "archived", label: "Archived", color: "bg-yellow-100 text-yellow-800" },
+] as const
+
+// Post sorting options
+export const POST_SORT_OPTIONS = [
+  { value: "publishedAt-desc", label: "Newest First" },
+  { value: "publishedAt-asc", label: "Oldest First" },
+  { value: "title-asc", label: "Title A-Z" },
+  { value: "title-desc", label: "Title Z-A" },
+  { value: "views-desc", label: "Most Popular" },
+  { value: "readingTime-asc", label: "Quick Reads" },
+  { value: "readingTime-desc", label: "Long Reads" },
+] as const
+
+// Post filters interface
+export interface PostFilters {
+  category?: string
+  tag?: string
+  author?: string
+  status?: Post["status"]
+  featured?: boolean
+  dateFrom?: Date
+  dateTo?: Date
+  search?: string
+  sortBy?: (typeof POST_SORT_OPTIONS)[number]["value"]
+  limit?: number
+  offset?: number
+}
+
+// Post creation/update payload
+export interface CreatePostPayload {
+  title: string
+  slug?: string
+  excerpt: string
+  content: string
+  featuredImage?: string
+  categoryId: string
+  authorId: string
+  status: Post["status"]
+  tags?: string[]
+  featured?: boolean
+  seoTitle?: string
+  seoDescription?: string
+  canonicalUrl?: string
+  publishedAt?: Date
+}
+
+export interface UpdatePostPayload extends Partial<CreatePostPayload> {
+  id: string
+}
+
+// API response types
+export interface PostsResponse {
+  posts: Post[]
+  total: number
+  page: number
+  limit: number
+  totalPages: number
+  hasNext: boolean
+  hasPrev: boolean
+}
+
+export interface PostResponse {
+  post: Post
+  relatedPosts?: Post[]
+  comments?: PostComment[]
+}
+
+// Search result type
+export interface PostSearchResult {
+  id: string
+  title: string
+  excerpt: string
+  slug: string
+  category: PostCategory
+  author: PostAuthor
+  publishedAt: Date
+  relevanceScore: number
+  highlightedContent?: string
+}
+
+// Analytics types
+export interface PostAnalytics {
+  postId: string
+  views: number
+  uniqueViews: number
+  averageReadTime: number
+  bounceRate: number
+  socialShares: {
+    facebook: number
+    twitter: number
+    linkedin: number
+    email: number
+  }
+  topReferrers: Array<{
+    source: string
+    visits: number
+  }>
+  readingProgress: {
+    "25%": number
+    "50%": number
+    "75%": number
+    "100%": number
+  }
+}
+
+// Content management types
+export interface PostSchedule {
+  id: string
+  postId: string
+  scheduledFor: Date
+  status: "pending" | "published" | "failed"
+  createdAt: Date
+  error?: string
+}
+
+export interface PostSeries {
+  id: string
+  name: string
+  slug: string
+  description?: string
+  featuredImage?: string
+  posts: Post[]
+  isActive: boolean
+  createdAt: Date
+  updatedAt: Date
+}
+
+// Export utility type for post status
+export type PostStatus = Post["status"]
+
+// Export utility type for sort options
+export type PostSortOption = (typeof POST_SORT_OPTIONS)[number]["value"]
+

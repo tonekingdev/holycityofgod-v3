@@ -39,7 +39,7 @@ export function Navigation() {
                 alt="Holy City of God Christian Fellowship"
                 width={40}
                 height={40}
-                className="object-contain"
+                className="object-contain rounded-full shadow-md"
               />
             </div>
             <span className="font-bold text-xl">Holy City of God</span>
@@ -206,7 +206,7 @@ export function Navigation() {
                         </Button>
                       </Link>
                       <Link href="/auth/register" onClick={() => setIsOpen(false)}>
-                        <Button className="w-full bg-purple-700 hover:bg-purple-800">Sign Up</Button>
+                        <Button className="w-full text-purple-50 hover:text-gold-300 bg-purple-700 hover:bg-purple-800">Sign Up</Button>
                       </Link>
                     </div>
                   )}

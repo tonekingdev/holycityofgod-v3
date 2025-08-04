@@ -325,7 +325,7 @@ export const EVENT_CATEGORIES = [
 export const CONTENT_CATEGORIES = [
   { value: "announcements", label: "Announcements", color: "bg-warning-100 text-warning-800" },
   { value: "events", label: "Events", color: "bg-primary-100 text-primary-800" },
-  { value: "sermons", label: "Sermons", color: "bg-success-100 text-success-800" },
+  { value: "word", label: "Word", color: "bg-success-100 text-success-800" },
   { value: "news", label: "News", color: "bg-info-100 text-info-800" },
   { value: "testimonies", label: "Testimonies", color: "bg-church-gold bg-opacity-10 text-yellow-800" },
 ] as const
@@ -367,7 +367,7 @@ export const FEATURES = {
   EVENT_REGISTRATION: true,
   MEMBER_PORTAL: true,
   PRAYER_REQUESTS: true,
-  SERMON_ARCHIVE: true,
+  WORD_ARCHIVE: true,
   LIVE_STREAMING: false,
   MOBILE_APP: false,
   MULTI_LANGUAGE: false,
