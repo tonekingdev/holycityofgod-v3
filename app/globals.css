@@ -47,6 +47,8 @@
 
 html {
   scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #6b2580 #f1f1f1;
 }
 
 body {

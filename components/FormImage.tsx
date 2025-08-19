@@ -9,7 +9,7 @@ export default function FormImage() {
                 alt="Holy City of God Christian Fellowship"
                 width={80}
                 height={80}
-                className="object-contain"
+                className="object-cover"
             />
         </div>
     )
