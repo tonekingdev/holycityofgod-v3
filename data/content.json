@@ -1,0 +1,272 @@
+{
+  "home": {
+    "hero": {
+      "title": "Welcome to Holy City of God",
+      "subtitle": "A place of worship, community, and spiritual growth",
+      "description": "Join us as we gather to worship, learn, and grow together in faith. Experience the love of God in a welcoming community.",
+      "ctaText": "Join Us Today",
+      "ctaLink": "/services"
+    },
+    "about": {
+      "title": "About Our Church",
+      "content": "Holy City of God is a vibrant community of believers dedicated to spreading God's love and serving our community. We welcome all who seek to grow in their faith journey.",
+      "image": "/img/church-interior.jpg"
+    },
+    "services": {
+      "title": "Our Services",
+      "content": "Join us for worship services that inspire, educate, and bring our community together in faith.",
+      "schedule": [
+        {
+          "day": "Sunday",
+          "time": "10:00 AM",
+          "service": "Morning Worship"
+        },
+        {
+          "day": "Wednesday",
+          "time": "7:00 PM",
+          "service": "Bible Study"
+        }
+      ]
+    },
+    "featured": {
+      "title": "Welcome to Our Church Family",
+      "description1": "Holy City of God Christian Fellowship is a part of the Body of Christ that is centered on Christ Himself, and His mission of reconciliation. We understand that true reconciliation to God is the process of having an intimate and loving relationship with our Creator. During this process a nurturing relationship is formed, and we find our hope, peace, love, fulfillment, and joy in Him. We believe this is our foundational relationship that hinges the success of all other relationships.",
+      "description2": "We agree with Peter when he said, \"Silver and gold have I none; but such as I have give I thee: in the name of Jesus Christ of Nazareth,\" having Jesus is better than having silver or gold. Maintaining this relationship revolutionizes our entire lives. Holy City is dedicated to the personal success of every member. We are committed to reach beyond carnal limitations and inherit the promise of eternal life; therefore, all of our efforts are focused and directed towards this purpose.",
+      "features": [
+        {
+          "icon": "faCalendar",
+          "title": "Upcoming Services",
+          "description": "Join us for worship and fellowship",
+          "link": "/services",
+          "linkText": "View Service Times"
+        },
+        {
+          "icon": "faPray",
+          "title": "Prayer Requests",
+          "description": "We're here to pray with you",
+          "link": "/prayer",
+          "linkText": "Submit Request"
+        },
+        {
+          "icon": "faUsers",
+          "title": "About our Church",
+          "description": "Learn about our mission and values",
+          "link": "/about",
+          "linkText": "Learn More"
+        },
+        {
+          "icon": "faHeart",
+          "title": "Donate to our Vision",
+          "description": "Give tithe and/or offering",
+          "link": "/give",
+          "linkText": "Support our Ministry"
+        }
+      ]
+    },
+    "cta": {
+      "title": "Join Our Church Family",
+      "subtitle": "Experience the love, fellowship, and spiritual growth that comes from being part of our community.",
+      "verse": "\"For where two or three gather in my name, there am I with them.\" - Matthew 18:20",
+      "actionCards": [
+        {
+          "icon": "Users",
+          "title": "Join Our Services",
+          "description": "Sunday Worship at 10:00 AM\nWednesday Bible Study at 7:00 PM\n123 Faith Street, Holy City",
+          "buttonText": "View Service Times",
+          "link": "/about/services"
+        },
+        {
+          "icon": "Heart",
+          "title": "Give & Support",
+          "description": "Support our ministry and community outreach through your generous giving. Every contribution makes a difference.",
+          "buttonText": "Give Online",
+          "link": "/give"
+        },
+        {
+          "icon": "Phone",
+          "title": "Get Connected",
+          "description": "Have questions or need prayer? We're here for you. Reach out and let us know how we can serve you.",
+          "buttonText": "Contact Us",
+          "link": "/contact"
+        }
+      ],
+      "finalCta": {
+        "text": "Learn More About Us",
+        "link": "/about"
+      }
+    },
+    "ctaSection": {
+      "enabled": "true"
+    }
+  },
+  "give": {
+    "hero": {
+      "title": "Give with a Generous Heart",
+      "subtitle": "Your generosity helps us serve our community and spread God's love",
+      "content": "Every gift, no matter the size, makes a difference in the lives of those we serve. Thank you for your faithful giving.",
+      "image": "/img/giving.jpg"
+    },
+    "methods": {
+      "title": "Ways to Give",
+      "options": [
+        {
+          "method": "Online Giving",
+          "description": "Give securely online through our website",
+          "link": "#online"
+        },
+        {
+          "method": "In-Person",
+          "description": "Give during our worship services",
+          "link": "#in-person"
+        },
+        {
+          "method": "Mail",
+          "description": "Send your gift by mail to our church address",
+          "link": "#mail"
+        }
+      ]
+    }
+  },
+  "prayer": {
+    "hero": {
+      "title": "Prayer Requests",
+      "subtitle": "We believe in the power of prayer",
+      "content": "Submit your prayer requests and let our community lift you up in prayer. God hears every prayer and cares about every concern.",
+      "image": "/img/prayer.jpg"
+    },
+    "form": {
+      "title": "Submit a Prayer Request",
+      "description": "Share your prayer needs with our prayer team. All requests are kept confidential unless you specify otherwise."
+    }
+  },
+  "services": {
+    "hero": {
+      "title": "Worship Services",
+      "subtitle": "Come as you are, leave transformed",
+      "content": "Experience meaningful worship, inspiring messages, and fellowship with believers who care about your spiritual journey.",
+      "image": "/img/worship.jpg"
+    },
+    "schedule": {
+      "title": "Service Times",
+      "services": [
+        {
+          "name": "Sunday Morning Worship",
+          "time": "10:00 AM",
+          "description": "Join us for inspiring worship, biblical teaching, and community fellowship."
+        },
+        {
+          "name": "Wednesday Bible Study",
+          "time": "7:00 PM",
+          "description": "Dive deeper into God's Word with interactive Bible study and discussion."
+        }
+      ]
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "About Holy City of God",
+      "subtitle": "Our story, our mission, our community",
+      "content": "Learn about our church's history, beliefs, and the community that makes Holy City of God a special place to worship and grow.",
+      "image": "/img/2_holy-min.jpg"
+    },
+    "story": {
+      "title": "Our Story",
+      "content": "Holy City of God was founded with a vision to create a welcoming community where people from all walks of life can come together to worship, learn, and serve. Our church has been a beacon of hope and love in our community for many years."
+    }
+  },
+  "coreValues": {
+    "hero": {
+      "title": "Our Core Values",
+      "subtitle": "The principles that guide our church",
+      "content": "These values shape everything we do as a church community and guide our mission to serve God and others.",
+      "image": "/img/core-values.jpg"
+    },
+    "values": [
+      {
+        "title": "Love",
+        "description": "We believe love is the foundation of our faith and the way we treat one another.",
+        "icon": "heart"
+      },
+      {
+        "title": "Community",
+        "description": "We are stronger together and committed to supporting one another in faith and life.",
+        "icon": "users"
+      },
+      {
+        "title": "Service",
+        "description": "We are called to serve others as Christ served us, both within our church and in our community.",
+        "icon": "hands"
+      },
+      {
+        "title": "Growth",
+        "description": "We encourage spiritual growth and learning through study, prayer, and fellowship.",
+        "icon": "tree"
+      }
+    ]
+  },
+  "mission": {
+    "hero": {
+      "title": "Our Mission",
+      "subtitle": "Called to serve, equipped to love",
+      "content": "Our mission drives everything we do as a church community, guiding our worship, outreach, and service to others.",
+      "image": "/img/mission.jpg"
+    },
+    "statement": {
+      "title": "Mission Statement",
+      "content": "To glorify God by making disciples of Jesus Christ who love God, love others, and serve the world through the power of the Holy Spirit."
+    },
+    "vision": {
+      "title": "Our Vision",
+      "content": "To be a church that transforms lives and communities through the love of Christ, creating a place where everyone can find hope, healing, and purpose."
+    }
+  },
+  "pastor": {
+    "hero": {
+      "title": "Meet Our Pastor",
+      "subtitle": "Spiritual leadership with a heart for service",
+      "content": "Learn about our pastoral leadership and their commitment to serving our church community.",
+      "image": "/img/hero-pastor.jpg"
+    },
+    "profile": {
+      "name": "Pastor John Smith",
+      "title": "Senior Pastor",
+      "bio": "Pastor John has been serving Holy City of God for over 15 years. He is passionate about teaching God's Word and helping people grow in their faith journey. He holds a Master of Divinity degree and is committed to serving our community with love and compassion.",
+      "image": "/img/pastor-profile.jpg",
+      "education": [
+        "Master of Divinity - Seminary School",
+        "Bachelor of Arts in Theology - Christian University"
+      ],
+      "experience": "15+ years in pastoral ministry"
+    }
+  },
+  "statementOfFaith": {
+    "hero": {
+      "title": "Statement of Faith",
+      "subtitle": "What we believe",
+      "content": "Our statement of faith outlines the core beliefs that guide our church and unite us as a community of believers.",
+      "image": "/img/faith.jpg"
+    },
+    "beliefs": [
+      {
+        "title": "The Bible",
+        "content": "We believe the Bible is the inspired, infallible Word of God and our ultimate authority for faith and practice."
+      },
+      {
+        "title": "God",
+        "content": "We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit."
+      },
+      {
+        "title": "Jesus Christ",
+        "content": "We believe Jesus Christ is the Son of God, fully divine and fully human, who died for our sins and rose again."
+      },
+      {
+        "title": "Salvation",
+        "content": "We believe salvation is by grace through faith in Jesus Christ alone, not by works."
+      },
+      {
+        "title": "The Church",
+        "content": "We believe the church is the body of Christ, called to worship, fellowship, discipleship, ministry, and evangelism."
+      }
+    ]
+  }
+}

@@ -36,6 +36,11 @@
   --color-gold-800: #9a7209;
   --color-gold-900: #7c5e0a;
 
+  --color-accent: #4db6ac;
+  --color-accent-foreground: #fff176;
+
+  --color-white: #ffffff;
+
   --spacing: 0.25rem;
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
 }
@@ -176,7 +181,7 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: var(--color-secondary-400);
+  background-color: var(--color-secondary-300);
   border-radius: var(--radius-lg);
   color: white;
   padding-inline: calc(var(--spacing) * 6);
@@ -185,7 +190,7 @@ a:hover {
 }
 
 .btn-secondary {
-  color: var(--color-primary);
+  color: var(--color-primary-100);
   border-width: 2;
   padding-inline: calc(var(--spacing) * 6);
   padding-block: calc(var(--spacing) * 3);
@@ -253,11 +258,6 @@ a:hover {
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   overflow: hidden;
-}
-
-.card-royal {
-  background: linear-gradient(135deg, #7c2d92 0%, #6b2580 100%);
-  color: white;
 }
 
 /* Utility classes */

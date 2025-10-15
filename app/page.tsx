@@ -1,15 +1,16 @@
-import { CTASection } from "@/components/cta-section";
-import { DropInView } from "@/components/DropInView";
-import { FadeInView } from "@/components/FadeInView";
-import FeaturedContent from "@/components/featuredContent";
-import { LatestPosts } from "@/components/posts/latest-post";
-import RemoteServiceNotification from "@/components/remote-service-notification";
-import { SlideInView } from "@/components/SlideInView";
-import VerseofTheDay from "@/components/verseOfTheDay";
-import { CHURCH_INFO } from "@/constants";
-import { Heart, Users } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+import { AnnouncementsList } from "@/components/AnnouncementsList"
+import CTASection from "@/components/cta-section"
+import { DropInView } from "@/components/DropInView"
+import { FadeInView } from "@/components/FadeInView"
+import FeaturedContent from "@/components/featuredContent"
+import { LatestPosts } from "@/components/posts/latest-post"
+import RemoteServiceNotification from "@/components/remote-service-notification"
+import { SlideInView } from "@/components/SlideInView"
+import VerseofTheDay from "@/components/verseOfTheDay"
+import { CHURCH_INFO } from "@/constants"
+import { Heart, Users } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -60,6 +61,13 @@ export default function Home() {
             </div>
           </DropInView>
        </div>
+      </section>
+
+      {/* Announcements Section */}
+      <section className="container py-8">
+        <FadeInView>
+          <AnnouncementsList limit={3} showActions={false} className="mb-0" />
+        </FadeInView>
       </section>
       
       <section className="container">

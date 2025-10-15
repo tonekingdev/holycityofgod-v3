@@ -1,18 +1,16 @@
+import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { AuthProvider } from "@/context/auth-context"
-import { Navigation } from "@/components/navigation"
-import { Footer } from "@/components/footer"
-import { Toaster } from "@/components/ui/toaster"
-import BackToTop from "@/components/backToTop"
+import ConditionalLayout from "./conditional-layout"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "Holy City of God Christian Fellowship",
   description: "Sharing the love of Jesus",
-  authors: [{ name: "Kris K LLC & PC BRAINIACS LLC d.b.a. Tone King Development", url: "https://tonekingdev.com" }],
+  authors: [{ name: "Anointed Innovations", url: "https://tonekingdev.com" }],
 }
 
 export default function RootLayout({
@@ -22,13 +20,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+      <body className={`font-sans ${inter.className}`} suppressHydrationWarning>
         <AuthProvider>
-          <Navigation />
-          <main>{children}</main>
-          <BackToTop />
-          <Footer />
-          <Toaster />
+          <ConditionalLayout>{children}</ConditionalLayout>
         </AuthProvider>
       </body>
     </html>

@@ -79,7 +79,7 @@ export function ForgotPasswordForm() {
           <Button
             variant="outline"
             onClick={handleTryAgain}
-            className="w-full border-purple-600 text-purple-600 hover:bg-purple-50 bg-transparent"
+            className="w-full border-primary text-primary hover:bg-purple-50 bg-transparent"
           >
             Try Different Email
           </Button>
@@ -94,14 +94,14 @@ export function ForgotPasswordForm() {
         <div className="text-center mb-4">
           <Link
             href="/auth/login"
-            className="inline-flex items-center gap-2 text-purple-600 hover:text-purple-800 text-sm font-medium"
+            className="inline-flex items-center gap-2 text-primary hover:text-purple-800 text-sm font-medium"
           >
             <ArrowLeft className="w-4 h-4" />
             Back to Sign In
           </Link>
         </div>
         <div className="text-center">
-          <div className="mx-auto h-12 w-12 bg-purple-600 rounded-full flex items-center justify-center mb-4">
+          <div className="mx-auto h-12 w-12 bg-primary rounded-full flex items-center justify-center mb-4">
             <Mail className="h-6 w-6 text-white" />
           </div>
           <CardTitle className="text-2xl font-bold text-center">Forgot Password?</CardTitle>
@@ -153,7 +153,7 @@ export function ForgotPasswordForm() {
       <CardFooter className="text-center">
         <p className="text-sm text-gray-600 w-full">
           Remember your password?{" "}
-          <Link href="/auth/login" className="font-medium text-purple-600 hover:text-purple-800">
+          <Link href="/auth/login" className="font-medium text-primary hover:text-purple-800">
             Sign in here
           </Link>
         </p>

@@ -22,7 +22,7 @@ export function Footer() {
                     {/* Church Info */}
                     <div>
                         <div className="flex items-center space-x-3 mb-4">
-                            <div className="relative h-10 w-10 overflow-hidden bg-white rounded-full">
+                            <div className="relative h-10 w-10 overflow-hidden bg-primary-50 rounded-full">
                                 <Image 
                                     src="/img/church-logo.png"
                                     alt="Holy City of God Christian Fellowship"

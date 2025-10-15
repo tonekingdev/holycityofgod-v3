@@ -7,19 +7,22 @@ import { Button } from "@/components/ui/button"
 import { ArrowLeft } from "lucide-react"
 
 interface CategoryPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function CategoryPage({ params }: CategoryPageProps) {
-  const category = POST_CATEGORIES.find((cat) => cat.slug === params.slug)
+  const { slug } = await params
+  const category = POST_CATEGORIES.find((cat) => cat.slug === slug)
 
   if (!category) {
     notFound()
   }
 
-  const posts = await getPostsByCategory(params.slug)
+  const posts = await getPostsByCategory(slug)
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">

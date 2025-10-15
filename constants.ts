@@ -1,35 +1,34 @@
 import { faCross, faHandsHelping, faPray, faHome, faHeart } from "@fortawesome/free-solid-svg-icons"
-import { type AuthUser } from "./types"
+import type { AuthUser } from "./types"
 
 export type PastorInfo = {
-  image: string;
-  name: string;
-  title: string;
-  bio: string[];
+  image: string
+  name: string
+  title: string
+  bio: string[]
   ministryFocus: {
-    title: string;
-    description: string;
-  }[];
+    title: string
+    description: string
+  }[]
 }
 
 export type ServiceTime = {
-  id: string;
-  name: string;
-  day: string;
-  time: string;
-  location: string;
-  description: string;
+  id: string
+  name: string
+  day: string
+  time: string
+  location: string
+  description: string
 }
 
 export type OnlineServiceInfo = {
-  title: string;
-  description: string;
-  phone: string;
-  meetingId: string;
-  accessCode: string;
-  link: string;
+  title: string
+  description: string
+  phone: string
+  meetingId: string
+  accessCode: string
+  link: string
 }
-
 
 // Church Information
 export const CHURCH_INFO = {
@@ -60,30 +59,30 @@ export const CHURCH_INFO = {
   mission: "To spread the love of Christ through worship, fellowship, and service to our community.",
   vision: "Building a stronger community through faith, hope, and love.",
   values: [
-    { 
-      title: "Faith in Jesus Christ", 
+    {
+      title: "Faith in Jesus Christ",
       description: "We believe in the power of faith to transform lives and communities.",
-      icon: faCross 
+      icon: faCross,
     },
-    { 
-      title: "Community Service", 
+    {
+      title: "Community Service",
       description: "Serving our neighbors with love and compassion as Christ taught us.",
-      icon: faHandsHelping 
+      icon: faHandsHelping,
     },
-    { 
-      title: "Spiritual Growth", 
+    {
+      title: "Spiritual Growth",
       description: "Nurturing personal and collective spiritual development through study and prayer.",
-      icon: faPray 
+      icon: faPray,
     },
-    { 
-      title: "Family Values", 
+    {
+      title: "Family Values",
       description: "Strengthening families through biblical principles and mutual support.",
-      icon: faHome 
+      icon: faHome,
     },
-    { 
-      title: "Compassionate Care", 
+    {
+      title: "Compassionate Care",
       description: "Extending God's love through practical care and emotional support.",
-      icon: faHeart 
+      icon: faHeart,
     },
   ] as const,
 } as const
@@ -96,30 +95,31 @@ export const PASTOR_INFO: PastorInfo = {
   bio: [
     "Bishop Anthony King, Sr. has been serving as Senior Pastor of Holy City of God since its founding in 1998.",
     "With over 25 years of ministry experience, Bishop King brings a wealth of spiritual wisdom and practical guidance to our congregation.",
-    "His leadership has guided our church through seasons of growth and transformation, always emphasizing the core values of faith, family, and community service."
+    "His leadership has guided our church through seasons of growth and transformation, always emphasizing the core values of faith, family, and community service.",
   ],
   ministryFocus: [
     {
       title: "Biblical Teaching",
-      description: "Delivering sound, practical biblical instruction for daily living"
+      description: "Delivering sound, practical biblical instruction for daily living",
     },
     {
       title: "Community Outreach",
-      description: "Extending God's love through service to our local community"
+      description: "Extending God's love through service to our local community",
     },
     {
       title: "Family Ministry",
-      description: "Strengthening families through biblical principles and support"
-    }
-  ]
+      description: "Strengthening families through biblical principles and support",
+    },
+  ],
 } as const
 
 // Verse of the Day
 export const BIBLE_VERSE = {
-  verse: "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.",
+  verse:
+    "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil, to give you an expected end.",
   reference: "Jeremiah 29:11",
   date: "July 11, 2025",
-} as const;
+} as const
 
 // Service Times
 export const SERVICE_TIMES: readonly ServiceTime[] = [
@@ -129,7 +129,7 @@ export const SERVICE_TIMES: readonly ServiceTime[] = [
     day: "Every Sunday",
     time: "10:00 AM",
     location: "Main Sanctuary",
-    description: "Bible study classes for all ages"
+    description: "Bible study classes for all ages",
   },
   {
     id: "sunday-worship",
@@ -137,7 +137,7 @@ export const SERVICE_TIMES: readonly ServiceTime[] = [
     day: "Every Sunday",
     time: "11:00 AM",
     location: "Main Sanctuary",
-    description: "Our main weekly worship service with preaching and music"
+    description: "Our main weekly worship service with preaching and music",
   },
   {
     id: "bible-study",
@@ -145,9 +145,9 @@ export const SERVICE_TIMES: readonly ServiceTime[] = [
     day: "Every Wednesday",
     time: "7:00 PM",
     location: "Fellowship Hall",
-    description: "Midweek Bible study and prayer meeting"
-  }
-] as const;
+    description: "Midweek Bible study and prayer meeting",
+  },
+] as const
 
 // Add the missing ONLINE_SERVICE_INFO constant
 export const ONLINE_SERVICE_INFO: OnlineServiceInfo = {
@@ -156,8 +156,8 @@ export const ONLINE_SERVICE_INFO: OnlineServiceInfo = {
   phone: "(313) 555-1234",
   meetingId: "123 456 7890",
   accessCode: "HOLY2023",
-  link: "https://zoom.us/j/1234567890"
-} as const;
+  link: "https://zoom.us/j/1234567890",
+} as const
 
 // Office Hours
 export const OFFICE_HOURS = [
@@ -255,7 +255,7 @@ export const MAIN_NAV = [
   { name: "Services", href: "/services" },
   { name: "Ministries", href: "/ministries" },
   { name: "Events", href: "/events" },
-  { name: "Word", href: "/word" },
+  { name: "Words", href: "/words" },
   { name: "News", href: "/news" },
   { name: "Give", href: "/give" },
   { name: "Contact", href: "/contact" },
@@ -286,7 +286,7 @@ export const SOCIAL_LINKS = [
 ] as const
 
 // Demo Credentials (for development)
-export const DEMO_CREDENTIALS: { users: readonly AuthUser [] } = {
+export const DEMO_CREDENTIALS: { users: readonly AuthUser[] } = {
   users: [
     {
       id: "1",
@@ -296,7 +296,7 @@ export const DEMO_CREDENTIALS: { users: readonly AuthUser [] } = {
       isActive: true,
       createdAt: new Date("2023-01-01"),
       lastLogin: new Date(),
-      password: "admin123" // Note: This is just for demo purposes
+      password: "admin123", // Note: This is just for demo purposes
     },
     {
       id: "2",
@@ -306,9 +306,9 @@ export const DEMO_CREDENTIALS: { users: readonly AuthUser [] } = {
       isActive: true,
       createdAt: new Date("2023-01-01"),
       lastLogin: new Date(),
-      password: "member123" // Note: This is just for demo purposes
-    }
-  ] as const
+      password: "member123", // Note: This is just for demo purposes
+    },
+  ] as const,
 }
 
 // Event Categories
@@ -325,7 +325,7 @@ export const EVENT_CATEGORIES = [
 export const CONTENT_CATEGORIES = [
   { value: "announcements", label: "Announcements", color: "bg-warning-100 text-warning-800" },
   { value: "events", label: "Events", color: "bg-primary-100 text-primary-800" },
-  { value: "word", label: "Word", color: "bg-success-100 text-success-800" },
+  { value: "words", label: "Words", color: "bg-success-100 text-success-800" },
   { value: "news", label: "News", color: "bg-info-100 text-info-800" },
   { value: "testimonies", label: "Testimonies", color: "bg-church-gold bg-opacity-10 text-yellow-800" },
 ] as const
@@ -375,7 +375,7 @@ export const FEATURES = {
 
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api",
+  BASE_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000",
   TIMEOUT: 10000,
   RETRY_ATTEMPTS: 3,
 } as const

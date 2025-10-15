@@ -12,6 +12,8 @@ interface PostPageProps {
   }>
 }
 
+export const dynamic = 'force-dynamic'
+
 export default async function PostPage({ params }: PostPageProps) {
   const { slug } = await params
   const post = await getPostBySlug(slug)
@@ -77,7 +79,7 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Content */}
           <div
-            className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-purple-600 prose-a:hover:text-purple-800"
+            className="prose prose-lg max-w-none prose-headings:text-gray-900 prose-p:text-gray-700 prose-a:text-primary prose-a:hover:text-purple-800"
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
 

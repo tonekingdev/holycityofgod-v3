@@ -1,6 +1,9 @@
 // API Configuration
 export const API_CONFIG = {
-  BASE_URL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api",
+  BASE_URL:
+    typeof window === "undefined"
+      ? process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000" // Server-side: use absolute URL
+      : "", // Client-side: use relative paths
   ENDPOINTS: {
     POSTS: "/posts",
     POST_BY_SLUG: "/posts/slug",
@@ -16,7 +19,12 @@ export const API_CONFIG = {
 
 // Helper function to build full API URLs
 export function buildApiUrl(endpoint: string, params?: Record<string, string | number>): string {
-  let url = `${API_CONFIG.BASE_URL}${endpoint}`
+  const baseUrl = API_CONFIG.BASE_URL
+  const apiPath = endpoint.startsWith("/api") ? endpoint : `/api${endpoint}`
+
+  // On server-side, construct full URL with base
+  // On client-side, use relative path
+  let url = baseUrl ? `${baseUrl}${apiPath}` : apiPath
 
   if (params) {
     const searchParams = new URLSearchParams()
@@ -25,6 +33,13 @@ export function buildApiUrl(endpoint: string, params?: Record<string, string | n
     })
     url += `?${searchParams.toString()}`
   }
+
+  console.log("[Anointed Innovations] Building API URL:", {
+    baseUrl,
+    apiPath,
+    url,
+    isServer: typeof window === "undefined",
+  })
 
   return url
 }

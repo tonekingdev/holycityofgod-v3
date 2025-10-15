@@ -12,7 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Eye, EyeOff, Loader2 } from "lucide-react"
+import { Eye, EyeOff, Home, Loader2 } from "lucide-react"
 
 export function LoginForm() {
   const [email, setEmail] = useState("")
@@ -32,17 +32,31 @@ export function LoginForm() {
       return
     }
 
-    const success = await login(email, password)
+    try {
+      await login(email, password)
 
-    if (success) {
       toast({
         title: "Welcome back!",
         description: "You have successfully logged in.",
         variant: "default",
       })
-      router.push("/")
-    } else {
-      setError("Invalid email or password")
+
+      const response = await fetch("/api/auth/me")
+      if (response.ok) {
+        const data = await response.json()
+        const userRole = data.user.role.name
+
+        if (userRole === "super_admin" || userRole === "network_admin") {
+          router.push("/admin")
+        } else {
+          router.push("/")
+        }
+      } else {
+        router.push("/")
+      }
+    } catch (error) {
+      console.error("Login error:", error)
+      setError(error instanceof Error ? error.message : "An error occurred during login")
     }
   }
 
@@ -54,6 +68,11 @@ export function LoginForm() {
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
+          {error && (
+            <Alert variant="destructive" className="mb-4">
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input
@@ -69,7 +88,7 @@ export function LoginForm() {
           <div className="space-y-2">
             <div className="flex items-center justify-between">
               <Label htmlFor="password">Password</Label>
-              <Link href="/auth/forgot-password" className="text-sm text-purple-600 hover:text-purple-800">
+              <Link href="/auth/forgot-password" className="text-sm text-primary hover:text-purple-800">
                 Forgot Password?
               </Link>
             </div>
@@ -87,7 +106,7 @@ export function LoginForm() {
                 type="button"
                 variant="ghost"
                 size="icon"
-                className="absolute right-0 top-0 h-full px-3 py-2 text-white hover:text-gold-500"
+                className="absolute right-0 top-0 h-full px-3 py-2 text-gray-400 hover:text-gray-600"
                 onClick={() => setShowPassword(!showPassword)}
               >
                 {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
@@ -96,7 +115,7 @@ export function LoginForm() {
           </div>
           <Button
             type="submit"
-            className="w-full bg-gradient-to-r from-purple-700 to-purple-800 hover:to-purple-900 text-white hover:text-gold-500"
+            className="w-full bg-gradient-to-r from-purple-700 to-purple-800 hover:to-purple-900"
             disabled={isLoading}
           >
             {isLoading ? (
@@ -107,11 +126,12 @@ export function LoginForm() {
               "Sign In"
             )}
           </Button>
-            {error && (
-                <Alert variant="destructive" className="mb-4">
-                <AlertDescription>{error}</AlertDescription>
-                </Alert>
-            )}
+          <Button className="w-full bg-gradient-to-r from-primary-100 to-primary-200 hover:to-primary-500 hover:text-white">
+            <Link href="/" className="flex">
+              <Home className="mr-2 h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
         </form>
       </CardContent>
       <CardFooter className="flex flex-col space-y-4">
@@ -120,7 +140,7 @@ export function LoginForm() {
             <span className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-white px-2 text-gray-500">Or continue with</span>
+            <span className="bg-primary-50 px-2 text-gray-500">Or continue with</span>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -142,7 +162,7 @@ export function LoginForm() {
         </div>
         <div className="text-center text-sm">
           Don&apos;t have an account?{" "}
-          <Link href="/auth/register" className="font-medium text-purple-600 hover:text-purple-800">
+          <Link href="/auth/register" className="font-medium text-primary hover:text-purple-800">
             Sign up
           </Link>
         </div>

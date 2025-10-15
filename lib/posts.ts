@@ -25,7 +25,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Remember, faith isn't the absence of doubt or fear—it's choosing to trust God despite our circumstances. He is with us in every valley and will see us through to victory.</p>
     `,
-    featuredImage: "/placeholder.svg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
     category: POST_CATEGORIES[0], // Faith
     author: {
       name: "Bishop Anthony King, Sr.",
@@ -59,7 +59,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Join us every Wednesday at 7 PM for our community prayer meeting. Experience the power of united prayer and see how God moves when His people come together.</p>
     `,
-    featuredImage: "/placeholder.svg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
     category: POST_CATEGORIES[1], // Prayer
     author: {
       name: "Minister Sarah Johnson",
@@ -93,7 +93,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Remember, no act of service is too small. Whether it's a smile, a helping hand, or a listening ear, every act of love makes a difference in someone's life.</p>
     `,
-    featuredImage: "/placeholder.svg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
     category: POST_CATEGORIES[2], // Service
     author: {
       name: "Deacon Michael Brown",
@@ -126,7 +126,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>True worship transforms us. When we come before God with open hearts, He meets us and changes us from the inside out.</p>
     `,
-    featuredImage: "/placeholder.svg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
     category: POST_CATEGORIES[3], // Worship
     author: {
       name: "Minister David Brown",
@@ -136,6 +136,74 @@ const SAMPLE_POSTS: Post[] = [
     updatedAt: new Date("2024-01-12"),
     status: "published",
     tags: ["worship", "preparation", "spiritual growth"],
+    readingTime: 4,
+  },
+  {
+    id: "5",
+    title: "Building Strong Christian Community",
+    slug: "building-strong-christian-community",
+    excerpt: "Learn how to foster deeper relationships and unity within the church family.",
+    content: `
+      <p>The early church was known for their love and unity. Acts 2:46-47 tells us they met together daily, shared meals, and enjoyed the favor of all people.</p>
+      
+      <h2>Elements of Strong Community</h2>
+      <p>Building authentic Christian community requires intentionality, vulnerability, and commitment to one another's spiritual growth.</p>
+      
+      <h2>Practical Ways to Build Community</h2>
+      <ul>
+        <li>Join a small group or Bible study</li>
+        <li>Participate in church fellowship events</li>
+        <li>Serve together in ministry</li>
+        <li>Share meals and life together</li>
+        <li>Pray for and with one another</li>
+      </ul>
+      
+      <p>When we commit to authentic community, we experience the joy of belonging and the strength that comes from walking together in faith.</p>
+    `,
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    category: POST_CATEGORIES[4], // Community
+    author: {
+      name: "Pastor Lisa Williams",
+      role: "Community Life Pastor",
+    },
+    publishedAt: new Date("2024-01-11"),
+    updatedAt: new Date("2024-01-11"),
+    status: "published",
+    tags: ["community", "fellowship", "relationships"],
+    readingTime: 5,
+  },
+  {
+    id: "6",
+    title: "Youth Ministry: Raising the Next Generation",
+    slug: "youth-ministry-raising-next-generation",
+    excerpt: "Discover our approach to discipling young people and preparing them for leadership.",
+    content: `
+      <p>Investing in young people is investing in the future of the church. Our youth ministry is committed to raising up the next generation of faithful leaders.</p>
+      
+      <h2>Our Youth Ministry Vision</h2>
+      <p>We believe every young person has unique gifts and calling. Our goal is to help them discover their identity in Christ and equip them to make a difference in their world.</p>
+      
+      <h2>What We Offer</h2>
+      <ul>
+        <li>Weekly youth services with relevant teaching</li>
+        <li>Small group discipleship and mentoring</li>
+        <li>Community service and mission opportunities</li>
+        <li>Leadership development programs</li>
+        <li>Fun activities and fellowship events</li>
+      </ul>
+      
+      <p>Join us every Friday at 7 PM for youth service. Come as you are and discover how God wants to use your life for His glory!</p>
+    `,
+    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    category: POST_CATEGORIES[5], // Youth
+    author: {
+      name: "Pastor Mark Johnson",
+      role: "Youth Pastor",
+    },
+    publishedAt: new Date("2024-01-10"),
+    updatedAt: new Date("2024-01-10"),
+    status: "published",
+    tags: ["youth", "discipleship", "leadership"],
     readingTime: 4,
   },
 ]
@@ -175,10 +243,16 @@ function filterSamplePosts(posts: Post[], filters?: PostFilters): Post[] {
 
   // Filter by date range
   if (filters?.dateFrom) {
-    filteredPosts = filteredPosts.filter((post) => post.publishedAt >= filters.dateFrom!)
+    filteredPosts = filteredPosts.filter((post) => {
+      const postDate = typeof post.publishedAt === "string" ? new Date(post.publishedAt) : post.publishedAt
+      return postDate >= filters.dateFrom!
+    })
   }
   if (filters?.dateTo) {
-    filteredPosts = filteredPosts.filter((post) => post.publishedAt <= filters.dateTo!)
+    filteredPosts = filteredPosts.filter((post) => {
+      const postDate = typeof post.publishedAt === "string" ? new Date(post.publishedAt) : post.publishedAt
+      return postDate <= filters.dateTo!
+    })
   }
 
   // Sort posts
@@ -190,8 +264,8 @@ function filterSamplePosts(posts: Post[], filters?: PostFilters): Post[] {
 
       switch (field) {
         case "publishedAt":
-          aValue = a.publishedAt.getTime()
-          bValue = b.publishedAt.getTime()
+          aValue = (typeof a.publishedAt === "string" ? new Date(a.publishedAt) : a.publishedAt).getTime()
+          bValue = (typeof b.publishedAt === "string" ? new Date(b.publishedAt) : b.publishedAt).getTime()
           break
         case "title":
           aValue = a.title.toLowerCase()
@@ -228,6 +302,17 @@ function filterSamplePosts(posts: Post[], filters?: PostFilters): Post[] {
 }
 
 /**
+ * Ensure dates are properly converted to Date objects
+ */
+function normalizePosts(posts: Post[]): Post[] {
+  return posts.map((post) => ({
+    ...post,
+    publishedAt: typeof post.publishedAt === "string" ? new Date(post.publishedAt) : post.publishedAt,
+    updatedAt: typeof post.updatedAt === "string" ? new Date(post.updatedAt) : post.updatedAt,
+  }))
+}
+
+/**
  * Fetch posts with optional filtering and pagination
  */
 export async function getPosts(filters?: PostFilters): Promise<Post[]> {
@@ -249,7 +334,7 @@ export async function getPosts(filters?: PostFilters): Promise<Post[]> {
     const url = buildApiUrl(API_CONFIG.ENDPOINTS.POSTS, params)
     const response = await apiRequest<PostsResponse>(url)
 
-    return response.posts || []
+    return normalizePosts(response.posts || [])
   } catch (error) {
     console.warn("API unavailable, using sample posts:", error)
     // Fallback to sample posts with filtering
@@ -265,7 +350,11 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     const url = buildApiUrl(`${API_CONFIG.ENDPOINTS.POST_BY_SLUG}/${slug}`)
     const response = await apiRequest<{ post: Post }>(url)
 
-    return response.post || null
+    if (response.post) {
+      const normalizedPosts = normalizePosts([response.post])
+      return normalizedPosts[0]
+    }
+    return null
   } catch (error) {
     console.warn("API unavailable, searching sample posts:", error)
     // Fallback to sample posts
@@ -285,7 +374,7 @@ export async function getPostsByCategory(categorySlug: string, limit?: number): 
     const url = buildApiUrl(`${API_CONFIG.ENDPOINTS.POSTS_BY_CATEGORY}/${categorySlug}`, params)
     const response = await apiRequest<PostsResponse>(url)
 
-    return response.posts || []
+    return normalizePosts(response.posts || [])
   } catch (error) {
     console.warn("API unavailable, filtering sample posts by category:", error)
     // Fallback to sample posts filtered by category
@@ -327,7 +416,7 @@ export async function searchPosts(query: string, filters?: Omit<PostFilters, "se
     const url = buildApiUrl(API_CONFIG.ENDPOINTS.POST_SEARCH, params)
     const response = await apiRequest<PostsResponse>(url)
 
-    return response.posts || []
+    return normalizePosts(response.posts || [])
   } catch (error) {
     console.warn("API unavailable, searching sample posts:", error)
     // Fallback to sample posts with search
@@ -396,7 +485,8 @@ export async function createPost(postData: Omit<Post, "id" | "createdAt" | "upda
       body: JSON.stringify(postData),
     })
 
-    return response.post
+    const normalizedPosts = normalizePosts([response.post])
+    return normalizedPosts[0]
   } catch (error) {
     console.error("Error creating post:", error)
     throw new Error("Failed to create post - API unavailable")
@@ -414,7 +504,8 @@ export async function updatePost(id: string, postData: Partial<Post>): Promise<P
       body: JSON.stringify(postData),
     })
 
-    return response.post
+    const normalizedPosts = normalizePosts([response.post])
+    return normalizedPosts[0]
   } catch (error) {
     console.error("Error updating post:", error)
     throw new Error(`Failed to update post with id: ${id} - API unavailable`)
@@ -449,7 +540,10 @@ export async function incrementPostViews(id: string): Promise<void> {
 
 // Utility functions
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString("en-US", {
+  // Ensure we have a valid Date object
+  const validDate = typeof date === "string" ? new Date(date) : date
+
+  return validDate.toLocaleDateString("en-US", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -457,15 +551,16 @@ export function formatDate(date: Date): string {
 }
 
 export function formatRelativeDate(date: Date): string {
+  const validDate = typeof date === "string" ? new Date(date) : date
   const now = new Date()
-  const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000)
+  const diffInSeconds = Math.floor((now.getTime() - validDate.getTime()) / 1000)
 
   if (diffInSeconds < 60) return "Just now"
   if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)} minutes ago`
   if (diffInSeconds < 86400) return `${Math.floor(diffInSeconds / 3600)} hours ago`
   if (diffInSeconds < 604800) return `${Math.floor(diffInSeconds / 86400)} days ago`
 
-  return formatDate(date)
+  return formatDate(validDate)
 }
 
 export function calculateReadingTime(content: string): number {

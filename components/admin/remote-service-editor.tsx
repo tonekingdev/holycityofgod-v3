@@ -257,14 +257,14 @@ export default function RemoteServiceEditor({ churchId }: RemoteServiceEditorPro
           </div>
 
           <div className="flex gap-4">
-            <Button onClick={handleSave} disabled={loading} className="bg-purple-600 hover:bg-purple-700">
+            <Button onClick={handleSave} disabled={loading} className="bg-primary hover:bg-purple-700">
               <Save className="mr-2 h-4 w-4" />
               {loading ? "Saving..." : "Save Notification"}
             </Button>
             <Button
               variant="outline"
               onClick={() => setShowPreview(!showPreview)}
-              className="border-purple-600 text-purple-600 hover:bg-purple-50"
+              className="border-primary text-primary hover:bg-purple-50"
             >
               {showPreview ? <EyeOff className="mr-2 h-4 w-4" /> : <Eye className="mr-2 h-4 w-4" />}
               {showPreview ? "Hide Preview" : "Show Preview"}
@@ -279,7 +279,7 @@ export default function RemoteServiceEditor({ churchId }: RemoteServiceEditorPro
             <CardTitle>Preview</CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="bg-gradient-to-r from-purple-600 to-purple-800 text-white p-6 rounded-lg">
+            <div className="bg-gradient-to-r from-primary to-purple-800 text-white p-6 rounded-lg">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
                 <h3 className="text-xl font-bold text-yellow-300">{formData.title}</h3>

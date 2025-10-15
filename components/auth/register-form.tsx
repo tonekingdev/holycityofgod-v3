@@ -144,7 +144,7 @@ export function RegisterForm() {
             />
             <Label htmlFor="terms" className="text-sm">
               I agree to the{" "}
-              <Link href="/terms" className="text-purple-600 hover:text-purple-800">
+              <Link href="/terms" className="text-primary hover:text-purple-800">
                 terms and conditions
               </Link>
             </Label>
@@ -171,7 +171,7 @@ export function RegisterForm() {
             <span className="w-full border-t border-gray-300" />
           </div>
           <div className="relative flex justify-center text-xs uppercase">
-            <span className="bg-white px-2 text-gray-500">Or continue with</span>
+            <span className="bg-primary-50 px-2 text-gray-500">Or continue with</span>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4">
@@ -193,7 +193,7 @@ export function RegisterForm() {
         </div>
         <div className="text-center text-sm">
           Already have an account?{" "}
-          <Link href="/auth/login" className="font-medium text-purple-600 hover:text-purple-800">
+          <Link href="/auth/login" className="font-medium text-primary hover:text-purple-800">
             Sign in
           </Link>
         </div>

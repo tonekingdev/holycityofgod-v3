@@ -25,7 +25,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Remember, faith isn't the absence of doubt or fear—it's choosing to trust God despite our circumstances. He is with us in every valley and will see us through to victory.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[0], // Faith
     author: {
       name: "Bishop Anthony King, Sr.",
@@ -61,7 +61,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Join us every Wednesday at 7 PM for our community prayer meeting. Experience the power of united prayer and see how God moves when His people come together.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[1], // Prayer
     author: {
       name: "Minister Sarah Johnson",
@@ -96,7 +96,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Remember, no act of service is too small. Whether it's a smile, a helping hand, or a listening ear, every act of love makes a difference in someone's life.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[2], // Service
     author: {
       name: "Deacon Michael Brown",
@@ -130,7 +130,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>True worship transforms us. When we come before God with open hearts, He meets us and changes us from the inside out.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[3], // Worship
     author: {
       name: "Minister David Brown",
@@ -161,7 +161,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Community doesn't happen by accident—it requires intentional effort from all of us to reach out, connect, and care for one another.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[4], // Community
     author: {
       name: "Sister Mary Williams",
@@ -192,7 +192,7 @@ const SAMPLE_POSTS: Post[] = [
       
       <p>Join us every Saturday at 2 PM as we grow together in faith and friendship.</p>
     `,
-    featuredImage: "/img/placeholder.jpg?height=300&width=500",
+    featuredImage: "/img/placeholder.jpg",
     category: POST_CATEGORIES[5], // Youth
     author: {
       name: "Pastor James Wilson",

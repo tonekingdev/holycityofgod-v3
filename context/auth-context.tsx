@@ -4,15 +4,30 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from "
 
 type User = {
   id: string
+  firstName: string
+  lastName: string
   name: string
   email: string
-  role: string
+  role: {
+    id: string
+    name: string
+    permissions: string[]
+  }
+  position?: {
+    id: string
+    name: string
+    is_leadership: boolean
+    is_clergy: boolean
+    can_upload_word: boolean
+  }
+  church_id: string
+  isActive: boolean
 }
 
 type AuthContextType = {
   user: User | null
   isLoading: boolean
-  login: (email: string, password: string) => Promise<boolean>
+  login: (email: string, password: string) => Promise<void>
   register: (name: string, email: string, password: string) => Promise<boolean>
   logout: () => void
 }
@@ -24,48 +39,71 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
-    // Check for saved user in localStorage
-    const savedUser = localStorage.getItem("church_app_user")
-    if (savedUser) {
-      try {
-        setUser(JSON.parse(savedUser))
-      } catch (error) {
-        console.error("Failed to parse saved user", error)
-        localStorage.removeItem("church_app_user")
-      }
-    }
-    setIsLoading(false)
+    // Check for authentication on page load
+    checkAuth()
   }, [])
 
+  const checkAuth = async () => {
+    try {
+      const response = await fetch("/api/auth/me")
+
+      if (response.ok) {
+        const data = await response.json()
+        const transformedUser = {
+          id: data.user.id.toString(),
+          firstName: data.user.first_name,
+          lastName: data.user.last_name,
+          name: `${data.user.first_name} ${data.user.last_name}`,
+          email: data.user.email,
+          role: data.user.role,
+          position: data.user.position,
+          church_id: data.user.church.id.toString(),
+          isActive: true,
+        }
+        setUser(transformedUser)
+      }
+    } catch (error) {
+      console.error("Auth check failed:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const login = async (email: string, password: string) => {
-    // In a real app, this would make an API call to verify credentials
     setIsLoading(true)
 
     try {
-      // Simulate API delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      })
 
-      // Mock authentication - in a real app, validate with backend
-      if (email && password.length >= 6) {
-        const newUser = {
-          id: "user_" + Math.random().toString(36).substr(2, 9),
-          name: email.split("@")[0],
-          email,
-          role: "member",
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        const transformedUser = {
+          id: data.user.id.toString(),
+          firstName: data.user.first_name,
+          lastName: data.user.last_name,
+          name: `${data.user.first_name} ${data.user.last_name}`,
+          email: data.user.email,
+          role: data.user.role,
+          position: data.user.position,
+          church_id: data.user.church.id.toString(),
+          isActive: true,
         }
-
-        setUser(newUser)
-        localStorage.setItem("church_app_user", JSON.stringify(newUser))
-        setIsLoading(false)
-        return true
+        setUser(transformedUser)
+      } else {
+        throw new Error(data.error || "Login failed")
       }
-
-      setIsLoading(false)
-      return false
     } catch (error) {
       console.error("Login error:", error)
+      throw error
+    } finally {
       setIsLoading(false)
-      return false
     }
   }
 
@@ -81,9 +119,17 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (name && email && password.length >= 6) {
         const newUser = {
           id: "user_" + Math.random().toString(36).substr(2, 9),
+          firstName: name.split(" ")[0],
+          lastName: name.split(" ")[1] || "",
           name,
           email,
-          role: "member",
+          role: {
+            id: "member",
+            name: "member",
+            permissions: ["content_view", "profile_edit"],
+          },
+          church_id: "1",
+          isActive: true,
         }
 
         setUser(newUser)
@@ -101,9 +147,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  const logout = () => {
+  const logout = async () => {
+    try {
+      await fetch("/api/auth/logout", { method: "POST" })
+    } catch (error) {
+      console.error("Logout error:", error)
+    }
+
     setUser(null)
     localStorage.removeItem("church_app_user")
+
+    // Redirect to login page if on admin route
+    if (window.location.pathname.startsWith("/admin")) {
+      window.location.href = "/auth/login"
+    }
   }
 
   return <AuthContext.Provider value={{ user, isLoading, login, register, logout }}>{children}</AuthContext.Provider>

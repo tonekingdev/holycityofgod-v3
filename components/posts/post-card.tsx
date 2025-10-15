@@ -18,7 +18,7 @@ export function PostCard({ post }: PostCardProps) {
     <Card className="group hover:shadow-lg transition-all duration-300 hover-lift overflow-hidden">
       <div className="relative aspect-[16/10] overflow-hidden">
         <Image
-          src={post.featuredImage || "/img/placeholder.jpg?height=300&width=500&query=church blog post"}
+          src={post.featuredImage || "/img/placeholder.jpg"}
           alt={post.title}
           fill
           className="object-cover group-hover:scale-105 transition-transform duration-300"
@@ -55,7 +55,7 @@ export function PostCard({ post }: PostCardProps) {
 
           <Link
             href={`/posts/${post.slug}`}
-            className="text-purple-600 hover:text-purple-800 font-medium text-sm hover:underline"
+            className="text-primary hover:text-purple-800 font-medium text-sm hover:underline"
           >
             Read More
           </Link>

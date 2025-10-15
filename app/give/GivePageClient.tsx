@@ -89,8 +89,8 @@ export default function GivePageClient() {
                 {/* Header Section */}
                 <FadeInView>
                     <div className="text-center mb-12">
-                        <div className="inline-flex items-center gap-2 mb-4">
-                            <Heart className="h-8 w-8 text-secondary-500" />
+                        <div className="inline-flex justify-center items-center gap-2 mb-4">
+                            <Heart className="h-8 w-8 text-primary-500" />
                             <h1 className="text-3xl md:text-4xl font-bold text-gray-900">
                                 Give with a <span className="text-primary-500">Generous</span> Heart
                             </h1>
@@ -121,7 +121,7 @@ export default function GivePageClient() {
                         <blockquote className="text-lg italic text-gray-700 font-light">
                             &quot;Give, and it shall be given unto you; good measure, pressed down, and shaken together, and running over, shall men give into your bosom. For with the same measure that ye mete withal it shall be measured to you again.&quot;
                         </blockquote>
-                        <cite className="text-secondary font-semibold">
+                        <cite className="text-primary italic font-semibold">
                             Luke 6:38
                         </cite>
                     </div>
@@ -233,7 +233,7 @@ export default function GivePageClient() {
                         </p>
                         <div>
                             <Link href="/">
-                                <Button size="lg" variant="outline" className="border-white hover:shadow-sm hover:shadow-gold-300 hover:bg-white hover-lift text-white hover:text-purple-600 font-semibold">
+                                <Button size="lg" variant="outline" className="border-white hover:shadow-sm hover:shadow-gold-300 hover:bg-primary-50 hover-lift text-white hover:text-primary font-semibold">
                                     <Home className="mr-2 h-5 w-5" />
                                     Back to Home
                                 </Button>
