@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
+    "deploy": "bash deploy.sh",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

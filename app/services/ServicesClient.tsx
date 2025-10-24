@@ -106,9 +106,9 @@ export default function ServicesClient() {
                         variant="ghost"
                         className="hover-lift"
                     >
-                        <Link href="/about">
+                        <Link href="/">
                             <ArrowLeft className="mr-2 h-4 w-4" />
-                            <span>Back to About</span>
+                            <span>Back to Home</span>
                         </Link>
                     </Button>
                     <Button

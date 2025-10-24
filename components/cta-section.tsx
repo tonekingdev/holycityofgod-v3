@@ -79,7 +79,7 @@ export default function CTASection() {
                   description:
                     "Sunday School at 10:00 AM\nSunday Worship at 11:00 AM\nWednesday Bible Study at 7:00 PM\n16606 James Couzens Fwy, Detroit, MI 48221",
                   buttonText: "View Service Times",
-                  link: "/about/services",
+                  link: "/services",
                 },
                 {
                   icon: "Heart" as const,
@@ -132,7 +132,7 @@ export default function CTASection() {
                 className="bg-gold-600 hover:bg-gold-700 text-white px-8 py-4 text-lg font-semibold shadow-lg hover:shadow-xl hover-lift transition-all"
               >
                 <Link href={ctaContent.finalCta?.link || "/about"}>
-                  {ctaContent.finalCta?.text || "Learn More About Us"}
+                  {ctaContent.finalCta?.text || "Learn about HCOG"}
                 </Link>
               </Button>
             </div>

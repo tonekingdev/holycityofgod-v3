@@ -3,6 +3,7 @@
 import type React from "react"
 import { FadeInView } from "@/components/FadeInView"
 import { DropInView } from "@/components/DropInView"
+import { EditPageButton } from "@/components/edit-page-button"
 import {
   Cross,
   Heart,
@@ -116,6 +117,8 @@ export default function CoreValuesPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white">
+      <EditPageButton pageId="coreValues" />
+
       <div className="container mx-auto px-4 py-16">
         <FadeInView>
           <div className="max-w-6xl mx-auto">
@@ -141,7 +144,7 @@ export default function CoreValuesPage() {
                 const IconComponent = getIcon(value.icon)
                 return (
                   <DropInView key={value.title} delay={index * 0.1}>
-                    <div className="bg-primary-50 rounded-lg shadow-lg p-6 border-t-4 border-secondary-500 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-secondary-500 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 bg-secondary-100 rounded-lg">
                           <IconComponent className="w-6 h-6 text-secondary-600" />

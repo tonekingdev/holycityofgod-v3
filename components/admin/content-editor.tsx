@@ -32,11 +32,13 @@ export function ContentEditor({ content, onChange, pageType }: ContentEditorProp
             subtitle: "Christian Fellowship Inc.",
             description:
               "Welcome to our church family where faith, hope, and love come together in worship and fellowship.",
-            backgroundImage: "/church-sanctuary.png",
             ctaText: "Join Our Services",
             ctaLink: "/services",
             secondaryCtaText: "Give Online",
             secondaryCtaLink: "/give",
+            backgroundImage: "",
+            backgroundVideo: "",
+            overlayOpacity: 40,
           }
           defaultContent.verseOfTheDay = {
             enabled: true,
@@ -75,7 +77,6 @@ export function ContentEditor({ content, onChange, pageType }: ContentEditorProp
               text: "Contact Us",
               link: "/contact",
             },
-            backgroundImage: "/placeholder.svg?height=400&width=800",
           }
           break
         case "give":
@@ -90,6 +91,55 @@ export function ContentEditor({ content, onChange, pageType }: ContentEditorProp
             title: "Prayer Requests",
             subtitle: "We're Here to Pray With You",
             content: "Submit your prayer requests and let our church family lift you up in prayer.",
+          }
+          break
+        case "about":
+          defaultContent.hero = {
+            title: "",
+            subtitle: "",
+            content: "",
+            image: "",
+          }
+          defaultContent.story = {
+            title: "",
+            content: "",
+          }
+          break
+        case "coreValues":
+          defaultContent.hero = {
+            title: "",
+            subtitle: "",
+            content: "",
+            image: "",
+          }
+          defaultContent.values = [
+            {
+              title: "",
+              description: "",
+              icon: "",
+            },
+          ]
+          break
+        case "statementOfFaith":
+          defaultContent.hero = {
+            title: "",
+            subtitle: "",
+            content: "",
+            image: "",
+          }
+          defaultContent.beliefs = [
+            {
+              title: "",
+              content: "",
+            },
+          ]
+          break
+        default:
+          defaultContent.hero = {
+            title: "",
+            subtitle: "",
+            content: "",
+            image: "",
           }
           break
       }
@@ -244,7 +294,31 @@ export function ContentEditor({ content, onChange, pageType }: ContentEditorProp
                 {renderField("Title", ["hero", "title"])}
                 {renderField("Subtitle", ["hero", "subtitle"])}
                 {renderField("Description", ["hero", "description"], "textarea")}
-                {renderField("Background Image", ["hero", "backgroundImage"], "image")}
+                <div className="space-y-4 p-4 border border-purple-200 rounded-lg bg-purple-50">
+                  <Label className="text-sm font-semibold text-purple-900">Background Media</Label>
+                  <p className="text-xs text-gray-600 mb-2">
+                    Add either a background image OR video. If both are provided, video takes priority.
+                  </p>
+                  {renderField("Background Image URL", ["hero", "backgroundImage"], "image")}
+                  {renderField("Background Video URL", ["hero", "backgroundVideo"])}
+                  <div className="space-y-2">
+                    <Label htmlFor="overlayOpacity" className="text-sm font-medium">
+                      Overlay Darkness (0-100)
+                    </Label>
+                    <p className="text-xs text-gray-600">
+                      Controls the darkness of the overlay. Higher values = darker overlay. Recommended: 30-50 for light
+                      text.
+                    </p>
+                    <Input
+                      id="overlayOpacity"
+                      type="number"
+                      min="0"
+                      max="100"
+                      value={getFieldValue(["hero", "overlayOpacity"]) || "40"}
+                      onChange={(e) => updateField(["hero", "overlayOpacity"], e.target.value)}
+                    />
+                  </div>
+                </div>
                 {renderField("Primary CTA Text", ["hero", "ctaText"])}
                 {renderField("Primary CTA Link", ["hero", "ctaLink"])}
                 {renderField("Secondary CTA Text", ["hero", "secondaryCtaText"])}
@@ -333,7 +407,6 @@ export function ContentEditor({ content, onChange, pageType }: ContentEditorProp
                 {renderField("Title", ["ctaSection", "title"])}
                 {renderField("Subtitle", ["ctaSection", "subtitle"])}
                 {renderField("Description", ["ctaSection", "description"], "textarea")}
-                {renderField("Background Image", ["ctaSection", "backgroundImage"], "image")}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div className="space-y-2">

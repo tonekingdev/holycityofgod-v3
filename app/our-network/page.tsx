@@ -131,7 +131,7 @@ export default function OurNetworkPage() {
                   />
                 </div>
                 <CardHeader>
-                  <CardTitle className="text-xl text-primary">{church.name}</CardTitle>
+                  <CardTitle className="text-xl text-card-foreground">{church.name}</CardTitle>
                   <CardDescription className="text-muted-foreground">{church.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-4">
@@ -151,7 +151,7 @@ export default function OurNetworkPage() {
                   </div>
 
                   <div className="pt-2">
-                    <p className="text-sm font-medium text-primary mb-3">Pastor: {church.pastor_name}</p>
+                    <p className="text-sm font-medium text-card-foreground mb-3">Pastor: {church.pastor_name}</p>
 
                     <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground">
                       <a
@@ -203,7 +203,7 @@ export default function OurNetworkPage() {
                   </div>
                   <CardHeader>
                     <div className="flex items-start justify-between">
-                      <CardTitle className="text-lg text-primary text-balance">{business.name}</CardTitle>
+                      <CardTitle className="text-lg text-card-foreground text-balance">{business.name}</CardTitle>
                       <Badge variant="secondary" className="ml-2 flex-shrink-0">
                         {business.business_type}
                       </Badge>
@@ -229,7 +229,7 @@ export default function OurNetworkPage() {
                     </div>
 
                     <div className="pt-2">
-                      <p className="text-sm font-medium text-primary mb-3">
+                      <p className="text-sm font-medium text-card-foreground mb-3">
                         Contact: {business.contact_person}
                       </p>
 
@@ -263,7 +263,7 @@ export default function OurNetworkPage() {
               opportunities for fellowship and partnership.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button asChild size="lg" variant="secondary" className="hover-lift bg-secondary-300 hover:bg-secondary-500 font-semibold">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
                 <a href="mailto:info@holycityofgod.org">
                   <Mail className="h-5 w-5 mr-2" />
                   Contact Us
@@ -273,9 +273,9 @@ export default function OurNetworkPage() {
                 asChild
                 variant="outline"
                 size="lg"
-                className="border-primary text-primary hover:bg-primary-100 hover-lift hover:text-white bg-transparent"
+                className="border-primary text-primary hover:bg-primary hover:text-primary-foreground bg-transparent"
               >
-                <a href="/about">Learn More About Us</a>
+                <a href="/about">Learn about HCOG</a>
               </Button>
             </div>
           </div>

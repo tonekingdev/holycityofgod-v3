@@ -13,7 +13,7 @@
 1. **Update VPS connection details** in `deploy.sh`:
    \`\`\`bash
    VPS_USER="holycityofgod"
-   VPS_HOST="your-vps-hostname-or-ip"  # Update this!
+   VPS_HOST="31.97.41.98"  # Update this!
    VPS_PATH="/home/holycityofgod/htdocs"
    \`\`\`
 
@@ -39,21 +39,21 @@ If you prefer to deploy manually or need to transfer specific files:
 2. **Transfer files to VPS**:
    \`\`\`bash
    # Transfer .next folder
-   scp -r .next holycityofgod@your-vps:/home/holycityofgod/htdocs/
+   scp -r .next holycityofgod@31.97.41.98:/home/holycityofgod/htdocs/
 
    # Transfer data folder (IMPORTANT - contains content.json)
-   scp -r data holycityofgod@your-vps:/home/holycityofgod/htdocs/
+   scp -r data holycityofgod@31.97.41.98:/home/holycityofgod/htdocs/
 
    # Transfer public folder
-   scp -r public holycityofgod@your-vps:/home/holycityofgod/htdocs/
+   scp -r public holycityofgod@31.97.41.98:/home/holycityofgod/htdocs/
 
    # Transfer configuration files
-   scp package.json package-lock.json next.config.mjs holycityofgod@your-vps:/home/holycityofgod/htdocs/
+   scp package.json package-lock.json next.config.ts holycityofgod@31.97.41.98:/home/holycityofgod/htdocs/
    \`\`\`
 
 3. **SSH into your VPS and restart the server**:
    \`\`\`bash
-   ssh holycityofgod@your-vps
+   ssh holycityofgod@31.97.41.98
    cd /home/holycityofgod/htdocs
    npm install --production
    pm2 restart holy-city-of-god  # or your process name
@@ -82,7 +82,7 @@ Make sure your VPS has a `.env` file with all required variables:
 If content is missing on public pages:
 1. Verify `data/content.json` exists on the VPS:
    \`\`\`bash
-   ssh holycityofgod@your-vps
+   ssh holycityofgod@31.97.41.98
    ls -la /home/holycityofgod/htdocs/data/content.json
    \`\`\`
 

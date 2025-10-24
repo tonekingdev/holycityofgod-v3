@@ -155,14 +155,14 @@ export function Navigation() {
         <Link
           key={link.href}
           href={link.href}
-          className="block px-4 py-3 text-sm text-gray-700 hover:bg-purple-50 hover:text-purple-700 transition-colors"
+          className="block px-4 py-3 text-sm text-black hover:bg-purple-50 hover:text-purple-700 transition-colors"
           onClick={() => setIsOpen(false)}
         >
           <div className="flex items-center space-x-3">
             <link.icon className="h-4 w-4" />
             <div>
               <div className="font-medium">{link.title}</div>
-              <p className="text-xs text-gray-500 mt-1">{link.description}</p>
+              <p className="text-xs text-black mt-1">{link.description}</p>
             </div>
           </div>
         </Link>
@@ -195,13 +195,13 @@ export function Navigation() {
                   <div className="flex items-center" data-dropdown>
                     <Link
                       href={item.href}
-                      className="flex items-center space-x-1 text-gray-600 hover:text-purple-700 transition-colors"
+                      className="flex items-center space-x-1 text-black hover:text-purple-700 transition-colors"
                     >
                       <item.icon className="h-4 w-4" />
                       <span>{item.label}</span>
                     </Link>
                     <button
-                      className="ml-2 text-gray-600 hover:text-purple-700 transition-colors"
+                      className="ml-2 text-black hover:text-purple-700 transition-colors"
                       onClick={() => {
                         if (item.label === "About") setDesktopAboutOpen(!desktopAboutOpen)
                         else if (item.label === "Our Network") setDesktopNetworkOpen(!desktopNetworkOpen)
@@ -238,7 +238,7 @@ export function Navigation() {
                 ) : (
                   <Link
                     href={item.href}
-                    className="flex items-center space-x-1 text-gray-600 hover:text-purple-700 transition-colors"
+                    className="flex items-center space-x-1 text-black hover:text-purple-700 transition-colors"
                   >
                     <item.icon className="h-4 w-4" />
                     <span>{item.label}</span>
@@ -317,7 +317,7 @@ export function Navigation() {
             ) : (
               <>
                 <Link href="/auth/login">
-                  <Button variant="ghost" className="text-gray-600 hover:text-purple-700 hover:bg-gray-100">
+                  <Button variant="ghost" className="text-black hover:text-purple-700 hover:bg-gray-100">
                     Sign In
                   </Button>
                 </Link>
@@ -366,7 +366,7 @@ export function Navigation() {
                     </Avatar>
                     <div>
                       <p className="font-medium">{user.name}</p>
-                      <p className="text-sm text-gray-500">{user.email}</p>
+                      <p className="text-sm text-black">{user.email}</p>
                     </div>
                   </div>
                 )}
@@ -413,7 +413,7 @@ export function Navigation() {
                               <Link
                                 key={link.href}
                                 href={link.href}
-                                className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-2"
+                                className="block text-sm text-black hover:text-purple-600 transition-colors py-2"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobileAboutOpen(false)
@@ -430,7 +430,7 @@ export function Navigation() {
                               <Link
                                 key={link.href}
                                 href={link.href}
-                                className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-2"
+                                className="block text-sm text-black hover:text-purple-600 transition-colors py-2"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobileNetworkOpen(false)
@@ -447,7 +447,7 @@ export function Navigation() {
                               <Link
                                 key={link.href}
                                 href={link.href}
-                                className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-2"
+                                className="block text-sm text-black hover:text-purple-600 transition-colors py-2"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobileServicesOpen(false)
@@ -464,7 +464,7 @@ export function Navigation() {
                               <Link
                                 key={link.href}
                                 href={link.href}
-                                className="block text-sm text-gray-600 hover:text-purple-600 transition-colors py-2"
+                                className="block text-sm text-black hover:text-purple-600 transition-colors py-2"
                                 onClick={() => {
                                   setIsOpen(false)
                                   setMobilePostsOpen(false)

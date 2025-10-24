@@ -1,13 +1,13 @@
 "use client"
 
 import type React from "react"
-
+import { useState } from "react"
 import { DropInView } from "@/components/DropInView"
 import { FadeInView } from "@/components/FadeInView"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import PastorCalendar from "@/components/pastor/pastor-calendar"
+import { MeetingRequestModal } from "@/components/pastor/meeting-request-modal"
 import {
   Calendar,
   Phone,
@@ -29,6 +29,7 @@ import { useContent } from "@/hooks/use-content"
 
 export default function PastorPage() {
   const { content, loading } = useContent("pastor")
+  const [showMeetingModal, setShowMeetingModal] = useState(false)
 
   if (loading) {
     return (
@@ -112,7 +113,7 @@ export default function PastorPage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
                 <DropInView>
-                  <div className="relative w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden bg-primary-50 p-2 shadow-2xl">
+                  <div className="relative w-80 h-80 mx-auto lg:mx-0 rounded-full overflow-hidden bg-white p-2 shadow-2xl">
                     <Image
                       src={content?.hero?.image || "/img/King_T_1-min.jpg"}
                       alt={content?.hero?.name || "Bishop Anthony King, Sr."}
@@ -150,14 +151,18 @@ export default function PastorPage() {
 
                 <FadeInView delay={0.9}>
                   <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-                    <Button size="lg" className="bg-gold-600 hover:bg-gold-700 text-white">
+                    <Button
+                      size="lg"
+                      className="bg-gold-600 hover:bg-gold-700 text-white"
+                      onClick={() => setShowMeetingModal(true)}
+                    >
                       <Calendar className="mr-2 h-5 w-5" />
-                      Schedule Appointment
+                      Request Meeting
                     </Button>
                     <Button
                       size="lg"
                       variant="outline"
-                      className="border-white text-white hover:bg-primary-50 hover:text-purple-800 bg-transparent"
+                      className="border-white text-white hover:bg-white hover:text-purple-800 bg-transparent"
                     >
                       <Phone className="mr-2 h-5 w-5" />
                       Contact Pastor
@@ -363,30 +368,6 @@ export default function PastorPage() {
         </div>
       </section>
 
-      {/* Calendar Section */}
-      <section className="py-16">
-        <div className="container">
-          <div className="max-w-6xl mx-auto">
-            <DropInView>
-              <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
-                {content?.calendar?.title || "Bishop King's Calendar"}
-              </h2>
-            </DropInView>
-
-            <FadeInView delay={0.3}>
-              <p className="text-xl text-gray-700 text-center mb-12 max-w-3xl mx-auto">
-                {content?.calendar?.description ||
-                  "View Bishop King's schedule and book appointments for counseling, spiritual guidance, or ministry discussions. See upcoming services and events."}
-              </p>
-            </FadeInView>
-
-            <FadeInView delay={0.5}>
-              <PastorCalendar />
-            </FadeInView>
-          </div>
-        </div>
-      </section>
-
       {/* Contact Information */}
       <section className="py-16 bg-gradient-to-r from-purple-800 to-purple-900 text-white">
         <div className="container">
@@ -404,7 +385,7 @@ export default function PastorPage() {
 
             <div className="grid md:grid-cols-3 gap-8 mb-12">
               <FadeInView delay={0.5}>
-                <Card className="bg-primary-50/10 backdrop-blur-sm border-white/20 text-white">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
                   <CardContent className="p-6 text-center">
                     <Phone className="h-8 w-8 mx-auto mb-4" />
                     <h3 className="text-lg font-bold mb-2">Phone</h3>
@@ -416,19 +397,19 @@ export default function PastorPage() {
               </FadeInView>
 
               <FadeInView delay={0.7}>
-                <Card className="bg-primary-50/10 backdrop-blur-sm border-white/20 text-white">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
                   <CardContent className="p-6 text-center">
                     <Mail className="h-8 w-8 mx-auto mb-4" />
                     <h3 className="text-lg font-bold mb-2">Email</h3>
                     <p className="opacity-90">
-                      {content?.contact?.email || content?.contact?.info?.email || "bishop@holycityofgod.org"}
+                      {content?.contact?.email || content?.contact?.info?.email || "pastor@holycityofgod.org"}
                     </p>
                   </CardContent>
                 </Card>
               </FadeInView>
 
               <FadeInView delay={0.9}>
-                <Card className="bg-primary-50/10 backdrop-blur-sm border-white/20 text-white">
+                <Card className="bg-white/10 backdrop-blur-sm border-white/20 text-white">
                   <CardContent className="p-6 text-center">
                     <Clock className="h-8 w-8 mx-auto mb-4" />
                     <h3 className="text-lg font-bold mb-2">Office Hours</h3>
@@ -442,14 +423,18 @@ export default function PastorPage() {
 
             <FadeInView delay={1.1}>
               <div className="flex flex-wrap gap-4 justify-center">
-                <Button size="lg" className="bg-gold-600 hover:bg-gold-700 text-white">
+                <Button
+                  size="lg"
+                  className="bg-gold-600 hover:bg-gold-700 text-white"
+                  onClick={() => setShowMeetingModal(true)}
+                >
                   <Calendar className="mr-2 h-5 w-5" />
-                  Schedule Appointment
+                  Request Meeting
                 </Button>
                 <Button
                   size="lg"
                   variant="outline"
-                  className="border-white text-white hover:bg-primary-50 hover:text-purple-800 bg-transparent"
+                  className="border-white text-white hover:bg-white hover:text-purple-800 bg-transparent"
                 >
                   <MapPin className="mr-2 h-5 w-5" />
                   Visit Our Church
@@ -458,7 +443,7 @@ export default function PastorPage() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="border-white text-white hover:bg-primary-50 hover:text-purple-800 bg-transparent"
+                    className="border-white text-white hover:bg-white hover:text-purple-800 bg-transparent"
                   >
                     <Info className="mr-2 h-5 w-5" />
                     Back to About
@@ -469,6 +454,9 @@ export default function PastorPage() {
           </div>
         </div>
       </section>
+
+      {/* Meeting Request Modal */}
+      <MeetingRequestModal open={showMeetingModal} onOpenChange={setShowMeetingModal} />
     </div>
   )
 }

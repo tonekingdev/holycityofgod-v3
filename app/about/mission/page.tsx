@@ -3,6 +3,7 @@
 import type React from "react"
 import { FadeInView } from "@/components/FadeInView"
 import { DropInView } from "@/components/DropInView"
+import { EditPageButton } from "@/components/edit-page-button"
 import { ChevronRight, Heart, Users, BookOpen, Church, Info } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
@@ -85,6 +86,8 @@ export default function MissionPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-primary-50 to-white">
+      <EditPageButton pageId="mission" />
+
       <div className="container mx-auto px-4 py-16">
         <FadeInView>
           <div className="max-w-4xl mx-auto">
@@ -102,7 +105,7 @@ export default function MissionPage() {
               </div>
 
               <DropInView>
-                <div className="bg-primary-50 rounded-lg shadow-lg p-8 border-l-4 border-secondary-500">
+                <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-secondary-500">
                   <blockquote className="text-xl md:text-2xl font-medium text-gray-700 text-center italic leading-relaxed">
                     {content?.statement?.content ||
                       content?.missionStatement ||
@@ -129,7 +132,7 @@ export default function MissionPage() {
 
               <div className="grid lg:grid-cols-2 gap-8 items-start">
                 <DropInView>
-                  <div className="bg-primary-50 rounded-lg shadow-lg p-8">
+                  <div className="bg-white rounded-lg shadow-lg p-8">
                     <p className="text-lg text-gray-700 mb-6 leading-relaxed">
                       {content?.vision?.description ||
                         "By 2023, Holy City of God Christian Fellowship, Inc. will be assisting 250 families in their Spiritual Growth through:"}
@@ -153,6 +156,7 @@ export default function MissionPage() {
                         src={
                           content?.vision?.image ||
                           "/placeholder.svg?height=256&width=256&text=Chalice" ||
+                          "/placeholder.svg" ||
                           "/placeholder.svg"
                         }
                         alt="Chalice representing communion and fellowship"
@@ -185,7 +189,7 @@ export default function MissionPage() {
                   const IconComponent = getIcon(section.icon)
                   return (
                     <DropInView key={section.title} delay={index * 0.1}>
-                      <div className="bg-primary-50 rounded-lg shadow-lg p-6 border-t-4 border-secondary-500 hover:shadow-xl transition-shadow duration-300">
+                      <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-secondary-500 hover:shadow-xl transition-shadow duration-300">
                         <div className="flex items-center gap-3 mb-4">
                           <div className="p-2 bg-secondary-100 rounded-lg">
                             <IconComponent className="w-6 h-6 text-secondary-600" />

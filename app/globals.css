@@ -100,7 +100,6 @@ p {
 
 /* Links */
 a {
-  color: #4b5563;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -220,6 +219,16 @@ a:hover {
 .btn-ghost:hover:not(:disabled) {
   background-color: #f3f4f6;
   color: #1f2937;
+}
+
+/* Adding gradient-hero class to match approved mockup naming */
+.gradient-hero {
+  background: linear-gradient(
+    135deg,
+    rgba(91, 44, 135, 0.8) 0%,
+    rgba(74, 31, 107, 0.85) 50%,
+    rgba(107, 52, 153, 0.8) 100%
+  );
 }
 
 /* Form styles */

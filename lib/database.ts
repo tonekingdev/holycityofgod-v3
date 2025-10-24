@@ -3,9 +3,9 @@ import mysql from "mysql2/promise"
 // Database connection configuration
 const dbConfig = {
   host: process.env.DB_HOST || "localhost",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASSWORD || "",
-  database: process.env.DB_NAME || "holycityofgod_dev",
+  user: process.env.DB_USER || "admin",
+  password: process.env.DB_PASSWORD || "Y@hu@h!5L0rd@lM1gthY",
+  database: process.env.DB_NAME || "holycityofgod",
   port: Number.parseInt(process.env.DB_PORT || "3306"),
   charset: "utf8mb4",
   timezone: "+00:00",
@@ -21,6 +21,24 @@ const pool = mysql.createPool({
   enableKeepAlive: true,
   keepAliveInitialDelay: 0,
 })
+
+// Result types for different operations
+export interface InsertResult {
+  insertId: number
+  affectedRows: number
+  warningStatus: number
+}
+
+export interface UpdateResult {
+  affectedRows: number
+  changedRows: number
+  warningStatus: number
+}
+
+export interface DeleteResult {
+  affectedRows: number
+  warningStatus: number
+}
 
 // Database connection wrapper with error handling
 export async function getConnection() {
@@ -49,7 +67,15 @@ export async function executeQuery<T = Record<string, unknown>>(query: string, p
   try {
     console.log("[Anointed Innovations] Executing query:", query.substring(0, 100) + "...")
     const [rows] = await connection.execute(query, params)
-    return rows as T[]
+    
+    // For SELECT queries, rows is an array of results
+    // For INSERT/UPDATE/DELETE, rows is an object with result info
+    if (query.trim().toUpperCase().startsWith('SELECT')) {
+      return rows as T[]
+    } else {
+      // For non-SELECT queries, wrap the result in an array for consistency
+      return [rows as T]
+    }
   } catch (error) {
     console.error("[Anointed Innovations] Query execution error:", error)
     throw error

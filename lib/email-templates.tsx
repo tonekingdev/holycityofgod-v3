@@ -210,7 +210,7 @@ export function generateAutoReplyTemplate(data: EmailTemplateData): { html: stri
                             </td>
                             <td style="padding: 0 10px;">
                               <a href="${siteUrl}/about" style="display: inline-block; background-color: transparent; color: #7c2d92; padding: 12px 25px; text-decoration: none; border: 2px solid #7c2d92; border-radius: 6px; font-weight: bold; font-size: 16px;">
-                                Learn More About Us
+                                Learn about HCOG
                               </a>
                             </td>
                           </tr>

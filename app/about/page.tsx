@@ -8,9 +8,9 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { FadeInView } from "@/components/FadeInView"
 import { DropInView } from "@/components/DropInView"
+import { EditPageButton } from "@/components/edit-page-button"
 import { Heart, Users, BookOpen, Church, ArrowRight, MapPin, Clock, Phone } from "lucide-react"
 import { useContent } from "@/hooks/use-content"
-import { CHURCH_INFO } from "@/constants"
 
 interface AboutSection {
   title: string
@@ -77,6 +77,8 @@ export default function AboutPage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+      <EditPageButton pageId="about" />
+
       {/* Hero Section */}
       <section className="relative py-20 bg-gradient-to-r from-purple-800 to-purple-900 text-white overflow-hidden">
         <div className="absolute inset-0 bg-black/20" />
@@ -84,12 +86,12 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto text-center">
             <DropInView>
               <div className="flex justify-center mb-8">
-                <div className="relative h-32 w-32 bg-white rounded-full p-4 shadow-2xl overflow-hidden">
+                <div className="relative h-32 w-32 bg-white rounded-full p-4 shadow-2xl">
                   <Image
-                    src={content?.hero?.image || "/img/church-logo.png"}
+                    src="/img/church-logo.png"
                     alt="Holy City of God Christian Fellowship"
-                    width={96}
-                    height={96}
+                    height={100}
+                    width={100}
                     className="object-contain"
                   />
                 </div>
@@ -170,7 +172,7 @@ export default function AboutPage() {
         <div className="container">
           <DropInView>
             <h2 className="text-4xl font-bold text-center text-gray-900 mb-4">
-              {content?.sections?.title || "Learn More About Us"}
+              {content?.sections?.title || "Learn about HCOG"}
             </h2>
           </DropInView>
 
@@ -234,7 +236,7 @@ export default function AboutPage() {
                     <div className="text-center">
                       <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden bg-purple-100">
                         <Image
-                          src={content?.pastor?.image || "/img/King_T_1-min.jpg"}
+                          src={content?.pastor?.image || "/img/placeholder.jpg?height=200&width=200&text=Pastor+Photo"}
                           alt={content?.pastor?.name || "Pastor"}
                           fill
                           className="object-cover"
@@ -246,7 +248,7 @@ export default function AboutPage() {
                     </div>
                     <div className="md:col-span-2">
                       <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                        {content?.pastor?.name || "Bishop Anthony King, Sr."}
+                        {content?.pastor?.name || "Bishop Anthony K. King, Sr."}
                       </h3>
                       <p className="text-gray-700 mb-4 leading-relaxed">
                         {content?.pastor?.bio ||
@@ -256,19 +258,6 @@ export default function AboutPage() {
                         {content?.pastor?.quote ||
                           '"My prayer is that every person who walks through our doors will encounter the transforming love of Jesus Christ and discover their purpose in God\'s kingdom."'}
                       </p>
-                      <div className="mt-4">
-                        <Button
-                          asChild
-                          size="sm"
-                          variant="ghost"
-                          className="hover-lift"
-                        >
-                          <Link href="/about/pastor">
-                            Read more
-                            <span><ArrowRight className="h-4 w-4" /></span>
-                          </Link>
-                        </Button>
-                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -297,7 +286,7 @@ export default function AboutPage() {
                     </div>
                     <h3 className="font-bold text-gray-900 mb-2">{content?.contact?.location?.title || "Location"}</h3>
                     <p className="text-gray-600">
-                      {content?.contact?.location?.address || CHURCH_INFO.contact.address.full}
+                      {content?.contact?.location?.address || "123 Faith Street\nHoly City, HC 12345"}
                     </p>
                   </CardContent>
                 </Card>
@@ -314,7 +303,7 @@ export default function AboutPage() {
                     </h3>
                     <p className="text-gray-600">
                       {content?.contact?.serviceTimes?.times ||
-                        "Sunday School: 10:00 AM\nSunday Worship: 11:00 AM\nWednesday Bible Study: 7:00 PM"}
+                        "Sunday Worship: 10:00 AM\nWednesday Bible Study: 7:00 PM"}
                     </p>
                   </CardContent>
                 </Card>
@@ -328,7 +317,7 @@ export default function AboutPage() {
                     </div>
                     <h3 className="font-bold text-gray-900 mb-2">{content?.contact?.contact?.title || "Contact"}</h3>
                     <p className="text-gray-600">
-                      {content?.contact?.contact?.phone || "(313) 397-8240"}
+                      {content?.contact?.contact?.phone || "(555) 123-HOLY"}
                       <br />
                       {content?.contact?.contact?.email || "info@holycityofgod.org"}
                     </p>
@@ -338,14 +327,9 @@ export default function AboutPage() {
             </div>
 
             <FadeInView delay={0.9}>
-              <div className="text-center mt-12 flex justify-center items-center gap-4">
-                <Button size="lg" variant="outline" className="hover-lift">
-                  <Link href="/">
-                      Back to Home
-                  </Link>
-                </Button>
-                <Button size="lg" className="bg-secondary-300 hover:bg-gold-700 text-white hover-lift">
-                  <Link href="/contact" className="hover:text-gold-400 transition-colors">
+              <div className="text-center mt-12">
+                <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700 px-8 py-4 text-lg">
+                  <Link href="/contact" className="text-gold-100 hover:text-gold-400 transition-colors">
                     {content?.contact?.ctaText || "Plan Your Visit"}
                   </Link>
                 </Button>

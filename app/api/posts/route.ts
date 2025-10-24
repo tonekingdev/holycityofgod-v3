@@ -24,19 +24,69 @@ interface PostRow {
   author_position?: string
 }
 
+// Cache for database availability check
+let dbAvailable: boolean | null = null
+let lastDbCheck: number = 0
+const DB_CHECK_INTERVAL = 30000 // 30 seconds
+
+async function checkDatabaseAvailability(): Promise<boolean> {
+  const now = Date.now()
+  
+  // Return cached result if recent
+  if (dbAvailable !== null && (now - lastDbCheck) < DB_CHECK_INTERVAL) {
+    return dbAvailable
+  }
+
+  try {
+    // Simple query to check database connection
+    await executeQuery("SELECT 1 as test")
+    dbAvailable = true
+  } catch (error) {
+    console.error("[Anointed Innovations] Database connection test failed:", error)
+    dbAvailable = false
+  }
+  
+  lastDbCheck = now
+  return dbAvailable
+}
+
 // GET /api/posts - Get all posts with filtering and pagination
 export async function GET(request: NextRequest) {
   try {
     console.log("[Anointed Innovations] Fetching posts from database")
 
+    // Check database availability first
+    const isDbAvailable = await checkDatabaseAvailability()
+    if (!isDbAvailable) {
+      console.log("[Anointed Innovations] Database unavailable, returning empty response")
+      return NextResponse.json(
+        {
+          posts: [],
+          total: 0,
+          error: "Database temporarily unavailable",
+          fallback: true
+        },
+        { status: 200 }
+      )
+    }
+
     const searchParams = request.nextUrl.searchParams
-    const limit = Number.parseInt(searchParams.get("limit") || "10")
+    const limit = Math.min(Number.parseInt(searchParams.get("limit") || "10"), 100) // Cap limit
     const offset = Number.parseInt(searchParams.get("offset") || "0")
     const status = searchParams.get("status") || "published"
     const category = searchParams.get("category")
     const featured = searchParams.get("featured")
     const sortBy = searchParams.get("sortBy") || "publishedAt-desc"
     const churchId = searchParams.get("churchId")
+
+    // Validate status
+    const validStatuses = ["draft", "published", "archived"]
+    if (!validStatuses.includes(status)) {
+      return NextResponse.json(
+        { error: "Invalid status parameter" },
+        { status: 400 }
+      )
+    }
 
     // Build query
     let query = `
@@ -65,19 +115,23 @@ export async function GET(request: NextRequest) {
 
     if (churchId) {
       query += " AND (p.church_id = ? OR p.church_id IS NULL)"
-      params.push(churchId)
+      params.push(Number.parseInt(churchId))
     }
 
     // Add sorting
     const [sortField, sortOrder] = sortBy.split("-")
-    const orderBy = sortField === "publishedAt" ? "p.published_at" : `p.${sortField}`
+    const validSortFields = ["published_at", "updated_at", "title", "created_at"]
+    const orderBy = validSortFields.includes(sortField === "publishedAt" ? "published_at" : sortField) 
+      ? (sortField === "publishedAt" ? "p.published_at" : `p.${sortField}`)
+      : "p.published_at"
+    
     query += ` ORDER BY ${orderBy} ${sortOrder === "desc" ? "DESC" : "ASC"}`
 
     // Add pagination
     query += " LIMIT ? OFFSET ?"
     params.push(limit, offset)
 
-    console.log("[Anointed Innovations] Executing query:", query.substring(0, 100) + "...")
+    console.log("[Anointed Innovations] Executing query with params:", { limit, offset, status, category, featured, sortBy })
 
     const rows = await executeQuery<PostRow>(query, params)
 
@@ -91,13 +145,17 @@ export async function GET(request: NextRequest) {
       if (row.tags) {
         try {
           tags = typeof row.tags === "string" ? JSON.parse(row.tags) : row.tags
+          if (!Array.isArray(tags)) tags = []
         } catch (e) {
           console.error("[Anointed Innovations] Error parsing tags:", e)
+          tags = []
         }
       }
 
       // Calculate reading time from content
-      const readingTime = Math.ceil(row.content.replace(/<[^>]*>/g, "").split(/\s+/).length / 200)
+      const contentText = row.content.replace(/<[^>]*>/g, "")
+      const wordCount = contentText.split(/\s+/).filter(word => word.length > 0).length
+      const readingTime = Math.max(1, Math.ceil(wordCount / 200))
 
       return {
         id: row.id.toString(),
@@ -108,34 +166,39 @@ export async function GET(request: NextRequest) {
         featuredImage: row.featured_image || "/img/placeholder.jpg?height=300&width=500",
         category,
         author: {
-          name: `${row.author_first_name} ${row.author_last_name}`,
+          name: `${row.author_first_name || ""} ${row.author_last_name || ""}`.trim() || "Anonymous",
           role: row.author_position || "Member",
-          avatar: "/img/King_T_1-min.jpg", // Default avatar
+          avatar: "/img/King_T_1-min.jpg",
         },
         publishedAt: new Date(row.published_at),
         updatedAt: new Date(row.updated_at),
         status: row.status as Post["status"],
         tags,
         readingTime,
-        views: 0, // You can add a views column to track this
+        views: 0,
         featured: Boolean(row.is_featured),
       }
     })
 
     console.log("[Anointed Innovations] Successfully fetched", posts.length, "posts from database")
 
-    return NextResponse.json({ posts, total: posts.length })
+    return NextResponse.json({ 
+      posts, 
+      total: posts.length,
+      hasMore: posts.length === limit // Indicate if there are more results
+    })
   } catch (error) {
     console.error("[Anointed Innovations] Error fetching posts:", error)
 
-    // Return empty array instead of error to allow build to complete
+    // Return empty array with fallback flag
     return NextResponse.json(
       {
         posts: [],
         total: 0,
         error: "Database unavailable",
+        fallback: true
       },
-      { status: 200 },
+      { status: 200 }
     )
   }
 }
@@ -148,6 +211,12 @@ export async function POST(request: NextRequest) {
     // Validate required fields
     if (!body.title || !body.content || !body.authorId) {
       return NextResponse.json({ error: "Missing required fields: title, content, authorId" }, { status: 400 })
+    }
+
+    // Validate authorId is a number
+    const authorId = Number.parseInt(body.authorId)
+    if (isNaN(authorId)) {
+      return NextResponse.json({ error: "Invalid authorId" }, { status: 400 })
     }
 
     // Generate slug if not provided
@@ -185,7 +254,7 @@ export async function POST(request: NextRequest) {
       body.excerpt || "",
       body.content,
       body.featuredImage || null,
-      body.authorId,
+      authorId,
       body.category || "general",
       JSON.stringify(body.tags || []),
       body.status || "draft",
@@ -196,8 +265,15 @@ export async function POST(request: NextRequest) {
 
     await executeQuery(query, params)
 
-    // Fetch the newly created post
-    const newPost = await executeQuery<PostRow>("SELECT * FROM posts WHERE slug = ? ORDER BY id DESC LIMIT 1", [slug])
+    // Fetch the newly created post using the slug
+    const newPost = await executeQuery<PostRow>(
+      "SELECT * FROM posts WHERE slug = ? ORDER BY id DESC LIMIT 1", 
+      [slug]
+    )
+
+    if (newPost.length === 0) {
+      return NextResponse.json({ error: "Failed to retrieve created post" }, { status: 500 })
+    }
 
     return NextResponse.json({ post: newPost[0] }, { status: 201 })
   } catch (error) {

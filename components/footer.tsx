@@ -98,6 +98,11 @@ export function Footer() {
                                     Outreach
                                 </Link>
                             </li>
+                            <li>
+                                <Link href="/help" className="text-gray-400 hover:text-gold-300">
+                                    Help
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

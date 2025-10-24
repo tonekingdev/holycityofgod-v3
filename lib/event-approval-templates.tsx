@@ -260,7 +260,7 @@ export function generateEventApprovedTemplate(data: EventApprovalData): { html: 
                           Join Our Services
                         </a>
                         <a href="${siteUrl}/about" style="display: inline-block; background-color: transparent; color: #7c2d92; padding: 12px 25px; text-decoration: none; border: 2px solid #7c2d92; border-radius: 6px; font-weight: bold; font-size: 16px; margin: 0 10px;">
-                          Learn More About Us
+                          Learn about HCOG
                         </a>
                       </td>
                     </tr>
@@ -336,7 +336,7 @@ Phone: (586) 307-3043
 Address: 28333 Marcia Ave, Warren, MI 48093
 
 Join Our Services: ${siteUrl}/events
-Learn More About Us: ${siteUrl}/about
+Learn about HCOG: ${siteUrl}/about
 
 Blessings and peace,
 The Holy City of God Event Team

@@ -206,7 +206,7 @@ export default function StatementOfFaithPage() {
               const IconComponent = getIcon(section.icon)
               return (
                 <FadeInView key={section.title} delay={0.3 + index * 0.1}>
-                  <div className="bg-primary-50 rounded-lg shadow-lg p-8 border-l-4 border-secondary-500">
+                  <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-secondary-500">
                     <div className="flex items-start space-x-4">
                       <div className="bg-secondary-100 p-3 rounded-full">
                         <IconComponent className="h-6 w-6 text-secondary-600" />
@@ -239,7 +239,7 @@ export default function StatementOfFaithPage() {
 
         {/* What do we mean by inerrant? Section */}
         <FadeInView delay={2.0}>
-          <div className="mt-12 bg-primary-50 rounded-lg shadow-lg p-8">
+          <div className="mt-12 bg-white rounded-lg shadow-lg p-8">
             <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
               {content?.inerrantSection?.title || content?.inerrancy?.title || (
                 <>

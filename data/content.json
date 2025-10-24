@@ -2,24 +2,33 @@
   "home": {
     "hero": {
       "title": "Welcome to Holy City of God",
-      "subtitle": "A place of worship, community, and spiritual growth",
-      "description": "Join us as we gather to worship, learn, and grow together in faith. Experience the love of God in a welcoming community.",
-      "ctaText": "Join Us Today",
-      "ctaLink": "/services"
+      "subtitle": "Christian Fellowship Inc.",
+      "description": "A place of worship, community, and spiritual growth",
+      "content": "Where faith meets fellowship and lives are transformed",
+      "ctaText": "Join Our Services",
+      "ctaLink": "/services",
+      "backgroundImage": "/img/church-interior.jpg?height=1080&width=1920",
+      "backgroundVideo": "",
+      "overlayOpacity": 70
     },
     "about": {
-      "title": "About Our Church",
-      "content": "Holy City of God is a vibrant community of believers dedicated to spreading God's love and serving our community. We welcome all who seek to grow in their faith journey.",
-      "image": "/img/church-interior.jpg"
+      "title": "Welcome to Our Church",
+      "content": "We are a community of believers dedicated to worship, fellowship, and serving God together.",
+      "image": "/img/church-logo.png"
     },
     "services": {
       "title": "Our Services",
-      "content": "Join us for worship services that inspire, educate, and bring our community together in faith.",
+      "content": "Join us for worship, prayer, and fellowship throughout the week.",
       "schedule": [
         {
           "day": "Sunday",
           "time": "10:00 AM",
-          "service": "Morning Worship"
+          "service": "Sunday School"
+        },
+        {
+          "day": "Sunday",
+          "time": "11:00 AM",
+          "service": "Sunday Morning Worship"
         },
         {
           "day": "Wednesday",
@@ -71,9 +80,9 @@
         {
           "icon": "Users",
           "title": "Join Our Services",
-          "description": "Sunday Worship at 10:00 AM\nWednesday Bible Study at 7:00 PM\n123 Faith Street, Holy City",
+          "description": "Sunday School at 10:00 AM\nSunday Worship at 11:00 AM\nWednesday Bible Study at 7:00 PM\n16606 James Couzens Fwy, Detroit MI",
           "buttonText": "View Service Times",
-          "link": "/about/services"
+          "link": "/services"
         },
         {
           "icon": "Heart",
@@ -91,12 +100,9 @@
         }
       ],
       "finalCta": {
-        "text": "Learn More About Us",
+        "text": "Learn about HCOG",
         "link": "/about"
       }
-    },
-    "ctaSection": {
-      "enabled": "true"
     }
   },
   "give": {
@@ -150,8 +156,13 @@
       "title": "Service Times",
       "services": [
         {
+          "name": "Sunday School",
+          "time":"10:00 AM",
+          "description": "Learn the scriptures within context"
+        },
+        {
           "name": "Sunday Morning Worship",
-          "time": "10:00 AM",
+          "time": "11:00 AM",
           "description": "Join us for inspiring worship, biblical teaching, and community fellowship."
         },
         {
@@ -160,6 +171,13 @@
           "description": "Dive deeper into God's Word with interactive Bible study and discussion."
         }
       ]
+    },
+    "words": {
+      "hero": {
+        "title": "The Word",
+        "subtitle": "Messages from our spiritual leaders",
+        "description": "Access sermons, teachings, and prophetic words shared during our services"
+      }
     }
   },
   "about": {
@@ -167,11 +185,42 @@
       "title": "About Holy City of God",
       "subtitle": "Our story, our mission, our community",
       "content": "Learn about our church's history, beliefs, and the community that makes Holy City of God a special place to worship and grow.",
-      "image": "/img/2_holy-min.jpg"
+      "image": "/img/about-hero.jpg"
     },
     "story": {
       "title": "Our Story",
-      "content": "Holy City of God was founded with a vision to create a welcoming community where people from all walks of life can come together to worship, learn, and serve. Our church has been a beacon of hope and love in our community for many years."
+      "content": "Holy City of God was founded with a vision to create a welcoming community where people from all walks of life can come together to worship, learn, and serve. Our church has been a beacon of hope and love in our community for many years.",
+      "additionalContent": []
+    },
+    "sections": {
+      "title": "Explore Our Church",
+      "description": "Learn more about what makes Holy City of God special",
+      "items": []
+    },
+    "pastor": {
+      "title": "Meet Our Pastor",
+      "name": "Bishop Anthony King, Sr.",
+      "image": "/img/King_T_1-min.jpg",
+      "badge": "Presiding Bishop",
+      "bio": "Bishop Anthony K. King, Sr. is the founding pastor of Holy City of God Christian Fellowship, Inc., in Detroit, Michigan. Bishop King also serves as First Assistant Presiding Bishop of Maranatha Faith Fellowship International, Inc, in McDonough, Georgia. His ministry has shaped and encouraged the lives of thousands of people in his over 25-year ministry tenure. Therefore, Spiritual Formation is the foundation of his leadership. Bishop King's greatest passion is building people and helping them recognize that God is at work in their lives.",
+      "quote": "It is ALL good, no matter how it looks or feels. - Bishop King's life motto"
+    },
+    "contact": {
+      "title": "Visit Us",
+      "location": {
+        "title": "Our Location",
+        "address": "123 Faith Street, Holy City"
+      },
+      "serviceTimes": {
+        "title": "Service Times",
+        "times": "Sunday 10:00 AM, Wednesday 7:00 PM"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "phone": "(555) 123-4567",
+        "email": "info@holycityofgod.org"
+      },
+      "ctaText": "Get Directions"
     }
   },
   "coreValues": {
@@ -202,7 +251,11 @@
         "description": "We encourage spiritual growth and learning through study, prayer, and fellowship.",
         "icon": "tree"
       }
-    ]
+    ],
+    "callToAction": {
+      "title": "Join Us",
+      "content": "Experience these values in action by joining our church community."
+    }
   },
   "mission": {
     "hero": {
@@ -215,28 +268,130 @@
       "title": "Mission Statement",
       "content": "To glorify God by making disciples of Jesus Christ who love God, love others, and serve the world through the power of the Holy Spirit."
     },
+    "missionStatement": "To glorify God by making disciples of Jesus Christ who love God, love others, and serve the world through the power of the Holy Spirit.",
     "vision": {
       "title": "Our Vision",
-      "content": "To be a church that transforms lives and communities through the love of Christ, creating a place where everyone can find hope, healing, and purpose."
-    }
+      "content": "To be a church that transforms lives and communities through the love of Christ, creating a place where everyone can find hope, healing, and purpose.",
+      "description": "We envision a community where faith is lived out daily",
+      "points": [],
+      "image": "/img/vision.jpg",
+      "verse": "For I know the plans I have for you, declares the Lord",
+      "quote": "We are called to be the light of the world"
+    },
+    "visionPoints": [],
+    "visionExpounded": {
+      "title": "Our Vision in Action",
+      "sections": []
+    },
+    "visionSections": []
   },
   "pastor": {
     "hero": {
-      "title": "Meet Our Pastor",
-      "subtitle": "Spiritual leadership with a heart for service",
-      "content": "Learn about our pastoral leadership and their commitment to serving our church community.",
-      "image": "/img/hero-pastor.jpg"
+      "title": "Presiding Bishop",
+      "name": "Bishop Anthony King, Sr.",
+      "subtitle": "Founding Pastor of Holy City of God Christian Fellowship, Inc.\nFirst Assistant Presiding Bishop of Maranatha Faith Fellowship International, Inc.",
+      "image": "/img/King_T_1-min.jpg"
     },
-    "profile": {
-      "name": "Pastor John Smith",
-      "title": "Senior Pastor",
-      "bio": "Pastor John has been serving Holy City of God for over 15 years. He is passionate about teaching God's Word and helping people grow in their faith journey. He holds a Master of Divinity degree and is committed to serving our community with love and compassion.",
-      "image": "/img/pastor-profile.jpg",
-      "education": [
-        "Master of Divinity - Seminary School",
-        "Bachelor of Arts in Theology - Christian University"
-      ],
-      "experience": "15+ years in pastoral ministry"
+    "vision": {
+      "title": "Ministry Vision & Mandate",
+      "verse": "Hebrews 6:1",
+      "quote": "Let us go on to perfection (maturity)",
+      "description": "Bishop King's leadership inspiration and divine mandate, received in a vision in 1998, has become his mandate and mantra. His greatest joy is to see God's people mature in Him. He truly enjoys recognizing and developing potential in those whom he leads."
+    },
+    "biography": {
+      "title": "About Bishop King",
+      "sections": [
+        {
+          "title": "Ministry Foundation",
+          "content": "Bishop Anthony K. King, Sr. is the founding pastor of Holy City of God Christian Fellowship, Inc., in Detroit, Michigan. Bishop King also serves as First Assistant Presiding Bishop of Maranatha Faith Fellowship International, Inc, in McDonough, Georgia. His ministry has shaped and encouraged the lives of thousands of people in his over 25-year ministry tenure. Therefore, Spiritual Formation is the foundation of his leadership. Bishop King's greatest passion is building people and helping them recognize that God is at work in their lives.",
+          "icon": "Heart",
+          "quote": "It is ALL good, no matter how it looks or feels. - Bishop King's life motto"
+        },
+        {
+          "title": "Leadership Background",
+          "content": "Bishop King's leadership background includes leadership on various levels throughout his walk with Christ. His leadership skills excelled as he trained and led troops in the United States Army during the Gulf War Era. During his military tenure, he received multiple leadership awards, commendations, and recognition for Training Excellence, Good Conduct, and Achievement on various levels. He was commissioned a Kentucky Colonel (the highest Humanitarian Award given by the Commonwealth of Kentucky) in 1995 for his leadership in several community projects throughout the Commonwealth of Kentucky.",
+          "icon": "Users"
+        },
+        {
+          "title": "Community Impact",
+          "content": "As a leader in the community, Bishop King has been instrumental in developing several organizations designed to transform communities and people. He founded Overcoming Obstacles for People's Success (OOPS), an organization that assists members of the community in securing employment, tutoring, interview coaching, IT training, Life Skills, and much more. He was also instrumental in helping to develop the Field of Dreams Community Development Corporation, created to assist various communities in rebuilding Detroit.",
+          "icon": "Building",
+          "highlight": "Bishop King has successfully mentored over 300 people in their professional and entrepreneurial careers."
+        },
+        {
+          "title": "Personal Interests",
+          "content": "Bishop King enjoys reading, traveling, spending time with family and friends, walks on the beach, nature, live performances, a variety of music, and art. He is a father, grandfather, brother, cousin, nephew, and friend to countless people as well as an inspirer to all with whom he comes in contact. His warm personality and genuine care for others makes him approachable and beloved by the community.",
+          "icon": "Heart"
+        }
+      ]
+    },
+    "achievements": {
+      "title": "Notable Achievements",
+      "items": [
+        {
+          "icon": "Award",
+          "title": "Kentucky Colonel",
+          "description": "Highest Humanitarian Award from Commonwealth of Kentucky (1995)",
+          "color": "bg-yellow-100 text-yellow-700"
+        },
+        {
+          "icon": "Users",
+          "title": "300+ Mentored",
+          "description": "Successfully mentored over 300 people in professional and entrepreneurial careers",
+          "color": "bg-blue-100 text-blue-700"
+        },
+        {
+          "icon": "Building",
+          "title": "Community Leader",
+          "description": "Founded OOPS and helped develop Field of Dreams Community Development Corporation",
+          "color": "bg-green-100 text-green-700"
+        },
+        {
+          "icon": "Star",
+          "title": "Military Service",
+          "description": "US Army Gulf War Era veteran with multiple leadership awards",
+          "color": "bg-purple-100 text-purple-700"
+        }
+      ]
+    },
+    "education": {
+      "title": "Educational Background",
+      "items": [
+        {
+          "degree": "Doctorate in Discipleship (In Progress)",
+          "school": "Liberty University",
+          "focus": "Spiritual Formation",
+          "icon": "GraduationCap"
+        },
+        {
+          "degree": "Master of Arts",
+          "school": "Liberty University",
+          "focus": "Christian Ministry",
+          "icon": "BookOpen"
+        },
+        {
+          "degree": "Bachelor of Administration",
+          "school": "Cleary University",
+          "focus": "Information Technology Management",
+          "icon": "Building"
+        }
+      ]
+    },
+    "calendar": {
+      "title": "Bishop King's Calendar",
+      "description": "View Bishop King's schedule and book appointments for counseling, spiritual guidance, or ministry discussions. See upcoming services and events."
+    },
+    "contact": {
+      "title": "Connect with Bishop King",
+      "description": "Whether you need spiritual guidance, counseling, or want to learn more about our ministry, Bishop King is here to serve you.",
+      "phone": "(313) 397-8240",
+      "email": "pastor@holycityofgod.org",
+      "hours": "Mon-Fri: 9AM-5PM",
+      "info": {
+        "phone": "(313) 397-8240",
+        "email": "pastor@holycityofgod.org",
+        "hours": "Mon-Fri: 9AM-5PM"
+      }
     }
   },
   "statementOfFaith": {
@@ -246,27 +401,122 @@
       "content": "Our statement of faith outlines the core beliefs that guide our church and unite us as a community of believers.",
       "image": "/img/faith.jpg"
     },
-    "beliefs": [
+    "faithSections": [
       {
         "title": "The Bible",
-        "content": "We believe the Bible is the inspired, infallible Word of God and our ultimate authority for faith and practice."
+        "content": "We believe the Bible is the inspired, infallible Word of God and our ultimate authority for faith and practice.",
+        "verse": "All Scripture is God-breathed and is useful for teaching",
+        "icon": "book"
       },
       {
         "title": "God",
-        "content": "We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit."
+        "content": "We believe in one God, eternally existing in three persons: Father, Son, and Holy Spirit.",
+        "verse": "Hear, O Israel: The Lord our God, the Lord is one",
+        "icon": "cross"
       },
       {
         "title": "Jesus Christ",
-        "content": "We believe Jesus Christ is the Son of God, fully divine and fully human, who died for our sins and rose again."
+        "content": "We believe Jesus Christ is the Son of God, fully divine and fully human, who died for our sins and rose again.",
+        "verse": "For God so loved the world that he gave his one and only Son",
+        "icon": "heart"
       },
       {
         "title": "Salvation",
-        "content": "We believe salvation is by grace through faith in Jesus Christ alone, not by works."
+        "content": "We believe salvation is by grace through faith in Jesus Christ alone, not by works.",
+        "verse": "For it is by grace you have been saved, through faith",
+        "icon": "hands"
       },
       {
         "title": "The Church",
-        "content": "We believe the church is the body of Christ, called to worship, fellowship, discipleship, ministry, and evangelism."
+        "content": "We believe the church is the body of Christ, called to worship, fellowship, discipleship, ministry, and evangelism.",
+        "verse": "And I tell you that you are Peter, and on this rock I will build my church",
+        "icon": "users"
       }
-    ]
+    ],
+    "chicagoStatement": {
+      "title": "Chicago Statement on Biblical Inerrancy",
+      "content": "We affirm the Chicago Statement on Biblical Inerrancy as our doctrinal foundation."
+    },
+    "inerrancy": {
+      "title": "Biblical Inerrancy",
+      "quotes": []
+    },
+    "inerrantSection": {
+      "title": "The Inerrant Word",
+      "quotes": []
+    }
+  },
+  "contact": {
+    "hero": {
+      "title": "Contact Us",
+      "subtitle": "We'd love to hear from you",
+      "content": "Have questions or need prayer? Reach out to us and let us know how we can serve you.",
+      "image": "/img/contact.jpg"
+    },
+    "form": {
+      "title": "Send Us a Message",
+      "description": "Fill out the form below and we'll get back to you as soon as possible."
+    },
+    "info": {
+      "title": "Contact Information"
+    },
+    "hours": {
+      "title": "Office Hours"
+    },
+    "location": {
+      "title": "Our Location",
+      "description": "Visit us at our church location"
+    }
+  },
+  "ourNetwork": {
+    "hero": {
+      "title": "Our Network",
+      "subtitle": "Connected in faith, united in purpose",
+      "description": "Discover the churches, ministries, and businesses that make up our spiritual family"
+    },
+    "ministries": {
+      "title": "Ministries",
+      "description": "Serving our community through various ministry opportunities",
+      "callToAction": "Get involved in a ministry that matches your passion and calling"
+    },
+    "outreach": {
+      "title": "Community Outreach",
+      "description": "Making a difference in our community through service and love",
+      "programs": [
+        {
+          "name": "Food Pantry",
+          "description": "Providing food assistance to families in need",
+          "schedule": "Every Saturday, 9:00 AM - 12:00 PM"
+        },
+        {
+          "name": "Youth Mentorship",
+          "description": "Guiding young people toward their God-given potential",
+          "schedule": "Tuesdays and Thursdays, 4:00 PM - 6:00 PM"
+        },
+        {
+          "name": "Senior Care",
+          "description": "Supporting our senior community with love and practical help",
+          "schedule": "Wednesdays, 10:00 AM - 2:00 PM"
+        }
+      ]
+    }
+  },
+  "posts": {
+    "hero": {
+      "title": "Blog & Updates",
+      "subtitle": "Stay connected with our church family",
+      "description": "Read the latest news, testimonies, and teachings from our community"
+    },
+    "events": {
+      "title": "Upcoming Events",
+      "description": "Join us for special services, conferences, and community gatherings"
+    }
+  },
+  "news": {
+    "hero": {
+      "title": "Church News",
+      "subtitle": "Stay informed about what's happening",
+      "description": "Latest updates, announcements, and stories from our church family"
+    }
   }
 }

@@ -14,7 +14,7 @@ export const API_CONFIG = {
     POST_ANALYTICS: "/posts/analytics",
   },
   TIMEOUT: 10000,
-  RETRY_ATTEMPTS: 3,
+  RETRY_ATTEMPTS: typeof window === "undefined" ? 3 : 1, // Server: 3 retries, Client: 1 retry
 }
 
 // Helper function to build full API URLs
@@ -33,13 +33,6 @@ export function buildApiUrl(endpoint: string, params?: Record<string, string | n
     })
     url += `?${searchParams.toString()}`
   }
-
-  console.log("[Anointed Innovations] Building API URL:", {
-    baseUrl,
-    apiPath,
-    url,
-    isServer: typeof window === "undefined",
-  })
 
   return url
 }

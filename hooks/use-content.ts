@@ -1,13 +1,13 @@
 "use client"
 
-import { useState, useEffect, useCallback } from "react"
+import { useState, useEffect } from "react"
 
 interface ServiceSchedule {
   name: string
   time: string
   description?: string
   service?: string
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface HeroSection {
@@ -16,25 +16,27 @@ interface HeroSection {
   description?: string
   content?: string
   backgroundImage?: string
+  backgroundVideo?: string
+  overlayOpacity?: number
   image?: string
   ctaText?: string
   ctaLink?: string
-  name?: string // Added name property for PastorContent compatibility
-  [key: string]: unknown // Added index signature for compatibility
+  name?: string
+  [key: string]: unknown
 }
 
 interface GivingMethod {
   method: string
   description: string
   link: string
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface CoreValue {
   title: string
   description: string
   icon: string
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface ActionCard {
@@ -43,7 +45,7 @@ interface ActionCard {
   description: string
   buttonText: string
   link: string
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface FeatureItem {
@@ -52,7 +54,7 @@ interface FeatureItem {
   description: string
   link: string
   linkText: string
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface HomeContent {
@@ -88,7 +90,7 @@ interface HomeContent {
     }
     [key: string]: unknown
   }
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface GiveContent {
@@ -98,7 +100,7 @@ interface GiveContent {
     options: GivingMethod[]
     [key: string]: unknown
   }
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface PrayerContent {
@@ -108,7 +110,7 @@ interface PrayerContent {
     description: string
     [key: string]: unknown
   }
-  [key: string]: unknown // Added index signature for compatibility
+  [key: string]: unknown
 }
 
 interface AboutSectionItem {
@@ -262,13 +264,13 @@ interface OurNetworkContent {
     title: string
     description: string
     callToAction?: string
-    items?: Ministry[] // Using Ministry type
+    items?: Ministry[]
     [key: string]: unknown
   }
   outreach: {
     title: string
     description: string
-    programs: OutreachProgram[] // Using OutreachProgram type
+    programs: OutreachProgram[]
     [key: string]: unknown
   }
   [key: string]: unknown
@@ -366,175 +368,9 @@ interface ContentHook<T extends keyof AllContent> {
 }
 
 export function useContent<T extends keyof AllContent>(page: T): ContentHook<T> {
-  const getDefaultContent = useCallback((): PageContent<T> => {
-    const pageDefaults: Partial<AllContent> = {
-      home: {
-        hero: { title: "", subtitle: "", name: "" },
-        about: { title: "", content: "", image: "" },
-        services: { title: "", content: "", schedule: [] },
-        featured: { title: "", description1: "", description2: "", features: [] },
-        cta: {
-          title: "",
-          subtitle: "",
-          verse: "",
-          actionCards: [],
-          finalCta: { text: "", link: "" },
-        },
-      },
-      give: {
-        hero: { title: "", subtitle: "", name: "" },
-        methods: { title: "", options: [] },
-      },
-      prayer: {
-        hero: { title: "", subtitle: "", name: "" },
-        form: { title: "", description: "" },
-      },
-      about: {
-        hero: { title: "", subtitle: "", name: "" },
-        story: { title: "", content: "", additionalContent: [] },
-        sections: { title: "", description: "", items: [] },
-        pastor: { title: "", name: "", image: "", badge: "", bio: "", quote: "" },
-        contact: {
-          title: "",
-          hero: { title: "", subtitle: "", name: "" },
-          location: { title: "", address: "" },
-          serviceTimes: { title: "", times: "" },
-          contact: { title: "", phone: "", email: "" },
-          ctaText: "",
-        },
-      },
-      coreValues: {
-        hero: { title: "", subtitle: "", name: "" },
-        values: [],
-        callToAction: { title: "", content: "" },
-      },
-      mission: {
-        hero: { title: "", subtitle: "", name: "" },
-        statement: { title: "", content: "" },
-        missionStatement: "",
-        vision: { title: "", content: "", description: "", points: [], image: "", verse: "", quote: "" },
-        visionPoints: [],
-        visionExpounded: { title: "", sections: [] },
-        visionSections: [],
-      },
-      pastor: {
-        hero: { title: "", subtitle: "", name: "" },
-        bio: { title: "", content: "", image: "" },
-        vision: { title: "", points: [] },
-        location: { title: "", address: "" },
-        serviceTimes: { title: "", times: "" },
-        contact: { title: "", phone: "", email: "" },
-        ctaText: "",
-      },
-      statementOfFaith: {
-        hero: { title: "", subtitle: "", name: "" },
-        faithSections: [],
-        chicagoStatement: { title: "", content: "" },
-        inerrancy: { title: "", quotes: [] },
-        inerrantSection: { title: "", quotes: [] },
-      },
-      ourNetwork: {
-        hero: { title: "", subtitle: "", name: "" },
-        ministries: { title: "", description: "", callToAction: "" },
-        outreach: { title: "", description: "", programs: [] },
-      },
-      contact: {
-        hero: { title: "", subtitle: "", name: "" },
-        info: { title: "" },
-        hours: { title: "" },
-        location: { title: "", description: "" },
-        form: { title: "", description: "" },
-      },
-      services: {
-        hero: { title: "", subtitle: "", name: "" },
-        schedule: { services: [] },
-        words: {
-          hero: {
-            title: "Words from God",
-            subtitle: "Messages from our spiritual leaders",
-            description: "Access sermons, teachings, and prophetic words shared during our services",
-          },
-        },
-      },
-      posts: {
-        hero: { title: "", subtitle: "", name: "" },
-        events: { title: "Upcoming Events", description: "Join us for special services and gatherings" },
-        news: { hero: { title: "", subtitle: "" }, description: { title: "", content: "" } },
-      },
-      news: {
-        hero: {
-          title: "Church News",
-          subtitle: "Stay informed about what's happening",
-        },
-        description: { title: "", content: "" },
-      },
-    }
-
-    return (pageDefaults[page] || {}) as PageContent<T>
-  }, [page]) // Empty dependency array since it doesn't depend on any props or state
-
-  const [content, setContent] = useState<PageContent<T>>(getDefaultContent())
+  const [content, setContent] = useState<PageContent<T>>({} as PageContent<T>)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-
-  const fetchContent = useCallback(async () => {
-    try {
-      setLoading(true)
-      console.log("[Anointed Innovations] Fetching content for page:", page)
-      console.log("[Anointed Innovations] Fetch URL:", `/api/content?page=${page}`)
-
-      const response = await fetch(`/api/content?page=${page}`)
-      console.log("[Anointed Innovations] Response status:", response.status)
-      console.log("[Anointed Innovations] Response ok:", response.ok)
-      console.log("[Anointed Innovations] Response headers:", Object.fromEntries(response.headers.entries()))
-
-      // The API should be public and never return 401 for GET requests
-      if (!response.ok) {
-        console.warn(`[Anointed Innovations] Content API returned ${response.status} for page ${page}`)
-
-        const responseText = await response.text()
-        console.log("[Anointed Innovations] Response text:", responseText)
-
-        // Try to parse the response anyway in case there's useful data
-        try {
-          const data = JSON.parse(responseText)
-          console.log("[Anointed Innovations] Parsed error response data:", data)
-          if (data.content && Object.keys(data.content).length > 0) {
-            console.log("[Anointed Innovations] Using content from error response")
-            setContent(data.content as PageContent<T>)
-            setError(null)
-            return
-          }
-        } catch (parseError) {
-          console.warn("[Anointed Innovations] Could not parse error response:", parseError)
-        }
-
-        // If we can't get content from API, use defaults
-        throw new Error(`Failed to fetch content: ${response.status}`)
-      }
-
-      const data = await response.json()
-      console.log("[Anointed Innovations] Content data received, keys:", Object.keys(data.content || {}))
-      console.log("[Anointed Innovations] Full content data:", JSON.stringify(data, null, 2))
-
-      if (data.content && Object.keys(data.content).length > 0) {
-        console.log("[Anointed Innovations] Setting content from API")
-        setContent(data.content as PageContent<T>)
-        setError(null)
-      } else {
-        console.warn(`[Anointed Innovations] Empty content received for page ${page}, using defaults`)
-        setContent(getDefaultContent())
-        setError(null)
-      }
-    } catch (err) {
-      console.error(`[Anointed Innovations] Content fetch failed for page ${page}:`, err)
-      console.error("[Anointed Innovations] Full error:", JSON.stringify(err, Object.getOwnPropertyNames(err)))
-      setContent(getDefaultContent())
-      setError(null)
-    } finally {
-      setLoading(false)
-    }
-  }, [page, getDefaultContent])
 
   const updateContent = async (page: string, newContent: Partial<PageContent<T>>) => {
     try {
@@ -559,8 +395,153 @@ export function useContent<T extends keyof AllContent>(page: T): ContentHook<T> 
   }
 
   useEffect(() => {
+    const getDefaultContent = (): PageContent<T> => {
+      const pageDefaults: Partial<AllContent> = {
+        home: {
+          hero: { title: "", subtitle: "", name: "" },
+          about: { title: "", content: "", image: "" },
+          services: { title: "", content: "", schedule: [] },
+          featured: { title: "", description1: "", description2: "", features: [] },
+          cta: {
+            title: "",
+            subtitle: "",
+            verse: "",
+            actionCards: [],
+            finalCta: { text: "", link: "" },
+          },
+        },
+        give: {
+          hero: { title: "", subtitle: "", name: "" },
+          methods: { title: "", options: [] },
+        },
+        prayer: {
+          hero: { title: "", subtitle: "", name: "" },
+          form: { title: "", description: "" },
+        },
+        about: {
+          hero: { title: "", subtitle: "", name: "" },
+          story: { title: "", content: "", additionalContent: [] },
+          sections: { title: "", description: "", items: [] },
+          pastor: { title: "", name: "", image: "", badge: "", bio: "", quote: "" },
+          contact: {
+            title: "",
+            hero: { title: "", subtitle: "", name: "" },
+            location: { title: "", address: "" },
+            serviceTimes: { title: "", times: "" },
+            contact: { title: "", phone: "", email: "" },
+            ctaText: "",
+          },
+        },
+        coreValues: {
+          hero: { title: "", subtitle: "", name: "" },
+          values: [],
+          callToAction: { title: "", content: "" },
+        },
+        mission: {
+          hero: { title: "", subtitle: "", name: "" },
+          statement: { title: "", content: "" },
+          missionStatement: "",
+          vision: { title: "", content: "", description: "", points: [], image: "", verse: "", quote: "" },
+          visionPoints: [],
+          visionExpounded: { title: "", sections: [] },
+          visionSections: [],
+        },
+        pastor: {
+          hero: { title: "", subtitle: "", name: "" },
+          bio: { title: "", content: "", image: "" },
+          vision: { title: "", points: [] },
+          location: { title: "", address: "" },
+          serviceTimes: { title: "", times: "" },
+          contact: { title: "", phone: "", email: "" },
+          ctaText: "",
+        },
+        statementOfFaith: {
+          hero: { title: "", subtitle: "", name: "" },
+          faithSections: [],
+          chicagoStatement: { title: "", content: "" },
+          inerrancy: { title: "", quotes: [] },
+          inerrantSection: { title: "", quotes: [] },
+        },
+        ourNetwork: {
+          hero: { title: "", subtitle: "", name: "" },
+          ministries: { title: "", description: "", callToAction: "" },
+          outreach: { title: "", description: "", programs: [] },
+        },
+        contact: {
+          hero: { title: "", subtitle: "", name: "" },
+          info: { title: "" },
+          hours: { title: "" },
+          location: { title: "", description: "" },
+          form: { title: "", description: "" },
+        },
+        services: {
+          hero: { title: "", subtitle: "", name: "" },
+          schedule: { services: [] },
+          words: {
+            hero: {
+              title: "Words from God",
+              subtitle: "Messages from our spiritual leaders",
+              description: "Access sermons, teachings, and prophetic words shared during our services",
+            },
+          },
+        },
+        posts: {
+          hero: { title: "", subtitle: "", name: "" },
+          events: { title: "Upcoming Events", description: "Join us for special services and gatherings" },
+          news: { hero: { title: "", subtitle: "" }, description: { title: "", content: "" } },
+        },
+        news: {
+          hero: {
+            title: "Church News",
+            subtitle: "Stay informed about what's happening",
+          },
+          description: { title: "", content: "" },
+        },
+      }
+
+      return (pageDefaults[page] || {}) as PageContent<T>
+    }
+
+    const fetchContent = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch(`/api/content?page=${page}`)
+
+        if (!response.ok) {
+          const responseText = await response.text()
+          try {
+            const data = JSON.parse(responseText)
+            if (data.content && Object.keys(data.content).length > 0) {
+              setContent(data.content as PageContent<T>)
+              setError(null)
+              return
+            }
+          } catch {
+            // Silent fallback to defaults
+          }
+
+          throw new Error(`Failed to fetch content: ${response.status}`)
+        }
+
+        const data = await response.json()
+
+        if (data.content && Object.keys(data.content).length > 0) {
+          setContent(data.content as PageContent<T>)
+          setError(null)
+        } else {
+          setContent(getDefaultContent())
+          setError(null)
+        }
+      } catch {
+        setContent(getDefaultContent())
+        setError(null)
+      } finally {
+        setLoading(false)
+      }
+    }
+
     fetchContent()
-  }, [fetchContent])
+  }, [page]) // Only depends on page - no function dependencies!
 
   return { content, loading, error, updateContent }
 }
@@ -570,29 +551,33 @@ export function useAdminContent() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchContent = useCallback(async () => {
-    try {
-      setLoading(true)
-      const response = await fetch("/api/content")
+  useEffect(() => {
+    const fetchContent = async () => {
+      try {
+        setLoading(true)
+        const response = await fetch("/api/content")
 
-      if (response.status === 401) {
-        setError("Authentication required")
-        return
+        if (response.status === 401) {
+          setError("Authentication required")
+          return
+        }
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch content")
+        }
+
+        const data = await response.json()
+        setContent(data.content as AllContent)
+        setError(null)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "An error occurred")
+      } finally {
+        setLoading(false)
       }
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch content")
-      }
-
-      const data = await response.json()
-      setContent(data.content as AllContent)
-      setError(null)
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "An error occurred")
-    } finally {
-      setLoading(false)
     }
-  }, [])
+
+    fetchContent()
+  }, []) // Empty dependency array - runs once on mount
 
   const updateContent = async (page: string, newContent: Partial<AllContent[keyof AllContent]>) => {
     try {
@@ -608,16 +593,20 @@ export function useAdminContent() {
         throw new Error("Failed to update content")
       }
 
-      fetchContent() // Refetch all content
+      // Refetch all content after update
+      const fetchUpdatedContent = async () => {
+        const response = await fetch("/api/content")
+        if (response.ok) {
+          const data = await response.json()
+          setContent(data.content as AllContent)
+        }
+      }
+      fetchUpdatedContent()
     } catch (err) {
       setError(err instanceof Error ? err.message : "Failed to update content")
       throw err
     }
   }
-
-  useEffect(() => {
-    fetchContent()
-  }, [fetchContent])
 
   return { content, loading, error, updateContent }
 }
