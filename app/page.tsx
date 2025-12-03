@@ -54,8 +54,8 @@ export default function Home() {
                 <Image
                   src="/img/church-logo.png"
                   alt="Holy City of God Christian Fellowship Inc."
-                  width={150}
-                  height={150}
+                  width={250}
+                  height={250}
                   className="object-contain"
                 />
               </div>
