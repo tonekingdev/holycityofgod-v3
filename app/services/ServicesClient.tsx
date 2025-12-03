@@ -57,7 +57,7 @@ export default function ServicesClient() {
                       className="flex items-center justify-center gap-3"
                     >
                       <Globe className="w-5 h-5" />
-                      <span className="font-semibold">Online Meeting</span>
+                      <span className="font-semibold">Join our Online Meeting</span>
                     </a>
                   </Button>
                   
@@ -74,7 +74,7 @@ export default function ServicesClient() {
                       className="flex items-center justify-center gap-3"
                     >
                       <Languages className="w-5 h-5" />
-                      <span className="font-semibold">International</span>
+                      <span className="font-semibold">Join International</span>
                     </a>
                   </Button>
                 </div>
