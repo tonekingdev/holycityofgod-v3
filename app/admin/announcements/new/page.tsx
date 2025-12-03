@@ -113,7 +113,7 @@ export default function NewAnnouncementPage() {
       <form onSubmit={(e) => handleSubmit(e, false)} className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Main Content */}
         <div className="lg:col-span-2 space-y-6">
-          <Card className="card-royal">
+          <Card className="bg-secondary-50">
             <CardHeader>
               <CardTitle className="text-purple-800">Announcement Content</CardTitle>
             </CardHeader>
@@ -153,7 +153,7 @@ export default function NewAnnouncementPage() {
         {/* Sidebar */}
         <div className="space-y-6">
           {/* Announcement Settings */}
-          <Card className="card-royal">
+          <Card className="bg-secondary-50">
             <CardHeader>
               <CardTitle className="text-purple-800">Settings</CardTitle>
             </CardHeader>
@@ -166,7 +166,7 @@ export default function NewAnnouncementPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="general">General</SelectItem>
                     <SelectItem value="service">Service</SelectItem>
                     <SelectItem value="event">Event</SelectItem>
@@ -188,7 +188,7 @@ export default function NewAnnouncementPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="low">Low</SelectItem>
                     <SelectItem value="normal">Normal</SelectItem>
                     <SelectItem value="high">High</SelectItem>
@@ -208,7 +208,7 @@ export default function NewAnnouncementPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="all">All Members</SelectItem>
                     <SelectItem value="members">Members Only</SelectItem>
                     <SelectItem value="leadership">Leadership</SelectItem>
@@ -230,7 +230,7 @@ export default function NewAnnouncementPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="draft">Draft</SelectItem>
                     <SelectItem value="published">Published</SelectItem>
                     <SelectItem value="scheduled">Scheduled</SelectItem>
@@ -241,7 +241,7 @@ export default function NewAnnouncementPage() {
           </Card>
 
           {/* Scheduling */}
-          <Card className="card-royal">
+          <Card className="bg-secondary-50">
             <CardHeader>
               <CardTitle className="text-purple-800 flex items-center gap-2">
                 <Calendar className="h-5 w-5" />

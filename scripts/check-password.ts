@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs"
 import { executeQuery } from "../lib/database"
 
 async function checkPassword() {
-  const email = "admin@renewedremnant.org"
+  const email = "tone@tonekingdev.com"
   const testPassword = "admin123" // Enter what you think the password should be
 
   try {

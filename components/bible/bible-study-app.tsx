@@ -2,7 +2,7 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import { BookOpen, Search, Heart, ChevronRight } from "lucide-react"
+import { BookOpen, Search, Heart, ChevronRight, Home } from "lucide-react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -15,6 +15,10 @@ export default function BibleStudyApp() {
   const [selectedBook, setSelectedBook] = useState("")
   const [selectedChapter, setSelectedChapter] = useState("")
   const [searchQuery, setSearchQuery] = useState("")
+
+  const handleBackHome = () => {
+    router.push("/")
+  }
 
   const handleSearch = () => {
     // TODO: Implement search functionality
@@ -72,7 +76,7 @@ export default function BibleStudyApp() {
                     <SelectTrigger className="flex-1">
                       <SelectValue placeholder="Genesis" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-primary-50">
                       {BIBLE_BOOKS.map((book) => (
                         <SelectItem key={book.name} value={book.name}>
                           {book.name}
@@ -84,7 +88,7 @@ export default function BibleStudyApp() {
                     <SelectTrigger className="w-20">
                       <SelectValue placeholder="1" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-primary-50">
                       {Array.from({ length: 50 }, (_, i) => i + 1).map((chapter) => (
                         <SelectItem key={chapter} value={chapter.toString()}>
                           {chapter}
@@ -168,6 +172,12 @@ export default function BibleStudyApp() {
                 </div>
               </CardContent>
             </Card>
+          </div>
+          <div className="flex items-center mt-8 justify-center">
+            <Button variant="outline" onClick={handleBackHome}>
+              <Home className="h-4 w-4 mr-2" />
+              Back to Home
+            </Button>
           </div>
         </div>
       </section>

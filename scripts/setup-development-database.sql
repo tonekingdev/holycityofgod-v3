@@ -606,7 +606,7 @@ INSERT INTO users (username, email, password_hash, first_name, last_name, primar
 -- Network Leadership
 ('cking', 'cking@holycityofgod.org', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/hL.hl.vHm', 'Cliffondra', 'King', 1, 3, 1),
 ('admin', 'admin@holycityofgod.org', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/hL.hl.vHm', 'Network', 'Administrator', 1, 2, NULL),
-('bishop.king', 'bishop@holycityofgod.org', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/hL.hl.vHm', 'Anthony', 'King', 1, 4, 2),
+('bishop.king', 'pastor@holycityofgod.org', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/hL.hl.vHm', 'Anthony', 'King', 1, 4, 2),
 
 -- Church Pastors
 ('pastor.main', 'pastor.main@holycityofgod.org', '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj/hL.hl.vHm', 'John', 'Smith', 1, 5, 3),
@@ -735,7 +735,7 @@ SELECT 'Super Admin (Tone King): tone@tonekingdev.com / admin123' as super_admin
 SELECT 'Super Admin (Krissie Knight): krisk@tonekingdev.com / admin123' as super_admin_2;
 SELECT 'First Lady (Cliffondra King): cking@holycityofgod.org / admin123' as first_lady;
 SELECT 'Network Admin: admin@holycityofgod.org / admin123' as network_admin;
-SELECT 'Bishop: bishop@holycityofgod.org / admin123' as bishop_login;
+SELECT 'Bishop: pastor@holycityofgod.org / admin123' as bishop_login;
 SELECT 'Sample pastor login: pastor.main@holycityofgod.org / admin123' as pastor_login;
 SELECT COUNT(*) as total_churches FROM churches;
 SELECT COUNT(*) as total_users FROM users;

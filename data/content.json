@@ -9,12 +9,12 @@
       "ctaLink": "/services",
       "backgroundImage": "/img/church-interior.jpg?height=1080&width=1920",
       "backgroundVideo": "",
-      "overlayOpacity": 70
+      "overlayOpacity": 80
     },
     "about": {
       "title": "Welcome to Our Church",
       "content": "We are a community of believers dedicated to worship, fellowship, and serving God together.",
-      "image": "/img/church-logo.png"
+      "image": "/img/church-interior.jpg"
     },
     "services": {
       "title": "Our Services",
@@ -44,7 +44,7 @@
       "features": [
         {
           "icon": "faCalendar",
-          "title": "Upcoming Services",
+          "title": "Worship Services",
           "description": "Join us for worship and fellowship",
           "link": "/services",
           "linkText": "View Service Times"
@@ -73,7 +73,7 @@
       ]
     },
     "cta": {
-      "title": "Join Our Church Family",
+      "title": "Partner with Us",
       "subtitle": "Experience the love, fellowship, and spiritual growth that comes from being part of our community.",
       "verse": "\"For where two or three gather in my name, there am I with them.\" - Matthew 18:20",
       "actionCards": [
@@ -100,7 +100,7 @@
         }
       ],
       "finalCta": {
-        "text": "Learn about HCOG",
+        "text": "Learn More About Us",
         "link": "/about"
       }
     }
@@ -110,7 +110,7 @@
       "title": "Give with a Generous Heart",
       "subtitle": "Your generosity helps us serve our community and spread God's love",
       "content": "Every gift, no matter the size, makes a difference in the lives of those we serve. Thank you for your faithful giving.",
-      "image": "/img/giving.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "methods": {
       "title": "Ways to Give",
@@ -138,7 +138,7 @@
       "title": "Prayer Requests",
       "subtitle": "We believe in the power of prayer",
       "content": "Submit your prayer requests and let our community lift you up in prayer. God hears every prayer and cares about every concern.",
-      "image": "/img/prayer.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "form": {
       "title": "Submit a Prayer Request",
@@ -150,25 +150,111 @@
       "title": "Worship Services",
       "subtitle": "Come as you are, leave transformed",
       "content": "Experience meaningful worship, inspiring messages, and fellowship with believers who care about your spiritual journey.",
-      "image": "/img/worship.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "schedule": {
       "title": "Service Times",
       "services": [
         {
           "name": "Sunday School",
-          "time":"10:00 AM",
-          "description": "Learn the scriptures within context"
+          "time": "10:00 AM",
+          "description": "Learn the scriptures within context.",
+          "localLink": "https://join.freeconferencecall.com/100-009-769",
+          "internationalLink": "https://fccdl.in/i/100-009-769"
         },
         {
           "name": "Sunday Morning Worship",
           "time": "11:00 AM",
-          "description": "Join us for inspiring worship, biblical teaching, and community fellowship."
+          "description": "Join us for inspiring worship, biblical teaching, and community fellowship.",
+          "localLink": "https://join.freeconferencecall.com/100-009-769",
+          "internationalLink": "https://fccdl.in/i/100-009-769"
         },
         {
           "name": "Wednesday Bible Study",
           "time": "7:00 PM",
-          "description": "Dive deeper into God's Word with interactive Bible study and discussion."
+          "description": "Dive deeper into God's Word with interactive Bible study and discussion.",
+          "localLink": "https://join.freeconferencecall.com/100-009-769",
+          "internationalLink": "https://fccdl.in/i/100-009-769"
+        }
+      ]
+    },
+    "ministries": {
+      "title": "Ministries",
+      "subtitle": "We minister to the needs of others through specific ministries designed to enlighten, encourage, guide, and assist others at every level in Christ. We accomplish this through our Men's, Women's, Youth, Marriage & Family Enrichment, Singles, and Educational Ministries. (Eph 4:12-13; Heb. 6:1-2)",
+      "departments": [
+        {
+          "id": "mens",
+          "name": "Men's Ministry",
+          "description": "Empowering men to be godly leaders in their homes, churches, and communities through fellowship, discipleship, and service.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "Men of all ages",
+          "activities": [
+            "Men's Bible Study",
+            "Leadership Development",
+            "Community Service Projects",
+            "Fellowship Events"
+          ],
+          "contact": "Contact church office for more information"
+        },
+        {
+          "id": "womens",
+          "name": "Women's Ministry",
+          "description": "Building a community of women who support, encourage, and inspire one another in their walk with Christ through prayer, study, and fellowship.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "Women of all ages",
+          "activities": ["Women's Bible Study", "Prayer Groups", "Mentorship Programs", "Community Outreach"],
+          "contact": "Contact church office for more information"
+        },
+        {
+          "id": "youth",
+          "name": "Youth Ministry",
+          "description": "Guiding young people to develop a strong foundation in Christ through engaging activities, biblical teaching, and positive peer relationships.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "Middle and High School Students",
+          "activities": ["Youth Group Meetings", "Bible Studies", "Service Projects", "Youth Events and Retreats"],
+          "contact": "Contact church office for more information"
+        },
+        {
+          "id": "marriage-family-enrichment",
+          "name": "Marriage & Family Enrichment",
+          "description": "Strengthening marriages and families through biblical principles, counseling, and support to build healthy, Christ-centered relationships.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "Married Couples and Families",
+          "activities": ["Marriage Enrichment Workshops", "Family Counseling", "Parenting Classes", "Family Events"],
+          "contact": "Contact church office for more information"
+        },
+        {
+          "id": "singles",
+          "name": "Singles Ministry",
+          "description": "Creating a supportive community for single adults to grow spiritually, build meaningful friendships, and serve together in Christ.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "Single Adults",
+          "activities": ["Singles Bible Study", "Social Events", "Service Opportunities", "Fellowship Gatherings"],
+          "contact": "Contact church office for more information"
+        },
+        {
+          "id": "outreach",
+          "name": "Outreach Ministry",
+          "description": "Services that reach out and touch lives to bring them into God's covering.",
+          "meetingTime":"Contact office for meeting times",
+          "targetAudience":"All Ages",
+          "activities": ["Feeding the hungry", "Tent Revivals", "Conferences", "Community Outreach"],
+          "contact":"Contact church office for more information"
+        },
+        {
+          "id": "educational",
+          "name": "Educational Ministry",
+          "description": "Equipping believers with biblical knowledge and practical skills for spiritual growth through structured teaching, training, and discipleship programs.",
+          "leader": "To Be Announced",
+          "meetingTime": "Contact office for meeting times",
+          "targetAudience": "All Ages",
+          "activities": ["Sunday School", "Bible Study Classes", "Discipleship Training", "Leadership Development"],
+          "contact": "Contact church office for more information"
         }
       ]
     },
@@ -183,19 +269,50 @@
   "about": {
     "hero": {
       "title": "About Holy City of God",
-      "subtitle": "Our story, our mission, our community",
-      "content": "Learn about our church's history, beliefs, and the community that makes Holy City of God a special place to worship and grow.",
-      "image": "/img/about-hero.jpg"
+      "subtitle": "",
+      "content": "",
+      "image": "/img/placeholder.jpg"
     },
     "story": {
-      "title": "Our Story",
-      "content": "Holy City of God was founded with a vision to create a welcoming community where people from all walks of life can come together to worship, learn, and serve. Our church has been a beacon of hope and love in our community for many years.",
-      "additionalContent": []
+      "title": "Who we are",
+      "content": "Holy City of God Christian Fellowship is a part of the Body of Christ that is centered on Christ Himself, and His mission of reconciliation. We understand that true reconciliation to God is the process of having an intimate and loving relationship with our Creator. During this process, a nurturing relationship is formed, and we find our hope, peace, love, fulfillment, and joy in Him. We believe this is our foundational relationship that hinges on the success of all other relationships.",
+      "additionalContent": [
+        "We agree with Peter when he said, “Silver and gold have I none; but such as I have give I thee: in the name of Jesus Christ of Nazareth,” having Jesus is better than having silver or gold. Maintaining this relationship revolutionizes our entire lives. Holy City is dedicated to the personal success of every member. We are committed to reaching beyond carnal limitations and inheriting the promise of eternal life; therefore, all of our efforts are focused and directed towards this purpose."
+      ]
     },
     "sections": {
       "title": "Explore Our Church",
       "description": "Learn more about what makes Holy City of God special",
-      "items": []
+      "items": [
+        {
+          "title": "Our Mission",
+          "description": "Discover our calling to spread God's love and build His kingdom",
+          "icon": "Heart",
+          "href": "/about/mission",
+          "color": "bg-red-100 text-red-700 border-red-200"
+        },
+        {
+          "title": "Core Values",
+          "description": "The fundamental principles that guide our church community",
+          "icon": "Users",
+          "href": "/about/core-values",
+          "color": "bg-blue-100 text-blue-700 border-blue-200"
+        },
+        {
+          "title": "Our Services",
+          "description": "Worship times, special events, and ministry opportunities",
+          "icon": "Church",
+          "href": "/services",
+          "color": "bg-green-100 text-green-700 border-green-200"
+        },
+        {
+          "title": "Statement of Faith",
+          "description": "Our biblical beliefs and doctrinal foundations",
+          "icon": "BookOpen",
+          "href": "/about/statement-of-faith",
+          "color": "bg-purple-100 text-purple-700 border-purple-200"
+        }
+      ]
     },
     "pastor": {
       "title": "Meet Our Pastor",
@@ -209,15 +326,15 @@
       "title": "Visit Us",
       "location": {
         "title": "Our Location",
-        "address": "123 Faith Street, Holy City"
+        "address": "16606 James Couzens Fwy, Detroit, MI 48221"
       },
       "serviceTimes": {
         "title": "Service Times",
-        "times": "Sunday 10:00 AM, Wednesday 7:00 PM"
+        "times": "Sunday School 10:00 AM, Sunday Worship 11:00 AM, Wednesday 7:00 PM"
       },
       "contact": {
         "title": "Contact Us",
-        "phone": "(555) 123-4567",
+        "phone": "(313) 397-8240",
         "email": "info@holycityofgod.org"
       },
       "ctaText": "Get Directions"
@@ -228,7 +345,7 @@
       "title": "Our Core Values",
       "subtitle": "The principles that guide our church",
       "content": "These values shape everything we do as a church community and guide our mission to serve God and others.",
-      "image": "/img/core-values.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "values": [
       {
@@ -262,7 +379,7 @@
       "title": "Our Mission",
       "subtitle": "Called to serve, equipped to love",
       "content": "Our mission drives everything we do as a church community, guiding our worship, outreach, and service to others.",
-      "image": "/img/mission.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "statement": {
       "title": "Mission Statement",
@@ -274,7 +391,7 @@
       "content": "To be a church that transforms lives and communities through the love of Christ, creating a place where everyone can find hope, healing, and purpose.",
       "description": "We envision a community where faith is lived out daily",
       "points": [],
-      "image": "/img/vision.jpg",
+      "image": "/img/placeholder.jpg",
       "verse": "For I know the plans I have for you, declares the Lord",
       "quote": "We are called to be the light of the world"
     },
@@ -379,7 +496,7 @@
     },
     "calendar": {
       "title": "Bishop King's Calendar",
-      "description": "View Bishop King's schedule and book appointments for counseling, spiritual guidance, or ministry discussions. See upcoming services and events."
+      "description": "View Bishop King's schedule and book appointments for counseling, spiritual guidance, or ministry discussions. See Worship Services and events."
     },
     "contact": {
       "title": "Connect with Bishop King",
@@ -399,7 +516,7 @@
       "title": "Statement of Faith",
       "subtitle": "What we believe",
       "content": "Our statement of faith outlines the core beliefs that guide our church and unite us as a community of believers.",
-      "image": "/img/faith.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "faithSections": [
       {
@@ -451,7 +568,7 @@
       "title": "Contact Us",
       "subtitle": "We'd love to hear from you",
       "content": "Have questions or need prayer? Reach out to us and let us know how we can serve you.",
-      "image": "/img/contact.jpg"
+      "image": "/img/placeholder.jpg"
     },
     "form": {
       "title": "Send Us a Message",

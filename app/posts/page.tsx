@@ -179,7 +179,7 @@ export default function PostsPage() {
                 <SelectTrigger className="w-full md:w-48">
                   <SelectValue placeholder="All Categories" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="all">All Categories</SelectItem>
                   {categories.map((category) => (
                     <SelectItem
@@ -196,7 +196,7 @@ export default function PostsPage() {
                 <SelectTrigger className="w-full md:w-48">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="publishedAt-desc">Newest First</SelectItem>
                   <SelectItem value="publishedAt-asc">Oldest First</SelectItem>
                   <SelectItem value="title-asc">Title A-Z</SelectItem>

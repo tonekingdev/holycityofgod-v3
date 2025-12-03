@@ -29,7 +29,7 @@ const SAMPLE_POSTS: Post[] = [
     category: POST_CATEGORIES[0], // Faith
     author: {
       name: "Bishop Anthony King, Sr.",
-      role: "Senior Pastor",
+      role: "Presiding Bishop",
       avatar: "/img/King_T_1-min.jpg",
     },
     publishedAt: new Date("2024-01-15"),

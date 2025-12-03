@@ -315,7 +315,7 @@ export default function ProfilePage() {
                       value={profile.phone || ""}
                       onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
                       disabled={!isEditing}
-                      placeholder="(313) 555-0123"
+                      placeholder="(313) 397-8240"
                       className="h-11"
                     />
                   </div>

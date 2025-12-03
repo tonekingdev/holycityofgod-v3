@@ -374,7 +374,7 @@ export default function EditContentPage() {
                             <SelectTrigger className="border-purple-200">
                               <SelectValue />
                             </SelectTrigger>
-                            <SelectContent>
+                            <SelectContent className="bg-white">
                               <SelectItem value="text">Text</SelectItem>
                               <SelectItem value="image">Image</SelectItem>
                               <SelectItem value="card">Card</SelectItem>
@@ -519,7 +519,7 @@ export default function EditContentPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           <SelectItem value="draft">Draft</SelectItem>
                           <SelectItem value="published">Published</SelectItem>
                           <SelectItem value="scheduled">Scheduled</SelectItem>
@@ -533,7 +533,7 @@ export default function EditContentPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           <SelectItem value="About">About</SelectItem>
                           <SelectItem value="Services">Services</SelectItem>
                           <SelectItem value="Give">Give</SelectItem>

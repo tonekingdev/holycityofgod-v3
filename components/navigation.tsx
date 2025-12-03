@@ -34,6 +34,7 @@ import {
   Mic,
   CalendarDays,
   Newspaper,
+  Phone,
 } from "lucide-react"
 
 const navItems = [
@@ -44,6 +45,7 @@ const navItems = [
   { href: "/services", label: "Services", icon: Mic, hasDropdown: true },
   { href: "/posts", label: "Posts", icon: Calendar, hasDropdown: true },
   { href: "/give", label: "Give", icon: Heart },
+  { href: "/contact", label: "Contact", icon: Phone },
 ]
 
 const aboutLinks = [
@@ -188,7 +190,7 @@ export function Navigation() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6">
+          <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (
               <div key={item.href} className="relative">
                 {item.hasDropdown ? (

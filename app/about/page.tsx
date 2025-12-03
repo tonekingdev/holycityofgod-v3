@@ -86,7 +86,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto text-center">
             <DropInView>
               <div className="flex justify-center mb-8">
-                <div className="relative h-32 w-32 bg-white rounded-full p-4 shadow-2xl">
+                <div className="relative h-32 w-32 bg-white rounded-full p-4 shadow-2xl overflow-hidden">
                   <Image
                     src="/img/church-logo.png"
                     alt="Holy City of God Christian Fellowship"
@@ -101,19 +101,6 @@ export default function AboutPage() {
             <DropInView delay={0.2}>
               <h1 className="text-5xl md:text-6xl font-bold mb-6">{content?.hero?.title || "About Our Church"}</h1>
             </DropInView>
-
-            <FadeInView delay={0.4}>
-              <p className="text-xl md:text-2xl mb-8 opacity-90 leading-relaxed">
-                {content?.hero?.subtitle || "Holy City of God Christian Fellowship Inc."}
-              </p>
-            </FadeInView>
-
-            <FadeInView delay={0.6}>
-              <p className="text-lg opacity-80 max-w-3xl mx-auto leading-relaxed">
-                {content?.hero?.content ||
-                  "A community centered on Christ and His mission of reconciliation, dedicated to building intimate relationships with our Creator and each other."}
-              </p>
-            </FadeInView>
           </div>
         </div>
       </section>
@@ -124,7 +111,7 @@ export default function AboutPage() {
           <div className="max-w-4xl mx-auto">
             <DropInView>
               <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-                {content?.story?.title || "Welcome to Our Family"}
+                {content?.story?.title || "Who we are"}
               </h2>
             </DropInView>
 
@@ -237,7 +224,7 @@ export default function AboutPage() {
                       <div className="relative w-48 h-48 mx-auto mb-4 rounded-full overflow-hidden bg-purple-100">
                         <Image
                           src={content?.pastor?.image || "/img/placeholder.jpg?height=200&width=200&text=Pastor+Photo"}
-                          alt={content?.pastor?.name || "Pastor"}
+                          alt={content?.pastor?.name || "Bishop Anthony King, Sr."}
                           fill
                           className="object-cover"
                         />
@@ -258,6 +245,16 @@ export default function AboutPage() {
                         {content?.pastor?.quote ||
                           '"My prayer is that every person who walks through our doors will encounter the transforming love of Jesus Christ and discover their purpose in God\'s kingdom."'}
                       </p>
+                      <div className="mt-2 space-y-2">
+                        <Link href="/about/pastor">
+                          <Button variant="ghost" className="bg-transparent">
+                            Read More
+                            <span className="ml-2">
+                              <ArrowRight className="h-4 w-4" />
+                            </span>
+                          </Button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </CardContent>
@@ -327,9 +324,14 @@ export default function AboutPage() {
             </div>
 
             <FadeInView delay={0.9}>
-              <div className="text-center mt-12">
-                <Button asChild size="lg" className="bg-purple-600 hover:bg-purple-700 px-8 py-4 text-lg">
-                  <Link href="/contact" className="text-gold-100 hover:text-gold-400 transition-colors">
+              <div className="flex items-center justify-center gap-3 mt-12">
+                <Button asChild size="lg" className="bg-gray-200 text-black hover:bg-gray-300 px-8 py-4 text-lg">
+                  <Link href="/" className="text-black hover:text-primary transition-colors">
+                    Back to Home
+                  </Link>
+                </Button>
+                <Button asChild size="lg" className="bg-purple-600 hover:bg-secondary-300 px-8 py-4 text-lg">
+                  <Link href="/contact" className="text-gold-100 hover:text-secondary-400 transition-colors">
                     {content?.contact?.ctaText || "Plan Your Visit"}
                   </Link>
                 </Button>

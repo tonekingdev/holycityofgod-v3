@@ -60,7 +60,7 @@ export function UsersManager() {
             permissions: ["church_admin", "content_manage", "user_manage"],
           },
           position: {
-            name: "Senior Pastor",
+            name: "Presiding Bishop",
             is_leadership: true,
             is_clergy: true,
           },

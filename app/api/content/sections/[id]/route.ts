@@ -10,7 +10,7 @@ const mockSections = [
     category: "Global",
     content: {
       address: "28333 Marcia Ave, Warren, MI 48093",
-      phone: "(313) 555-0123",
+      phone: "(313) 397-8240",
       email: "info@holycityofgod.org",
       website: "https://holycityofgod.org",
     },

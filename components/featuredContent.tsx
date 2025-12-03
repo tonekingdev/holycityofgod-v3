@@ -44,7 +44,7 @@ export default function FeaturedContent() {
   const defaultFeatures: FeatureItem[] = [
     {
       icon: "faCalendar",
-      title: "Upcoming Services",
+      title: "Worship Services",
       description: "Join us for worship and fellowship",
       link: "/services",
       linkText: "View Service Times",
@@ -129,28 +129,43 @@ export default function FeaturedContent() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
           {features.map((feature: FeatureItem, index: number) => (
             <FadeInView key={index} delay={0.8 + index * 0.15}>
-              <div className="text-center p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 bg-white rounded-lg hover:scale-105 hover:border-purple-200 group">
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4 group-hover:scale-110 transition-transform">
-                  <FontAwesomeIcon
-                    icon={getIcon(feature.icon)}
-                    className="w-8 h-8 text-primary group-hover:text-purple-700 transition-colors"
-                  />
+              <Link 
+                href={feature.link} 
+                className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 rounded-lg"
+                aria-label={`Learn more about ${feature.title}: ${feature.description}`}
+              >
+                <div className="text-center p-6 hover:shadow-lg transition-all duration-300 border border-gray-100 bg-white rounded-lg hover:scale-105 hover:border-purple-200 group cursor-pointer">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-full mb-4 group-hover:scale-110 transition-transform">
+                    <FontAwesomeIcon
+                      icon={getIcon(feature.icon)}
+                      className="w-8 h-8 text-primary group-hover:text-purple-700 transition-colors"
+                    />
+                  </div>
+                  <h3 className="text-xl font-semibold text-secondary-900 mb-2 group-hover:text-purple-700 transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-secondary mb-4">{feature.description}</p>
+                  
+                  {/* Keep the explicit link but prevent it from bubbling up clicks */}
+                  <div 
+                    onClick={(e) => e.stopPropagation()}
+                    className="inline-block"
+                  >
+                    <Link
+                      href={feature.link}
+                      className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium group-hover:gap-3 transition-all"
+                      tabIndex={-1} // Remove from tab order since parent is tabbable
+                      aria-hidden="true" // Hide from screen readers since parent has aria-label
+                    >
+                      {feature.linkText}
+                      <FontAwesomeIcon
+                        icon={faArrowRight}
+                        className="w-4 h-4 group-hover:translate-x-1 transition-transform"
+                      />
+                    </Link>
+                  </div>
                 </div>
-                <h3 className="text-xl font-semibold text-secondary-900 mb-2 group-hover:text-purple-700 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-secondary mb-4">{feature.description}</p>
-                <Link
-                  href={feature.link}
-                  className="inline-flex items-center gap-2 text-gold-600 hover:text-gold-700 font-medium group-hover:gap-3 transition-all"
-                >
-                  {feature.linkText}
-                  <FontAwesomeIcon
-                    icon={faArrowRight}
-                    className="w-4 h-4 group-hover:translate-x-1 transition-transform"
-                  />
-                </Link>
-              </div>
+              </Link>
             </FadeInView>
           ))}
         </div>

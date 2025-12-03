@@ -209,12 +209,12 @@ export default function StatementOfFaithPage() {
                   <div className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-secondary-500">
                     <div className="flex items-start space-x-4">
                       <div className="bg-secondary-100 p-3 rounded-full">
-                        <IconComponent className="h-6 w-6 text-secondary-600" />
+                        <IconComponent className="h-6 w-6 text-secondary" />
                       </div>
                       <div className="flex-1">
                         <h2 className="text-2xl font-bold text-gray-900 mb-4">{section.title}</h2>
                         <p className="text-gray-700 leading-relaxed mb-4">{section.content}</p>
-                        <p className="text-sm text-secondary-600 italic">{section.verse}</p>
+                        <p className="text-sm text-secondary italic">{section.verse}</p>
                       </div>
                     </div>
                   </div>
@@ -271,7 +271,7 @@ export default function StatementOfFaithPage() {
               ).map((quote: { quote?: string; text?: string; author: string }, index: number) => (
                 <div key={index} className="border-l-4 border-secondary-500 pl-6">
                   <p className="text-gray-700 leading-relaxed italic mb-2">&quot;{quote.quote || quote.text}&quot;</p>
-                  <p className="text-sm text-secondary-600 font-semibold">- {quote.author}</p>
+                  <p className="text-sm text-secondary font-semibold">- {quote.author}</p>
                 </div>
               ))}
             </div>

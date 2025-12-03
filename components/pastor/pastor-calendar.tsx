@@ -292,7 +292,7 @@ export default function PastorCalendar() {
                           <SelectTrigger>
                             <SelectValue placeholder="Select type" />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-white">
                             <SelectItem value="meeting">Meeting</SelectItem>
                             <SelectItem value="counseling">Counseling</SelectItem>
                             <SelectItem value="service">Service</SelectItem>

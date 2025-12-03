@@ -12,17 +12,23 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Switch } from "@/components/ui/switch"
 import { Badge } from "@/components/ui/badge"
-import { ArrowLeft, Save, Eye, X } from "lucide-react"
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { ArrowLeft, Save, Eye, X, Upload, ImageIcon } from "lucide-react"
 import Link from "next/link"
 import { POST_CATEGORIES, POST_TAGS } from "@/types"
-import type { CreatePostPayload } from "@/types"
+import type { CreatePostPayload, MediaFile } from "@/types"
 import { useAuth } from "@/context/auth-context"
+import Image from "next/image"
+import { FileUpload } from "@/components/admin/file-upload"
+import { DirectoryBrowser } from "@/components/admin/directory-browser"
 
 export default function NewPostPage() {
   const router = useRouter()
   const { user } = useAuth()
   const [loading, setLoading] = useState(false)
   const [selectedTags, setSelectedTags] = useState<string[]>([])
+  const [featuredImageDialogOpen, setFeaturedImageDialogOpen] = useState(false)
   const [formData, setFormData] = useState<Partial<CreatePostPayload>>({
     title: "",
     excerpt: "",
@@ -55,6 +61,31 @@ export default function NewPostPage() {
 
       return newTags
     })
+  }
+
+  const handleUploadComplete = (files: MediaFile[]) => {
+    if (files.length > 0) {
+      setFormData((prev) => ({
+        ...prev,
+        featuredImage: files[0].url,
+      }))
+      setFeaturedImageDialogOpen(false)
+    }
+  }
+
+  const handleFileSelect = (file: MediaFile) => {
+    setFormData((prev) => ({
+      ...prev,
+      featuredImage: file.url,
+    }))
+    setFeaturedImageDialogOpen(false)
+  }
+
+  const handleClearImage = () => {
+    setFormData((prev) => ({
+      ...prev,
+      featuredImage: "",
+    }))
   }
 
   const handleSubmit = async (e: React.FormEvent, publishNow = false) => {
@@ -257,7 +288,7 @@ export default function NewPostPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue placeholder="Select category" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     {POST_CATEGORIES.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}
@@ -278,7 +309,7 @@ export default function NewPostPage() {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="draft">Draft</SelectItem>
                     <SelectItem value="published">Published</SelectItem>
                     <SelectItem value="archived">Archived</SelectItem>
@@ -298,16 +329,71 @@ export default function NewPostPage() {
               </div>
 
               <div>
-                <Label htmlFor="featuredImage" className="text-purple-700">
-                  Featured Image URL
-                </Label>
-                <Input
-                  id="featuredImage"
-                  value={formData.featuredImage || ""}
-                  onChange={(e) => handleInputChange("featuredImage", e.target.value)}
-                  placeholder="https://example.com/image.jpg"
-                  className="border-purple-200 focus:border-purple-500"
-                />
+                <Label className="text-purple-700">Featured Image</Label>
+
+                {/* Image Preview */}
+                {formData.featuredImage && (
+                  <div className="relative w-full h-40 bg-gray-100 rounded-lg overflow-hidden mb-3 mt-2">
+                    <Image
+                      src={formData.featuredImage || "/placeholder.svg"}
+                      alt="Featured"
+                      fill
+                      className="object-cover"
+                    />
+                    <Button
+                      type="button"
+                      variant="destructive"
+                      size="sm"
+                      onClick={handleClearImage}
+                      className="absolute top-2 right-2"
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+
+                {/* Image Picker Dialog */}
+                <Dialog open={featuredImageDialogOpen} onOpenChange={setFeaturedImageDialogOpen}>
+                  <DialogTrigger asChild>
+                    <Button
+                      type="button"
+                      variant="outline"
+                      className="w-full border-purple-200 hover:bg-purple-50 mt-2 bg-transparent"
+                    >
+                      <Upload className="h-4 w-4 mr-2" />
+                      {formData.featuredImage ? "Change Image" : "Select Image"}
+                    </Button>
+                  </DialogTrigger>
+                  <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                    <DialogHeader>
+                      <DialogTitle>Select Featured Image</DialogTitle>
+                    </DialogHeader>
+
+                    <Tabs defaultValue="browse" className="w-full">
+                      <TabsList className="grid w-full grid-cols-2">
+                        <TabsTrigger value="browse">
+                          <ImageIcon className="h-4 w-4 mr-2" />
+                          Browse Media
+                        </TabsTrigger>
+                        <TabsTrigger value="upload">
+                          <Upload className="h-4 w-4 mr-2" />
+                          Upload New
+                        </TabsTrigger>
+                      </TabsList>
+
+                      <TabsContent value="browse" className="mt-4">
+                        <DirectoryBrowser onFileSelect={handleFileSelect} selectionMode={true} />
+                      </TabsContent>
+
+                      <TabsContent value="upload" className="mt-4">
+                        <FileUpload
+                          onUploadComplete={handleUploadComplete}
+                          onClose={() => setFeaturedImageDialogOpen(false)}
+                        />
+                      </TabsContent>
+                    </Tabs>
+                  </DialogContent>
+                </Dialog>
               </div>
             </CardContent>
           </Card>

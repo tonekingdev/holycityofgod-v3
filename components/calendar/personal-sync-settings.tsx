@@ -411,7 +411,7 @@ export function PersonalSyncSettings({ userId }: PersonalSyncSettingsProps) {
                               <SelectTrigger>
                                 <SelectValue />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="bg-white">
                                 <SelectItem value="import_only">Import Only (Personal → Church)</SelectItem>
                                 <SelectItem value="export_only">Export Only (Church → Personal)</SelectItem>
                                 <SelectItem value="bidirectional">Two-Way Sync</SelectItem>
@@ -432,7 +432,7 @@ export function PersonalSyncSettings({ userId }: PersonalSyncSettingsProps) {
                               <SelectTrigger>
                                 <SelectValue />
                               </SelectTrigger>
-                              <SelectContent>
+                              <SelectContent className="bg-white">
                                 <SelectItem value="real_time">Real-time</SelectItem>
                                 <SelectItem value="hourly">Every Hour</SelectItem>
                                 <SelectItem value="daily">Daily</SelectItem>

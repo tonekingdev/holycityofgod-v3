@@ -113,7 +113,7 @@ export function ChurchSharingModal({ isOpen, onClose, calendar, currentChurch }:
                   <SelectTrigger>
                     <SelectValue placeholder="Choose a church..." />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     {churches.map((church) => (
                       <SelectItem key={church.id} value={church.id.toString()}>
                         <div className="flex items-center gap-2">
@@ -132,7 +132,7 @@ export function ChurchSharingModal({ isOpen, onClose, calendar, currentChurch }:
                   <SelectTrigger>
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="view">
                       <div className="flex items-center gap-2">
                         <Eye className="h-4 w-4" />

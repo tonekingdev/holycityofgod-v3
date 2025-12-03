@@ -109,10 +109,6 @@ a:hover {
 }
 
 @media (prefers-color-scheme: dark) {
-  a {
-    color: #9ca3af;
-  }
-
   a:hover {
     color: #7c2d92;
   }

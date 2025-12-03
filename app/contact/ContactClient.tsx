@@ -157,7 +157,7 @@ export default function ContactClient() {
                         type="tel"
                         value={formData.phone}
                         onChange={handleInputChange}
-                        placeholder="(313) 555-0123"
+                        placeholder="(313) 397-8240"
                       />
                     </div>
                     <div className="space-y-2">
@@ -166,7 +166,7 @@ export default function ContactClient() {
                         <SelectTrigger>
                           <SelectValue placeholder="Select a category" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           {MESSAGE_TYPES.map((type) => (
                             <SelectItem key={type.value} value={type.value}>
                               {type.label}

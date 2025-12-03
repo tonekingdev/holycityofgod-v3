@@ -138,7 +138,7 @@ export function FileUpload({ onUploadComplete, onClose }: FileUploadProps) {
           <SelectTrigger>
             <SelectValue placeholder="Select category" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-white">
             <SelectItem value="general">General</SelectItem>
             <SelectItem value="branding">Branding</SelectItem>
             <SelectItem value="pastor">Pastor</SelectItem>

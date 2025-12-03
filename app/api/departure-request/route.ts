@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
       data.churchName?.toLowerCase().includes("headquarters") ||
       !data.churchName
 
-    const recipientEmail = isHeadquarters ? "bishop@holycityofgod.org" : "pastor@holycityofgod.org"
+    const recipientEmail = isHeadquarters ? "pastor@holycityofgod.org" : "pastor@holycityofgod.org"
     const recipientName = isHeadquarters ? "Bishop Anthony King" : "Pastor"
 
     // HTML email template for church notification

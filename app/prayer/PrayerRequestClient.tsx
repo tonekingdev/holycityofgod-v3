@@ -241,10 +241,9 @@ export default function PrayerRequestClient() {
         <DropInView delay={0.2}>
           <div className="bg-secondary-50 border-l-4 border-secondary-500 p-6 mb-12 rounded-r-lg">
             <blockquote className="text-lg italic text-gray-700 font-light">
-              &quot;Confess your faults one to another, and pray one for another, that ye may be healed. The effectual
-              fervent prayer of a righteous man availeth much.&quot;
+              &quot;I exhort therefore, that, first of all, supplications, prayers, intercessions, and giving of thanks, be made for all men;&quot;
             </blockquote>
-            <cite className="text-secondary-600 font-semibold">James 5:16</cite>
+            <cite className="text-secondary font-semibold">1 Timothy 2:1</cite>
           </div>
         </DropInView>
 

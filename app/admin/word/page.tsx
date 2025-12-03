@@ -128,7 +128,7 @@ const mockWordDocuments: WordDocument[] = [
 ]
 
 const speakers = [
-  { id: "bishop-king", name: "Bishop Anthony King, Sr.", role: "Senior Pastor" },
+  { id: "bishop-king", name: "Bishop Anthony King, Sr.", role: "Presiding Bishop" },
   { id: "minister-sarah", name: "Minister Sarah Johnson", role: "Youth Minister" },
   { id: "elder-grace", name: "Elder Grace Thompson", role: "Senior Saints Leader" },
   { id: "deacon-robert", name: "Deacon Robert Davis", role: "Men's Ministry Leader" },
@@ -245,12 +245,12 @@ export default function WordManagementPage() {
             <div className="flex gap-3">
               <Dialog open={uploadDialogOpen} onOpenChange={setUploadDialogOpen}>
                 <DialogTrigger asChild>
-                  <Button className="bg-primary hover:bg-primary-700 text-white">
+                  <Button className="bg-primary hover:bg-primary-700">
                     <Upload className="mr-2 h-4 w-4" />
                     Upload Word
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="sm:max-w-md">
+                <DialogContent className="sm:max-w-md bg-white">
                   <DialogHeader>
                     <DialogTitle>Upload Word Document</DialogTitle>
                     <DialogDescription>
@@ -268,7 +268,7 @@ export default function WordManagementPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue placeholder="Select speaker" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           {speakers.map((speaker) => (
                             <SelectItem key={speaker.id} value={speaker.id}>
                               {speaker.name} - {speaker.role}
@@ -283,7 +283,7 @@ export default function WordManagementPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue placeholder="Select document type" />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           {documentTypes.map((type) => (
                             <SelectItem key={type.value} value={type.value}>
                               {type.label}
@@ -351,7 +351,7 @@ export default function WordManagementPage() {
                 <SelectTrigger className="w-48 border-purple-200">
                   <SelectValue placeholder="All Speakers" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="All">All Speakers</SelectItem>
                   {speakers.map((speaker) => (
                     <SelectItem key={speaker.id} value={speaker.name}>
@@ -365,7 +365,7 @@ export default function WordManagementPage() {
                 <SelectTrigger className="w-40 border-purple-200">
                   <SelectValue placeholder="All Types" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="All">All Types</SelectItem>
                   {documentTypes.map((type) => (
                     <SelectItem key={type.value} value={type.value}>
@@ -379,7 +379,7 @@ export default function WordManagementPage() {
                 <SelectTrigger className="w-40 border-purple-200">
                   <SelectValue placeholder="All Status" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="All">All Status</SelectItem>
                   <SelectItem value="draft">Draft</SelectItem>
                   <SelectItem value="scheduled">Scheduled</SelectItem>

@@ -33,12 +33,16 @@ const POPULAR_VERSES = [
 ] as const
 
 /**
- * Generate a consistent random index based on the current date
- * Same date = same verse all day
+ * Generate a consistent random index based on the current Eastern Time date
+ * Same date = same verse all day in EST/EDT
  */
 export function getDailyVerseIndex(): number {
-  const today = new Date()
-  const dateString = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+  // Get current time in Eastern Time (handles EST/EDT automatically)
+  const now = new Date()
+  const easternTime = now.toLocaleString("en-US", { timeZone: "America/New_York" })
+  const easternDate = new Date(easternTime)
+  
+  const dateString = `${easternDate.getFullYear()}-${easternDate.getMonth() + 1}-${easternDate.getDate()}`
 
   // Simple hash function to convert date string to number
   let hash = 0
@@ -53,7 +57,7 @@ export function getDailyVerseIndex(): number {
 }
 
 /**
- * Get today's verse reference
+ * Get today's verse reference based on Eastern Time
  */
 export function getTodaysVerse() {
   const index = getDailyVerseIndex()
@@ -65,4 +69,17 @@ export function getTodaysVerse() {
  */
 export function formatVerseReference(book: string, chapter: number, verse: number): string {
   return `${book} ${chapter}:${verse}`
+}
+
+/**
+ * Get current Eastern Time date string
+ */
+export function getEasternTimeDate(): string {
+  const now = new Date()
+  return now.toLocaleDateString("en-US", {
+    timeZone: "America/New_York",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  })
 }

@@ -82,7 +82,7 @@ const mockSections: ContentSection[] = [
     category: "Global",
     content: {
       address: "28333 Marcia Ave, Warren, MI 48093",
-      phone: "(313) 555-0123",
+      phone: "(313) 397-8240",
       email: "info@holycityofgod.org",
       website: "https://holycityofgod.org",
     },
@@ -375,7 +375,7 @@ export default function ContentSectionsPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           {sectionTypes.map((type) => (
                             <SelectItem key={type.value} value={type.value}>
                               {type.label}
@@ -393,7 +393,7 @@ export default function ContentSectionsPage() {
                         <SelectTrigger className="border-purple-200">
                           <SelectValue />
                         </SelectTrigger>
-                        <SelectContent>
+                        <SelectContent className="bg-white">
                           <SelectItem value="Global">Global</SelectItem>
                           <SelectItem value="Homepage">Homepage</SelectItem>
                           <SelectItem value="Services">Services</SelectItem>
@@ -619,7 +619,7 @@ export default function ContentSectionsPage() {
                           <SelectTrigger className="border-purple-200">
                             <SelectValue />
                           </SelectTrigger>
-                          <SelectContent>
+                          <SelectContent className="bg-white">
                             <SelectItem value="low">Low</SelectItem>
                             <SelectItem value="medium">Medium</SelectItem>
                             <SelectItem value="high">High</SelectItem>
@@ -645,7 +645,7 @@ export default function ContentSectionsPage() {
                       <SelectTrigger className="border-purple-200">
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-white">
                         <SelectItem value="Global">Global</SelectItem>
                         <SelectItem value="Homepage">Homepage</SelectItem>
                         <SelectItem value="Services">Services</SelectItem>

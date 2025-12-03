@@ -22,7 +22,7 @@ const announcements: Announcement[] = [
     status: "published",
     author_id: "1",
     author_name: "Bishop Anthony King, Sr.",
-    author_role: "Senior Pastor",
+    author_role: "Presiding Bishop",
     church_id: "1",
     target_audience: "all",
     is_pinned: false,

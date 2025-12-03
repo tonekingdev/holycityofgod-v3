@@ -461,7 +461,7 @@ export function MainCalendarView({ userId, churchId, showAllCalendars = false }:
                 <SelectTrigger className="w-32">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="month">Month</SelectItem>
                   <SelectItem value="week">Week</SelectItem>
                   <SelectItem value="day">Day</SelectItem>

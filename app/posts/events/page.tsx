@@ -4,7 +4,8 @@ import { useState, useEffect } from "react"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Calendar, MapPin, Clock, Users } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { Calendar, MapPin, Clock, Users, ArrowLeft } from "lucide-react"
 import { format } from "date-fns"
 import { useContent } from "@/hooks/use-content"
 
@@ -26,6 +27,7 @@ export default function EventsPage() {
   const [events, setEvents] = useState<Event[]>([])
   const [loading, setLoading] = useState(true)
   const { content } = useContent("posts")
+  const router = useRouter()
 
   useEffect(() => {
     fetchEvents()
@@ -43,6 +45,10 @@ export default function EventsPage() {
     } finally {
       setLoading(false)
     }
+  }
+
+  const handleBackButton = () => {
+    router.back()
   }
 
   const heroContent = content?.events || {
@@ -128,6 +134,10 @@ export default function EventsPage() {
             ))}
           </div>
         )}
+        <Button variant="outline" onClick={handleBackButton}>
+          <ArrowLeft className="h-4 w-4 mr-2" />
+          Go Back
+        </Button>
       </div>
     </div>
   )

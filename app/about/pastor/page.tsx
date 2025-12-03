@@ -390,7 +390,7 @@ export default function PastorPage() {
                     <Phone className="h-8 w-8 mx-auto mb-4" />
                     <h3 className="text-lg font-bold mb-2">Phone</h3>
                     <p className="opacity-90">
-                      {content?.contact?.phone || content?.contact?.info?.phone || "(313) 555-0123"}
+                      {content?.contact?.phone || content?.contact?.info?.phone || "(313) 397-8240"}
                     </p>
                   </CardContent>
                 </Card>

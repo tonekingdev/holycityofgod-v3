@@ -160,7 +160,7 @@ export function AnnouncementsList({
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="All Types" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="all">All Types</SelectItem>
                   {ANNOUNCEMENT_TYPES.map((type) => (
                     <SelectItem key={type.value} value={type.value}>
@@ -177,7 +177,7 @@ export function AnnouncementsList({
                 <SelectTrigger className="w-40">
                   <SelectValue placeholder="All Priorities" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-white">
                   <SelectItem value="all">All Priorities</SelectItem>
                   {ANNOUNCEMENT_PRIORITIES.map((priority) => (
                     <SelectItem key={priority.value} value={priority.value}>

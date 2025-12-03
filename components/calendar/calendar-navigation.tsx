@@ -85,7 +85,7 @@ export function CalendarNavigation({ currentDate, viewType, onDateChange, onView
           <SelectTrigger className="w-28 h-8">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-white">
             <SelectItem value="month">Month</SelectItem>
             <SelectItem value="week">Week</SelectItem>
             <SelectItem value="day">Day</SelectItem>

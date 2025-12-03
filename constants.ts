@@ -38,9 +38,9 @@ export const CHURCH_INFO = {
   subtitle: "Sharing the love of Jesus",
   pastor: {
     name: "Bishop Anthony King",
-    title: "Senior Pastor",
+    title: "Presiding Bishop",
     bio: "Bishop Anthony King has been serving the Detroit community for over 20 years, bringing hope and spiritual guidance to countless families.",
-    image: "/images/pastor-king.jpg",
+    image: "/img/King_T_1-min.jpg",
   },
   contact: {
     phone: "(313)397-8240",
@@ -91,9 +91,9 @@ export const CHURCH_INFO = {
 export const PASTOR_INFO: PastorInfo = {
   image: "/img/King_T_1-min.jpg",
   name: "Bishop Anthony King, Sr.",
-  title: "Senior Pastor", // Added this missing property
+  title: "Presiding Bishop", // Added this missing property
   bio: [
-    "Bishop Anthony King, Sr. has been serving as Senior Pastor of Holy City of God since its founding in 1998.",
+    "Bishop Anthony King, Sr. has been serving as Presiding Bishop of Holy City of God since its founding in 1998.",
     "With over 25 years of ministry experience, Bishop King brings a wealth of spiritual wisdom and practical guidance to our congregation.",
     "His leadership has guided our church through seasons of growth and transformation, always emphasizing the core values of faith, family, and community service.",
   ],
@@ -153,21 +153,18 @@ export const SERVICE_TIMES: readonly ServiceTime[] = [
 export const ONLINE_SERVICE_INFO: OnlineServiceInfo = {
   title: "Join Us Online",
   description: "Can't join us in person? Connect with us virtually for our services.",
-  phone: "(313) 555-1234",
-  meetingId: "123 456 7890",
-  accessCode: "HOLY2023",
-  link: "https://zoom.us/j/1234567890",
+  phone: "(267) 807-9601",
+  meetingId: "100-009-769",
+  accessCode: "796680",
+  link: "https://join.freeconferencecall.com/100-009-769",
 } as const
 
 // Office Hours
 export const OFFICE_HOURS = [
-  { day: "Monday", hours: "9:00 AM - 5:00 PM" },
   { day: "Tuesday", hours: "9:00 AM - 5:00 PM" },
-  { day: "Wednesday", hours: "9:00 AM - 7:00 PM" },
+  { day: "Wednesday", hours: "9:00 AM - 5:00 PM" },
   { day: "Thursday", hours: "9:00 AM - 5:00 PM" },
-  { day: "Friday", hours: "9:00 AM - 7:00 PM" },
-  { day: "Saturday", hours: "10:00 AM - 2:00 PM" },
-  { day: "Sunday", hours: "Closed (Worship Services Only)" },
+  { day: "Friday", hours: "9:00 AM - 5:00 PM" },
 ] as const
 
 // Prayer Request Categories
@@ -251,12 +248,12 @@ export const MINISTRIES = [
 export const MAIN_NAV = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  { name: "Pastor", href: "/pastor" },
+  { name: "Pastor", href: "/about/pastor" },
   { name: "Services", href: "/services" },
-  { name: "Ministries", href: "/ministries" },
-  { name: "Events", href: "/events" },
-  { name: "Words", href: "/words" },
-  { name: "News", href: "/news" },
+  { name: "Ministries", href: "/our-network/ministries" },
+  { name: "Events", href: "/posts/events" },
+  { name: "Words", href: "/services/words" },
+  { name: "News", href: "/posts/news" },
   { name: "Give", href: "/give" },
   { name: "Contact", href: "/contact" },
 ] as const
@@ -335,12 +332,12 @@ export const STATUS_OPTIONS = [
   { value: "active", label: "Active", color: "bg-success-100 text-success-800" },
   { value: "inactive", label: "Inactive", color: "bg-secondary-100 text-secondary-800" },
   { value: "pending", label: "Pending", color: "bg-warning-100 text-warning-800" },
-  { value: "archived", label: "Archived", color: "bg-secondary-100 text-secondary-600" },
+  { value: "archived", label: "Archived", color: "bg-secondary-100 text-secondary" },
 ] as const
 
 // Priority Levels
 export const PRIORITY_LEVELS = [
-  { value: "low", label: "Low", color: "bg-secondary-100 text-secondary-600" },
+  { value: "low", label: "Low", color: "bg-secondary-100 text-secondary" },
   { value: "normal", label: "Normal", color: "bg-info-100 text-info-800" },
   { value: "high", label: "High", color: "bg-warning-100 text-warning-800" },
   { value: "urgent", label: "Urgent", color: "bg-primary-100 text-primary-800" },

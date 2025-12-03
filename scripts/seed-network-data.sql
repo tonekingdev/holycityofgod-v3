@@ -1,6 +1,6 @@
 -- Insert sample fellowship churches
 INSERT INTO fellowship_churches (name, description, website_url, address, phone, email, pastor_name, display_order) VALUES
-('Grace Community Church', 'A vibrant fellowship focused on community outreach and spiritual growth.', 'https://gracecommunity.org', '123 Faith Street, Springfield, IL 62701', '(217) 555-0123', 'info@gracecommunity.org', 'Pastor John Smith', 1),
+('Grace Community Church', 'A vibrant fellowship focused on community outreach and spiritual growth.', 'https://gracecommunity.org', '123 Faith Street, Springfield, IL 62701', '(217) 397-8240', 'info@gracecommunity.org', 'Pastor John Smith', 1),
 ('New Hope Baptist Church', 'Serving the community with love and compassion for over 50 years.', 'https://newhopebaptist.org', '456 Hope Avenue, Springfield, IL 62702', '(217) 555-0456', 'contact@newhopebaptist.org', 'Pastor Mary Johnson', 2),
 ('Faith Fellowship Center', 'A multicultural church welcoming all families and individuals.', 'https://faithfellowship.org', '789 Unity Boulevard, Springfield, IL 62703', '(217) 555-0789', 'welcome@faithfellowship.org', 'Pastor David Williams', 3);
 

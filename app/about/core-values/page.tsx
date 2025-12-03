@@ -147,7 +147,7 @@ export default function CoreValuesPage() {
                     <div className="bg-white rounded-lg shadow-lg p-6 border-t-4 border-secondary-500 hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="p-3 bg-secondary-100 rounded-lg">
-                          <IconComponent className="w-6 h-6 text-secondary-600" />
+                          <IconComponent className="w-6 h-6 text-secondary" />
                         </div>
                         <h3 className="text-xl font-semibold text-gray-900">{value.title}</h3>
                       </div>

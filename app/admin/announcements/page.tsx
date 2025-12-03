@@ -134,7 +134,7 @@ export default function AnnouncementsPage() {
       </div>
 
       {/* Filters */}
-      <Card className="card-royal">
+      <Card className="bg-secondary-50">
         <CardContent className="p-6">
           <div className="flex flex-col lg:flex-row gap-4">
             <div className="relative flex-1">
@@ -153,7 +153,7 @@ export default function AnnouncementsPage() {
               <SelectTrigger className="w-full lg:w-40">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="all">All Status</SelectItem>
                 <SelectItem value="published">Published</SelectItem>
                 <SelectItem value="draft">Draft</SelectItem>
@@ -168,7 +168,7 @@ export default function AnnouncementsPage() {
               <SelectTrigger className="w-full lg:w-40">
                 <SelectValue placeholder="Priority" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="all">All Priority</SelectItem>
                 <SelectItem value="urgent">Urgent</SelectItem>
                 <SelectItem value="high">High</SelectItem>
@@ -183,7 +183,7 @@ export default function AnnouncementsPage() {
               <SelectTrigger className="w-full lg:w-40">
                 <SelectValue placeholder="Type" />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-white">
                 <SelectItem value="all">All Types</SelectItem>
                 <SelectItem value="general">General</SelectItem>
                 <SelectItem value="service">Service</SelectItem>
@@ -206,7 +206,7 @@ export default function AnnouncementsPage() {
           </div>
         </div>
       ) : filteredAnnouncements.length === 0 ? (
-        <Card className="card-royal">
+        <Card className="bg-secondary-50">
           <CardContent className="p-12 text-center">
             <Megaphone className="h-12 w-12 text-gray-400 mx-auto mb-4" />
             <h3 className="text-lg font-semibold text-gray-900 mb-2">No announcements found</h3>
@@ -226,7 +226,7 @@ export default function AnnouncementsPage() {
       ) : (
         <div className="grid gap-4">
           {filteredAnnouncements.map((announcement) => (
-            <Card key={announcement.id} className="card-royal hover:shadow-lg transition-all duration-300">
+            <Card key={announcement.id} className="bg-secondary-50 hover:shadow-lg transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
@@ -286,7 +286,7 @@ export default function AnnouncementsPage() {
 
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <Card className="card-royal">
+        <Card className="bg-secondary-50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">Total Announcements</CardTitle>
           </CardHeader>
@@ -294,7 +294,7 @@ export default function AnnouncementsPage() {
             <div className="text-2xl font-bold text-purple-600">{announcements.length}</div>
           </CardContent>
         </Card>
-        <Card className="card-royal">
+        <Card className="bg-secondary-50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">Published</CardTitle>
           </CardHeader>
@@ -304,7 +304,7 @@ export default function AnnouncementsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="card-royal">
+        <Card className="bg-secondary-50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">Drafts</CardTitle>
           </CardHeader>
@@ -314,7 +314,7 @@ export default function AnnouncementsPage() {
             </div>
           </CardContent>
         </Card>
-        <Card className="card-royal">
+        <Card className="bg-secondary-50">
           <CardHeader className="pb-2">
             <CardTitle className="text-sm font-medium text-gray-600">Scheduled</CardTitle>
           </CardHeader>

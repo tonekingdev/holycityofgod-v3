@@ -324,7 +324,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue placeholder="Select category" />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     {POST_CATEGORIES.map((category) => (
                       <SelectItem key={category.id} value={category.id}>
                         {category.name}
@@ -345,7 +345,7 @@ export default function EditPostPage({ params }: EditPostPageProps) {
                   <SelectTrigger className="border-purple-200 focus:border-purple-500">
                     <SelectValue />
                   </SelectTrigger>
-                  <SelectContent>
+                  <SelectContent className="bg-white">
                     <SelectItem value="draft">Draft</SelectItem>
                     <SelectItem value="published">Published</SelectItem>
                     <SelectItem value="archived">Archived</SelectItem>

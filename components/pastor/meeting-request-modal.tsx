@@ -122,7 +122,7 @@ export function MeetingRequestModal({ open, onOpenChange }: MeetingRequestModalP
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="(313) 555-0123"
+                  placeholder="(313) 397-8240"
                 />
               </div>
             </div>

@@ -1,12 +1,12 @@
 "use client"
 
-import { AnnouncementsList } from "@/components/AnnouncementsList"
+// import { AnnouncementsList } from "@/components/AnnouncementsList"
 import CTASection from "@/components/cta-section"
 import { DropInView } from "@/components/DropInView"
 import { FadeInView } from "@/components/FadeInView"
 import FeaturedContent from "@/components/featuredContent"
 import { LatestPosts } from "@/components/posts/latest-posts"
-import RemoteServiceNotification from "@/components/remote-service-notification"
+// import RemoteServiceNotification from "@/components/remote-service-notification"
 import { SlideInView } from "@/components/SlideInView"
 import VerseofTheDay from "@/components/verseOfTheDay"
 import { useContent } from "@/hooks/use-content"
@@ -45,17 +45,17 @@ export default function Home() {
 
         {/* Content */}
         <div className="container relative z-10">
-          <SlideInView>
+          {/* <SlideInView>
             <RemoteServiceNotification />
-          </SlideInView>
+          </SlideInView> */}
           <FadeInView>
             <div className="flex justify-center mb-6">
               <div className="relative h-24 w-24 bg-white rounded-full p-3 shadow-2xl overflow-hidden">
                 <Image
                   src="/img/church-logo.png"
                   alt="Holy City of God Christian Fellowship Inc."
-                  width={96}
-                  height={96}
+                  width={150}
+                  height={150}
                   className="object-contain"
                 />
               </div>
@@ -84,11 +84,11 @@ export default function Home() {
       </section>
 
       {/* Announcements Section */}
-      <section className="container py-8">
+      {/* <section className="container py-8">
         <FadeInView>
           <AnnouncementsList limit={3} showActions={false} className="mb-0" />
         </FadeInView>
-      </section>
+      </section> */}
 
       <section className="container">
         {/* Verse of the Day */}

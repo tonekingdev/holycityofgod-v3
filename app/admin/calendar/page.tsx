@@ -221,7 +221,7 @@ export default function CalendarManagementPage() {
                     <SelectTrigger>
                       <SelectValue placeholder="Select calendar type" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-secondary-100">
                       <SelectItem value="1">Network Calendar</SelectItem>
                       <SelectItem value="2">Church Calendar</SelectItem>
                       <SelectItem value="3">Ministry Calendar</SelectItem>
@@ -249,7 +249,7 @@ export default function CalendarManagementPage() {
                 New Event
               </Button>
             </DialogTrigger>
-            <DialogContent className="max-w-2xl bg-secondary-100">
+            <DialogContent className="max-w-2xl bg-secondary-50">
               <DialogHeader>
                 <DialogTitle>Create New Event</DialogTitle>
                 <DialogDescription>Add a new event to your selected calendar</DialogDescription>
@@ -266,7 +266,7 @@ export default function CalendarManagementPage() {
                       <SelectTrigger>
                         <SelectValue placeholder="Select category" />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-secondary-100">
                         <SelectItem value="service">Service</SelectItem>
                         <SelectItem value="meeting">Meeting</SelectItem>
                         <SelectItem value="convention">Convention</SelectItem>
@@ -308,7 +308,7 @@ export default function CalendarManagementPage() {
                       <SelectTrigger>
                         <SelectValue />
                       </SelectTrigger>
-                      <SelectContent>
+                      <SelectContent className="bg-secondary-100">
                         <SelectItem value="public">Public</SelectItem>
                         <SelectItem value="members">Members Only</SelectItem>
                         <SelectItem value="leadership">Leadership Only</SelectItem>

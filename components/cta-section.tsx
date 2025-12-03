@@ -53,7 +53,7 @@ export default function CTASection() {
         <div className="max-w-4xl mx-auto text-center text-white">
           {/* Header */}
           <DropInView>
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">{ctaContent.title || "Join Our Church Family"}</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">{ctaContent.title || "Partner with Us"}</h2>
           </DropInView>
 
           <FadeInView delay={0.3}>
