@@ -50,7 +50,7 @@ export default function Home() {
           </SlideInView> */}
           <FadeInView>
             <div className="flex justify-center mb-6">
-              <div className="relative h-24 w-24 bg-white rounded-full p-3 shadow-2xl overflow-hidden">
+              <div className="relative h-250 w-250 bg-white rounded-full p-3 shadow-2xl overflow-hidden">
                 <Image
                   src="/img/church-logo.png"
                   alt="Holy City of God Christian Fellowship Inc."
