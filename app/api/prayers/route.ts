@@ -8,9 +8,8 @@ interface PrayerRequestData {
   email: string
   phone: string
   message: string
-  isUrgent: boolean
-  canShare: boolean
   honeypot: string
+  // Removed: isUrgent and canShare
 }
 
 // Create reusable transporter object using SMTP transport
@@ -33,9 +32,9 @@ export async function POST(request: NextRequest) {
   try {
     const data: PrayerRequestData = await request.json()
 
-    // Validate required fields
-    if (!data.name || !data.email || !data.message) {
-      return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 })
+    // Validate required fields - name is now optional
+    if (!data.email || !data.message) {
+      return NextResponse.json({ error: "Email and message are required" }, { status: 400 })
     }
 
     // Honeypot check - if filled, it's likely spam
@@ -52,11 +51,11 @@ export async function POST(request: NextRequest) {
     ]
 
     const messageText = data.message.toLowerCase()
-    const nameText = data.name.toLowerCase()
+    const nameText = data.name ? data.name.toLowerCase() : ""
     const email = data.email.toLowerCase()
 
     for (const pattern of spamPatterns) {
-      if (pattern.test(messageText) || pattern.test(nameText) || pattern.test(email)) {
+      if (pattern.test(messageText) || (nameText && pattern.test(nameText)) || pattern.test(email)) {
         return NextResponse.json({ error: "Content appears to be spam" }, { status: 400 })
       }
     }
@@ -67,8 +66,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Invalid email address" }, { status: 400 })
     }
 
-    // Length validations - Fixed the type error
-    if (data.name.length < 2 || data.name.length > 100) {
+    // Length validations - name is optional, but validate if provided
+    if (data.name && (data.name.length < 2 || data.name.length > 100)) {
       return NextResponse.json({ error: "Name must be between 2 and 100 characters" }, { status: 400 })
     }
 
@@ -84,7 +83,7 @@ export async function POST(request: NextRequest) {
     ]
 
     for (const pattern of suspiciousPatterns) {
-      if (pattern.test(data.message) || pattern.test(data.name)) {
+      if (pattern.test(data.message) || (data.name && pattern.test(data.name))) {
         return NextResponse.json({ error: "Content appears suspicious" }, { status: 400 })
       }
     }
@@ -105,20 +104,17 @@ export async function POST(request: NextRequest) {
 
     // Generate church notification email using your template
     const churchNotification = generateChurchNotificationTemplate({
-      name: data.name,
+      name: data.name || "Anonymous", // Provide default value for anonymous requests
       email: data.email,
       phone: data.phone,
       message: data.message,
-      isUrgent: data.isUrgent,
-      canShare: data.canShare,
       currentDate,
       siteUrl,
     })
 
     // Generate auto-reply email using your template
     const autoReply = generateAutoReplyTemplate({
-      name: data.name,
-      isUrgent: data.isUrgent,
+      name: data.name || "Friend", // Provide default value for anonymous requests
       message: data.message,
       currentDate,
       siteUrl,
@@ -148,14 +144,13 @@ export async function POST(request: NextRequest) {
       from: `"Prayer Requests" <${process.env.SMTP_USER}>`,
       to: churchEmail,
       replyTo: data.email,
-      subject: `New Prayer Request${data.isUrgent ? " [URGENT]" : ""} - ${data.name}`,
+      subject: `New Prayer Request - ${data.name || "Anonymous"}`,
       text: churchNotification.text,
       html: churchNotification.html,
-      priority: (data.isUrgent ? "high" : "normal") as "high" | "normal" | "low",
+      priority: "normal" as "high" | "normal" | "low",
       headers: {
         "X-Prayer-Request": "true",
-        "X-Urgent": data.isUrgent ? "true" : "false",
-        "X-Can-Share": data.canShare ? "true" : "false",
+        "X-Can-Share": "true",
       },
     }
 
@@ -163,10 +158,10 @@ export async function POST(request: NextRequest) {
     const autoReplyMailOptions = {
       from: `"Holy City of God" <${process.env.SMTP_USER}>`,
       to: data.email,
-      subject: `Prayer Request Confirmation - Holy City of God${data.isUrgent ? " [URGENT]" : ""}`,
+      subject: `Prayer Request Confirmation - Holy City of God`,
       text: autoReply.text,
       html: autoReply.html,
-      priority: (data.isUrgent ? "high" : "normal") as "high" | "normal" | "low",
+      priority: "normal" as "high" | "normal" | "low",
       headers: {
         "X-Auto-Reply": "true",
         "X-Prayer-Confirmation": "true",
@@ -191,8 +186,7 @@ export async function POST(request: NextRequest) {
         debug: {
           churchEmail,
           siteUrl,
-          isUrgent: data.isUrgent,
-          canShare: data.canShare,
+          // Removed: isUrgent and canShare debug info
         },
       },
       { status: 200 },

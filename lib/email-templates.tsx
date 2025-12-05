@@ -2,7 +2,6 @@ import { CHURCH_INFO } from "@/constants"
 
 interface EmailTemplateData {
   name: string
-  isUrgent?: boolean
   message?: string
   currentDate?: string
   siteUrl?: string
@@ -13,14 +12,12 @@ interface ChurchNotificationData {
   email: string
   phone: string
   message: string
-  isUrgent: boolean
-  canShare: boolean
   currentDate: string
   siteUrl?: string
 }
 
 export function generateAutoReplyTemplate(data: EmailTemplateData): { html: string; text: string } {
-  const { name, isUrgent = false, siteUrl = "https://holycityofgod.org" } = data
+  const { name, siteUrl = "https://holycityofgod.org" } = data
 
   const html = `
     <!DOCTYPE html>
@@ -131,21 +128,6 @@ export function generateAutoReplyTemplate(data: EmailTemplateData): { html: stri
                 </td>
               </tr>
               
-              ${
-                isUrgent
-                  ? `
-              <!-- Urgent banner -->
-              <tr>
-                <td style="background-color: #dc3545; padding: 15px 20px; text-align: center;">
-                  <p style="margin: 0; color: #ffffff; font-weight: bold; font-size: 16px;">
-                    🙏 Your urgent prayer request has been received
-                  </p>
-                </td>
-              </tr>
-              `
-                  : ""
-              }
-              
               <!-- Main content -->
               <tr>
                 <td style="padding: 40px 30px;" class="mobile-padding">
@@ -175,7 +157,7 @@ export function generateAutoReplyTemplate(data: EmailTemplateData): { html: stri
                     </h3>
                     <ul style="margin: 0; padding-left: 20px; color: #333333; font-size: 16px; line-height: 1.6;">
                       <li style="margin-bottom: 8px;">Our pastoral team will pray for your request during our weekly prayer meetings</li>
-                      <li style="margin-bottom: 8px;">If you indicated you'd like to share with our prayer team, they will also be praying</li>
+                      <li style="margin-bottom: 8px;">Our prayer team will also be praying for you</li>
                       <li style="margin-bottom: 8px;">You may receive a personal follow-up from one of our pastors or prayer team members</li>
                       <li style="margin-bottom: 0;">We encourage you to continue in prayer and trust God's perfect timing</li>
                     </ul>
@@ -279,7 +261,7 @@ Your request has been received and will be lifted up in prayer by our pastoral t
 
 WHAT HAPPENS NEXT:
 • Our pastoral team will pray for your request during our weekly prayer meetings
-• If you indicated you'd like to share with our prayer team, they will also be praying  
+• Our prayer team will also be praying for you  
 • You may receive a personal follow-up from one of our pastors or prayer team members
 • We encourage you to continue in prayer and trust God's perfect timing
 
@@ -307,10 +289,8 @@ If you have any questions, please contact us at info@holycityofgod.org
 }
 
 export function generateChurchNotificationTemplate(data: ChurchNotificationData): { html: string; text: string } {
-  const { name, email, phone, message, isUrgent, canShare, currentDate, siteUrl = "https://holycityofgod.org" } = data
+  const { name, email, phone, message, currentDate, siteUrl = "https://holycityofgod.org" } = data
 
-  const urgentText = isUrgent ? " [URGENT]" : ""
-  const shareText = canShare ? "Yes" : "No"
   const phoneText = phone ? phone : "Not provided"
 
   const html = `
@@ -319,7 +299,7 @@ export function generateChurchNotificationTemplate(data: ChurchNotificationData)
     <head>
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>New Prayer Request${urgentText} - Holy City of God</title>
+      <title>New Prayer Request - Holy City of God</title>
       <!--[if mso]>
       <noscript>
         <xml>
@@ -391,7 +371,7 @@ export function generateChurchNotificationTemplate(data: ChurchNotificationData)
                         
                         <!-- Title -->
                         <h1 style="margin: 0 0 5px 0; font-size: 24px; font-weight: bold; color: #ffffff; text-align: center;">
-                          🙏 New Prayer Request${urgentText}
+                          🙏 New Prayer Request
                         </h1>
                         <p style="margin: 0; font-size: 16px; color: #ffffff; opacity: 0.9; text-align: center;">
                           Holy City of God Christian Fellowship
@@ -401,21 +381,6 @@ export function generateChurchNotificationTemplate(data: ChurchNotificationData)
                   </table>
                 </td>
               </tr>
-              
-              ${
-                isUrgent
-                  ? `
-              <!-- Urgent banner -->
-              <tr>
-                <td style="background-color: #dc3545; padding: 15px 20px; text-align: center;">
-                  <p style="margin: 0; color: #ffffff; font-weight: bold; font-size: 16px;">
-                    ⚠️ URGENT PRAYER REQUEST - PLEASE PRIORITIZE ⚠️
-                  </p>
-                </td>
-              </tr>
-              `
-                  : ""
-              }
               
               <!-- Main content -->
               <tr>
@@ -440,14 +405,6 @@ export function generateChurchNotificationTemplate(data: ChurchNotificationData)
                       <tr>
                         <td style="padding: 8px 0; font-weight: bold; color: #333;">Phone:</td>
                         <td style="padding: 8px 0; color: #555;">${phoneText}</td>
-                      </tr>
-                      <tr>
-                        <td style="padding: 8px 0; font-weight: bold; color: #333;">Share with team:</td>
-                        <td style="padding: 8px 0; color: #555;">
-                          <span style="background-color: ${canShare ? "#28a745" : "#6c757d"}; color: white; padding: 2px 8px; border-radius: 12px; font-size: 12px; font-weight: bold;">
-                            ${shareText}
-                          </span>
-                        </td>
                       </tr>
                     </table>
                   </div>
@@ -514,15 +471,13 @@ export function generateChurchNotificationTemplate(data: ChurchNotificationData)
   `
 
   const text = `
-New Prayer Request${urgentText}
+New Prayer Request
 Holy City of God Christian Fellowship
 
 Contact Information:
 - Name: ${name}
 - Email: ${email}
 - Phone: ${phoneText}
-- Can share with prayer team: ${shareText}
-${isUrgent ? "- ⚠️ URGENT REQUEST" : ""}
 
 Prayer Request:
 ${message}

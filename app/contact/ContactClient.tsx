@@ -214,18 +214,18 @@ export default function ContactClient() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-6">
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2">
                     <MapPin className="h-5 w-5 text-purple-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-gray-900">Address</h3>
+                      <h4 className="font-semibold text-gray-900">Address</h4>
                       <p className="text-gray-600 text-pretty">{CHURCH_INFO.contact.address.full}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2">
                     <Phone className="h-5 w-5 text-purple-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-gray-900">Phone</h3>
+                      <h4 className="font-semibold text-gray-900">Phone</h4>
                       <a
                         href={`tel:${CHURCH_INFO.contact.phone}`}
                         className="text-purple-600 hover:text-purple-800 transition-colors"
@@ -235,10 +235,10 @@ export default function ContactClient() {
                     </div>
                   </div>
 
-                  <div className="flex items-start gap-3">
+                  <div className="flex items-start gap-2">
                     <Mail className="h-5 w-5 text-purple-600 mt-1 flex-shrink-0" />
                     <div>
-                      <h3 className="font-semibold text-gray-900">Email</h3>
+                      <h4 className="font-semibold text-gray-900">Email</h4>
                       <a
                         href={`mailto:${CHURCH_INFO.contact.email}`}
                         className="text-purple-600 hover:text-purple-800 transition-colors"

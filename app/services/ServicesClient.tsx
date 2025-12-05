@@ -57,7 +57,7 @@ export default function ServicesClient() {
                       className="flex items-center justify-center gap-3"
                     >
                       <Globe className="w-5 h-5" />
-                      <span className="font-semibold">Join our Online Meeting</span>
+                      <span className="font-semibold">Join our Services Online</span>
                     </a>
                   </Button>
                   

@@ -9,7 +9,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
-import { Checkbox } from "@/components/ui/checkbox"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { HandHeart, Phone, Mail, User, MessageSquare, AlertTriangle, CheckCircle, Loader2, Home } from "lucide-react"
 import { useState } from "react"
@@ -20,9 +19,8 @@ interface FormData {
   email: string
   phone: string
   message: string
-  isUrgent: boolean
-  canShare: boolean
   honeypot: string
+  // Removed: isUrgent and canShare
 }
 
 interface FormErrors {
@@ -39,9 +37,8 @@ export default function PrayerRequestClient() {
     email: "",
     phone: "",
     message: "",
-    isUrgent: false,
-    canShare: true,
     honeypot: "",
+    // Removed: isUrgent and canShare
   })
 
   const [errors, setErrors] = useState<FormErrors>({})
@@ -73,7 +70,7 @@ export default function PrayerRequestClient() {
     }
   }
 
-  const handleInputChange = (field: keyof FormData, value: string | boolean) => {
+  const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData((prev) => ({ ...prev, [field]: value }))
 
     // Clear specific field error when user starts typing
@@ -85,13 +82,14 @@ export default function PrayerRequestClient() {
   const validateForm = (): boolean => {
     const newErrors: FormErrors = {}
 
-    // Name validation
-    if (!formData.name.trim()) {
-      newErrors.name = "Name is required"
-    } else if (formData.name.trim().length < 2) {
-      newErrors.name = "Name must be at least 2 characters"
-    } else if (formData.name.trim().length > 100) {
-      newErrors.name = "Name must be less than 100 characters"
+    // Name validation - NOW OPTIONAL
+    // Only validate if name is provided
+    if (formData.name.trim()) {
+      if (formData.name.trim().length < 2) {
+        newErrors.name = "Name must be at least 2 characters"
+      } else if (formData.name.trim().length > 100) {
+        newErrors.name = "Name must be less than 100 characters"
+      }
     }
 
     // Email validation
@@ -153,9 +151,8 @@ export default function PrayerRequestClient() {
         email: "",
         phone: "",
         message: "",
-        isUrgent: false,
-        canShare: true,
         honeypot: "",
+        // Removed: isUrgent and canShare
       })
     } catch (error) {
       console.error("Prayer request submission error:", error)
@@ -186,8 +183,6 @@ export default function PrayerRequestClient() {
                       <strong>What happens next:</strong>
                       <br />• Our prayer team will begin praying for your request immediately
                       <br />• You&apos;ll receive a confirmation email with additional information
-                      <br />• If you marked your request as urgent, it will receive priority attention
-                      <br />• Someone from our team may reach out to you if appropriate
                       <br />• All prayer requests are kept confidential
                     </p>
                   </div>
@@ -277,17 +272,17 @@ export default function PrayerRequestClient() {
                   autoComplete="off"
                 />
 
-                {/* Name Field */}
+                {/* Name Field - NOW OPTIONAL */}
                 <div className="space-y-2">
                   <Label htmlFor="name" className="text-sm font-semibold text-gray-700">
-                    Your Name <span className="text-red-500">*</span>
+                    Your Name <span className="text-gray-400">(Optional)</span>
                   </Label>
                   <div className="relative">
                     <User className="absolute left-3 top-3 h-4 w-4 text-gray-400" />
                     <Input
                       id="name"
                       type="text"
-                      placeholder="Enter your full name"
+                      placeholder="Enter your name (optional)"
                       value={formData.name}
                       onChange={(e) => handleInputChange("name", e.target.value)}
                       className={`pl-10 ${errors.name ? "border-red-500 focus:border-red-500" : "border-gray-300 focus:border-primary"}`}
@@ -356,41 +351,6 @@ export default function PrayerRequestClient() {
                   <div className="flex justify-between items-center">
                     {errors.message && <p className="text-sm text-red-600">{errors.message}</p>}
                     <p className="text-xs text-gray-500 ml-auto">{formData.message.length}/2000 characters</p>
-                  </div>
-                </div>
-
-                {/* Checkboxes */}
-                <div className="space-y-4 p-4 bg-gray-50 rounded-lg border">
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="isUrgent"
-                      checked={formData.isUrgent}
-                      onCheckedChange={(checked) => handleInputChange("isUrgent", checked as boolean)}
-                      className="mt-1"
-                    />
-                    <div className="space-y-1">
-                      <Label htmlFor="isUrgent" className="text-sm font-medium text-gray-700 cursor-pointer">
-                        This is an urgent prayer request
-                      </Label>
-                      <p className="text-xs text-gray-500">
-                        Check this if you need immediate prayer attention (serious illness, crisis, etc.)
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start space-x-3">
-                    <Checkbox
-                      id="canShare"
-                      checked={formData.canShare}
-                      onCheckedChange={(checked) => handleInputChange("canShare", checked as boolean)}
-                      className="mt-1"
-                    />
-                    <div className="space-y-1">
-                      <Label htmlFor="canShare" className="text-sm font-medium text-gray-700 cursor-pointer">
-                        You may share this request with our prayer team
-                      </Label>
-                      <p className="text-xs text-gray-500">If unchecked, only pastoral staff will see your request</p>
-                    </div>
                   </div>
                 </div>
 
